@@ -8,6 +8,7 @@ import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.events.ChatMessage;
 import net.runelite.api.events.GameStateChanged;
+import net.runelite.client.Notifier;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
@@ -28,6 +29,9 @@ public class ThrallHelperPlugin extends Plugin
 
 	@Inject
 	private Client client;
+
+	@Inject
+	private Notifier notifier;
 
 	@Inject
 	private ThrallHelperOverlay overlay;
@@ -62,6 +66,10 @@ public class ThrallHelperPlugin extends Plugin
 		if (message.contains(RESURRECT_THRALL_DISAPPEAR_MESSAGE_START) && message.endsWith((RESURRECT_THRALL_DISAPPEAR_MESSAGE_END)))
 		{
 			overlayManager.add(overlay);
+			if (config.shouldNotify())
+			{
+				notifier.notify("You need to summon a thrall!");
+			}
 		}
 
 	}
