@@ -1,2 +1,2 @@
 # Thrall Helper
-Shows an box that reminds you to summon a thrall
+Shows a box that reminds you to summon a thrall
