@@ -11,7 +11,7 @@ public interface ThrallHelperConfig extends Config
 	@ConfigItem(
 		keyName = "shouldNotify",
 		name = "Notify when thrall expires",
-		description = "This will send a notification when the thrall needs to be summoned"
+		description = "Sends a notification once the thrall needs to be summoned"
 	)
 	default boolean shouldNotify()
 	{
@@ -21,12 +21,19 @@ public interface ThrallHelperConfig extends Config
 	@ConfigItem(
 		keyName = "thrallTimeout",
 		name = "Timeout Thrall Box",
-		description = "The duration of time before the thrall box disappears"
+		description = "The duration of time before the thrall box disappears."
 	)
 	@Units(Units.MINUTES)
 	default int thrallTimeout()
 	{
 		return 5;
 	}
+
+	@ConfigItem(
+		keyName = "shouldFlash",
+		name = "Flash the Reminder Box",
+		description = "Makes the reminder box flash."
+	)
+	default boolean shouldFlash() { return false; }
 
 }
