@@ -5,7 +5,6 @@ import java.time.Duration;
 import java.time.Instant;
 import javax.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
-import net.runelite.api.Client;
 import net.runelite.api.events.ChatMessage;
 import net.runelite.api.events.GameTick;
 import net.runelite.client.Notifier;
@@ -26,9 +25,6 @@ public class ThrallHelperPlugin extends Plugin
 	private static final String RESURRECT_THRALL_DISAPPEAR_MESSAGE_START = ">Your ";
 	private static final String RESURRECT_THRALL_DISAPPEAR_MESSAGE_END = " thrall returns to the grave.</col>";
 	private Instant last_thrall_summoned;
-
-	@Inject
-	private Client client;
 
 	@Inject
 	private Notifier notifier;
