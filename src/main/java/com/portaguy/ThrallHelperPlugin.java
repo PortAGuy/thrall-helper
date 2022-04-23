@@ -10,9 +10,11 @@ import net.runelite.api.events.GameTick;
 import net.runelite.client.Notifier;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
+import net.runelite.client.input.KeyManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.overlay.OverlayManager;
+import net.runelite.client.util.HotkeyListener;
 
 @Slf4j
 @PluginDescriptor(
@@ -38,9 +40,23 @@ public class ThrallHelperPlugin extends Plugin
 	@Inject
 	private OverlayManager overlayManager;
 
+	@Inject
+	KeyManager keyManager;
+
+	private final HotkeyListener muteReminderHotkeyListener = new HotkeyListener(() -> config.muteReminderHotkey())
+	{
+		@Override
+		public void hotkeyPressed()
+		{
+			overlayManager.remove(overlay);
+			last_thrall_summoned = null;
+		}
+	};
+
 	@Override
 	protected void startUp() throws Exception
 	{
+		keyManager.registerKeyListener(muteReminderHotkeyListener);
 	}
 
 	@Override
