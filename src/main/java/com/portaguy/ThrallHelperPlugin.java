@@ -5,6 +5,7 @@ import java.time.Duration;
 import java.time.Instant;
 import javax.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
+import net.runelite.api.Client;
 import net.runelite.api.events.ChatMessage;
 import net.runelite.api.events.GameTick;
 import net.runelite.client.Notifier;
@@ -26,6 +27,8 @@ public class ThrallHelperPlugin extends Plugin
 	private static final String RESURRECT_THRALL_MESSAGE_END = " thrall.</col>";
 	private static final String RESURRECT_THRALL_DISAPPEAR_MESSAGE_START = ">Your ";
 	private static final String RESURRECT_THRALL_DISAPPEAR_MESSAGE_END = " thrall returns to the grave.</col>";
+	private static final int SPELLBOOK_VARBIT = 4070;
+	private static final int ARCEUUS_SPELLBOOK = 3;
 	private Instant last_thrall_summoned;
 
 	@Inject
@@ -39,6 +42,9 @@ public class ThrallHelperPlugin extends Plugin
 
 	@Inject
 	private OverlayManager overlayManager;
+
+	@Inject
+	private Client client;
 
 	@Inject
 	KeyManager keyManager;
@@ -78,6 +84,10 @@ public class ThrallHelperPlugin extends Plugin
 				overlayManager.remove(overlay);
 				last_thrall_summoned = null;
 			}
+		}
+		if (!(client.getVarbitValue(SPELLBOOK_VARBIT) == ARCEUUS_SPELLBOOK) && config.onlyArceuus()) {
+			overlayManager.remove(overlay);
+			last_thrall_summoned = null;
 		}
 	}
 

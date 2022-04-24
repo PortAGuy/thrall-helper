@@ -41,10 +41,18 @@ public interface ThrallHelperConfig extends Config
 	default boolean shouldFlash() { return false; }
 
 	@ConfigItem(
+		keyName = "onlyArceuus",
+		name = "Only on Arceuus Spellbook",
+		description = "Only display the reminder box when on the Arceuus spellbook",
+		position = 4
+	)
+	default boolean onlyArceuus() { return false; }
+
+	@ConfigItem(
 			keyName = "muteReminderHotkey",
 			name = "Mute Reminder Hotkey",
 			description = "Use this hotkey to hide the reminder box.",
-			position = 4
+			position = 5
 	)
 	default Keybind muteReminderHotkey()
 	{
