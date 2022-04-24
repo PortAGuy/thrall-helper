@@ -12,7 +12,7 @@ public interface ThrallHelperConfig extends Config
 	@ConfigItem(
 		keyName = "shouldNotify",
 		name = "Notify when thrall expires",
-		description = "Sends a notification once the thrall needs to be summoned",
+		description = "Sends a notification once the thrall needs to be summoned.",
 		position = 1
 	)
 	default boolean shouldNotify()
@@ -43,7 +43,7 @@ public interface ThrallHelperConfig extends Config
 	@ConfigItem(
 		keyName = "onlyArceuus",
 		name = "Only on Arceuus Spellbook",
-		description = "Only display the reminder box when on the Arceuus spellbook",
+		description = "Only display the reminder box when on the Arceuus spellbook.",
 		position = 4
 	)
 	default boolean onlyArceuus() { return false; }
