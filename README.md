@@ -11,6 +11,10 @@ for a configurable amount of time
   - This is the amount of time before the reminder box disappears
 - Flash the Reminder Box
   - Flashes the reminder box when enabled (See Examples)
+- Only on Arceuus Spellbook
+  - Removes the reminder when not on the Arceuus spellbook
+- Mute Reminder Hotkey
+  - Lets a specified hotkey remove the reminder box completely
 
 ## Examples
 ### Flashing Enabled
