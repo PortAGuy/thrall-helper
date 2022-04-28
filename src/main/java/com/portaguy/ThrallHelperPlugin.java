@@ -69,6 +69,7 @@ public class ThrallHelperPlugin extends Plugin
 	protected void shutDown() throws Exception
 	{
 		overlayManager.remove(overlay);
+		keyManager.unregisterKeyListener(muteReminderHotkeyListener);
 	}
 
 	@Subscribe
