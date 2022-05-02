@@ -1,6 +1,7 @@
 package com.portaguy;
 
 import java.awt.Color;
+import net.runelite.client.config.Alpha;
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
@@ -60,19 +61,21 @@ public interface ThrallHelperConfig extends Config
 		return Keybind.NOT_SET;
 	}
 
+	@Alpha
 	@ConfigItem(
 			keyName = "flashColor1",
 			name = "Flash Color #1",
 			description = "The first color to flash between.",
 			position = 6
 	)
-	default Color flashColor1() { return new Color(255, 0, 0); }
+	default Color flashColor1() { return new Color(255, 0, 0, 150); }
 
+	@Alpha
 	@ConfigItem(
 			keyName = "flashColor2",
 			name = "Flash Color #2",
 			description = "The second color to flash between.",
 			position = 7
 	)
-	default Color flashColor2() { return new Color(70, 61, 50); }
+	default Color flashColor2() { return new Color(70, 61, 50, 150); }
 }
