@@ -65,7 +65,7 @@ public interface ThrallHelperConfig extends Config
 	@ConfigItem(
 			keyName = "flashColor1",
 			name = "Flash Color #1",
-			description = "The first color to flash between.",
+			description = "The first color to flash between, also controls the non-flashing color.",
 			position = 6
 	)
 	default Color flashColor1() { return new Color(255, 0, 0, 150); }
