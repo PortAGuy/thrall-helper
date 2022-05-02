@@ -1,5 +1,6 @@
 package com.portaguy;
 
+import java.awt.Color;
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
@@ -35,7 +36,7 @@ public interface ThrallHelperConfig extends Config
 	@ConfigItem(
 		keyName = "shouldFlash",
 		name = "Flash the Reminder Box",
-		description = "Makes the reminder box flash.",
+		description = "Makes the reminder box flash between the defined colors.",
 		position = 3
 	)
 	default boolean shouldFlash() { return false; }
@@ -58,4 +59,20 @@ public interface ThrallHelperConfig extends Config
 	{
 		return Keybind.NOT_SET;
 	}
+
+	@ConfigItem(
+			keyName = "flashColor1",
+			name = "Flash Color #1",
+			description = "The first color to flash between.",
+			position = 6
+	)
+	default Color flashColor1() { return new Color(70, 61, 50); }
+
+	@ConfigItem(
+			keyName = "flashColor2",
+			name = "Flash Color #2",
+			description = "The second color to flash between.",
+			position = 7
+	)
+	default Color flashColor2() { return new Color(255, 0, 0); }
 }

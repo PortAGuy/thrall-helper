@@ -11,8 +11,6 @@ import net.runelite.client.ui.overlay.components.LineComponent;
 
 public class ThrallHelperOverlay extends OverlayPanel
 {
-	// Grabbed this color from the Don't Eat It plugin hub plugin
-	private static final Color DANGER = new Color(255, 0, 0, 150);
 
 	private final ThrallHelperConfig config;
 	private final Client client;
@@ -36,13 +34,13 @@ public class ThrallHelperOverlay extends OverlayPanel
 		if (config.shouldFlash()) {
 			if (client.getGameCycle() % 40 >= 20)
 			{
-				panelComponent.setBackgroundColor(getPreferredColor());
+				panelComponent.setBackgroundColor(config.flashColor1());
 			} else
 			{
-				panelComponent.setBackgroundColor(DANGER);
+				panelComponent.setBackgroundColor(config.flashColor2());
 			}
 		} else {
-			panelComponent.setBackgroundColor(DANGER);
+			panelComponent.setBackgroundColor(getPreferredColor());
 		}
 
 		setPosition(OverlayPosition.ABOVE_CHATBOX_RIGHT);
