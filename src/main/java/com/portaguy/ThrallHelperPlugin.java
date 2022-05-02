@@ -49,7 +49,7 @@ public class ThrallHelperPlugin extends Plugin
 	@Inject
 	KeyManager keyManager;
 
-	private final HotkeyListener muteReminderHotkeyListener = new HotkeyListener(() -> config.muteReminderHotkey())
+	private final HotkeyListener hideReminderHotkeyListener = new HotkeyListener(() -> config.hideReminderHotkey())
 	{
 		@Override
 		public void hotkeyPressed()
@@ -62,14 +62,14 @@ public class ThrallHelperPlugin extends Plugin
 	@Override
 	protected void startUp() throws Exception
 	{
-		keyManager.registerKeyListener(muteReminderHotkeyListener);
+		keyManager.registerKeyListener(hideReminderHotkeyListener);
 	}
 
 	@Override
 	protected void shutDown() throws Exception
 	{
 		overlayManager.remove(overlay);
-		keyManager.unregisterKeyListener(muteReminderHotkeyListener);
+		keyManager.unregisterKeyListener(hideReminderHotkeyListener);
 	}
 
 	@Subscribe

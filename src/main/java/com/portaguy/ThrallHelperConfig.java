@@ -49,12 +49,12 @@ public interface ThrallHelperConfig extends Config
 	default boolean onlyArceuus() { return false; }
 
 	@ConfigItem(
-			keyName = "muteReminderHotkey",
-			name = "Mute Reminder Hotkey",
+			keyName = "hideReminderHotkey",
+			name = "Hide Reminder Hotkey",
 			description = "Use this hotkey to hide the reminder box.",
 			position = 5
 	)
-	default Keybind muteReminderHotkey()
+	default Keybind hideReminderHotkey()
 	{
 		return Keybind.NOT_SET;
 	}
