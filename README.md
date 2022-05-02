@@ -15,6 +15,10 @@ for a configurable amount of time
   - Removes the reminder when not on the Arceuus spellbook
 - Mute Reminder Hotkey
   - Lets a specified hotkey remove the reminder box completely
+- Flash Color #1
+  - The first color to flash between if the option is set, also controls the non-flashing reminder box color
+- Flash Color #2
+  - The second color to flash between if the option is set
 
 ## Examples
 ### Flashing Enabled
