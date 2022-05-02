@@ -40,7 +40,7 @@ public class ThrallHelperOverlay extends OverlayPanel
 				panelComponent.setBackgroundColor(config.flashColor2());
 			}
 		} else {
-			panelComponent.setBackgroundColor(getPreferredColor());
+			panelComponent.setBackgroundColor(config.flashColor1());
 		}
 
 		setPosition(OverlayPosition.ABOVE_CHATBOX_RIGHT);

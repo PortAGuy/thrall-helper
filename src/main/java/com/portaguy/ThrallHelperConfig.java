@@ -66,7 +66,7 @@ public interface ThrallHelperConfig extends Config
 			description = "The first color to flash between.",
 			position = 6
 	)
-	default Color flashColor1() { return new Color(70, 61, 50); }
+	default Color flashColor1() { return new Color(255, 0, 0); }
 
 	@ConfigItem(
 			keyName = "flashColor2",
@@ -74,5 +74,5 @@ public interface ThrallHelperConfig extends Config
 			description = "The second color to flash between.",
 			position = 7
 	)
-	default Color flashColor2() { return new Color(255, 0, 0); }
+	default Color flashColor2() { return new Color(70, 61, 50); }
 }
