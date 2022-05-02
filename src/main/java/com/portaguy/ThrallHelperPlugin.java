@@ -77,7 +77,7 @@ public class ThrallHelperPlugin extends Plugin
 	{
 		if (last_thrall_summoned != null)
 		{
-			final Duration thrall_timeout = Duration.ofMinutes(config.thrallTimeout() + 1);
+			final Duration thrall_timeout = Duration.ofSeconds(config.thrallTimeoutSeconds() + 60);
 			final Duration since_summon = Duration.between(last_thrall_summoned, Instant.now());
 
 			if (since_summon.compareTo(thrall_timeout) >= 0)

@@ -21,15 +21,15 @@ public interface ThrallHelperConfig extends Config
 	}
 
 	@ConfigItem(
-		keyName = "thrallTimeout",
+		keyName = "thrallTimeoutSeconds",
 		name = "Timeout Thrall Box",
-		description = "The duration of time before the thrall box disappears.",
+		description = "The duration in seconds before the thrall box disappears.",
 		position = 2
 	)
-	@Units(Units.MINUTES)
-	default int thrallTimeout()
+	@Units(Units.SECONDS)
+	default int thrallTimeoutSeconds()
 	{
-		return 5;
+		return 120;
 	}
 
 	@ConfigItem(
