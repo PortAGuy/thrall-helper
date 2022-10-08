@@ -48,7 +48,7 @@ public class ThrallHelperPlugin extends Plugin
 			1270, 1271, 1300	// Lesser
 	));
 
-	private Instant last_thrall_summoned;
+	private Instant last_thrall_expiry;
 	private boolean isSpellClicked = false;
 
 	@Inject
@@ -75,7 +75,7 @@ public class ThrallHelperPlugin extends Plugin
 		public void hotkeyPressed()
 		{
 			overlayManager.remove(overlay);
-			last_thrall_summoned = null;
+			last_thrall_expiry = null;
 		}
 	};
 
@@ -95,20 +95,20 @@ public class ThrallHelperPlugin extends Plugin
 	@Subscribe
 	public void onGameTick(GameTick event)
 	{
-		if (last_thrall_summoned != null)
+		if (last_thrall_expiry != null)
 		{
-			final Duration thrall_timeout = Duration.ofSeconds(config.thrallTimeoutSeconds() + 60);
-			final Duration since_summon = Duration.between(last_thrall_summoned, Instant.now());
+			final Duration thrall_overlay_timeout = Duration.ofSeconds(config.thrallTimeoutSeconds());
+			final Duration since_thrall_expiry = Duration.between(last_thrall_expiry, Instant.now());
 
-			if (since_summon.compareTo(thrall_timeout) >= 0)
+			if (since_thrall_expiry.compareTo(thrall_overlay_timeout) >= 0)
 			{
 				overlayManager.remove(overlay);
-				last_thrall_summoned = null;
+				last_thrall_expiry = null;
 			}
 		}
 		if (!(client.getVarbitValue(SPELLBOOK_VARBIT) == ARCEUUS_SPELLBOOK) && config.onlyArceuus()) {
 			overlayManager.remove(overlay);
-			last_thrall_summoned = null;
+			last_thrall_expiry = null;
 		}
 	}
 
@@ -120,7 +120,6 @@ public class ThrallHelperPlugin extends Plugin
 		if (message.contains(RESURRECT_THRALL_MESSAGE_START) && message.endsWith(RESURRECT_THRALL_MESSAGE_END))
 		{
 			overlayManager.remove(overlay);
-			last_thrall_summoned = Instant.now();
 			isSpellClicked = false;
 		}
 		if (message.contains(RESURRECT_THRALL_DISAPPEAR_MESSAGE_START) && message.endsWith((RESURRECT_THRALL_DISAPPEAR_MESSAGE_END)))
@@ -129,6 +128,7 @@ public class ThrallHelperPlugin extends Plugin
 			if (!isSpellClicked)
 			{
 				overlayManager.add(overlay);
+				last_thrall_expiry = Instant.now();
 				if (config.shouldNotify())
 				{
 					notifier.notify("You need to summon a thrall!");
