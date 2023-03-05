@@ -19,6 +19,12 @@ for a configurable amount of time
   - The first color to flash between if the option is set, also controls the non-flashing reminder box color
 - Flash Color #2
   - The second color to flash between if the option is set
+- Remind on Regex
+  - Displays the thrall reminder upon a chat message that matches the specified regex.
+- Hide on Regex
+  - Removes the thrall reminder upon a chat message that matches the specified regex.
+- Only match game messages
+  - Only matches game messages instead of all messages for the two regex options.
 
 ## Examples
 ### Flashing Enabled
