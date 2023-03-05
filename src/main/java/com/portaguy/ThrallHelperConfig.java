@@ -11,6 +11,7 @@ import net.runelite.client.config.Units;
 @ConfigGroup("thrallhelper")
 public interface ThrallHelperConfig extends Config
 {
+	String GROUP = "thrallhelper";
 	@ConfigItem(
 		keyName = "shouldNotify",
 		name = "Notify when thrall expires",
@@ -78,4 +79,20 @@ public interface ThrallHelperConfig extends Config
 			position = 7
 	)
 	default Color flashColor2() { return new Color(70, 61, 50, 150); }
+
+	@ConfigItem(
+			keyName= "reminderRegex",
+			name = "Remind on Regex",
+			description = "Displays the reminder upon a chat message matching the regex",
+			position = 8
+	)
+	default String reminderRegex() { return ""; }
+
+	@ConfigItem(
+			keyName = "hiderRegex",
+			name = "Hide on Regex",
+			description = "Hides the reminder (if active) upon a chat message matching the regex",
+			position = 9
+	)
+	default String hiderRegex() { return ""; }
 }

@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 import javax.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
@@ -21,6 +22,7 @@ import net.runelite.api.widgets.Widget;
 import net.runelite.client.Notifier;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
+import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.input.KeyManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
@@ -50,6 +52,8 @@ public class ThrallHelperPlugin extends Plugin
 
 	private Instant last_thrall_expiry;
 	private boolean isSpellClicked = false;
+	private Pattern reminderRegex;
+	private Pattern hiderRegex;
 
 	@Inject
 	private Notifier notifier;
@@ -83,6 +87,19 @@ public class ThrallHelperPlugin extends Plugin
 	protected void startUp() throws Exception
 	{
 		keyManager.registerKeyListener(hideReminderHotkeyListener);
+		if (!config.reminderRegex().isEmpty())
+		{
+			reminderRegex = compilePattern(config.reminderRegex());
+		} else {
+			reminderRegex = null;
+		}
+
+		if (!config.hiderRegex().isEmpty())
+		{
+			hiderRegex = compilePattern(config.hiderRegex());
+		} else {
+			hiderRegex = null;
+		}
 	}
 
 	@Override
@@ -90,6 +107,35 @@ public class ThrallHelperPlugin extends Plugin
 	{
 		overlayManager.remove(overlay);
 		keyManager.unregisterKeyListener(hideReminderHotkeyListener);
+	}
+
+	@Subscribe
+	public void onConfigChanged(ConfigChanged event)
+	{
+		if (!ThrallHelperConfig.GROUP.equals(event.getGroup())) return;
+
+		if (event.getKey().equals("reminderRegex"))
+		{
+			if (event.getNewValue() != null && !event.getNewValue().isEmpty())
+			{
+				reminderRegex = compilePattern(event.getNewValue());
+				return;
+			} else {
+				reminderRegex = null;
+			}
+
+		}
+
+		if (event.getKey().equals("hiderRegex"))
+		{
+			if (event.getNewValue() != null && !event.getNewValue().isEmpty())
+			{
+				hiderRegex = compilePattern(event.getNewValue());
+			} else {
+				hiderRegex = null;
+			}
+
+		}
 	}
 
 	@Subscribe
@@ -116,6 +162,29 @@ public class ThrallHelperPlugin extends Plugin
 	public void onChatMessage(ChatMessage event)
 	{
 		final String message = event.getMessage();
+		if (reminderRegex != null)
+		{
+			Matcher reminderMatcher = reminderRegex.matcher(message);
+			if (reminderMatcher.matches())
+			{
+				overlayManager.add(overlay);
+				last_thrall_expiry = Instant.now();
+				if (config.shouldNotify())
+				{
+					notifier.notify("You need to summon a thrall!");
+				}
+			}
+		}
+
+		if (hiderRegex != null)
+		{
+			Matcher hiderMatcher = hiderRegex.matcher(message);
+			if (hiderMatcher.matches())
+			{
+				overlayManager.remove(overlay);
+				isSpellClicked = false;
+			}
+		}
 
 		if (message.contains(RESURRECT_THRALL_MESSAGE_START) && message.endsWith(RESURRECT_THRALL_MESSAGE_END))
 		{
@@ -160,6 +229,18 @@ public class ThrallHelperPlugin extends Plugin
 		if (activeSpellSpriteIds.contains(widget.getSpriteId()) && widget.getOpacity() == 0)
 		{
 			isSpellClicked = true;
+		}
+	}
+
+	private Pattern compilePattern(String pattern)
+	{
+		try
+		{
+			return Pattern.compile(pattern);
+		}
+		catch (PatternSyntaxException e)
+		{
+			return null;
 		}
 	}
 
