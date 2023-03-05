@@ -11,10 +11,7 @@ import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 import javax.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
-import net.runelite.api.Client;
-import net.runelite.api.InventoryID;
-import net.runelite.api.ItemContainer;
-import net.runelite.api.ItemID;
+import net.runelite.api.*;
 import net.runelite.api.events.ChatMessage;
 import net.runelite.api.events.GameTick;
 import net.runelite.api.events.MenuOptionClicked;
@@ -162,7 +159,7 @@ public class ThrallHelperPlugin extends Plugin
 	public void onChatMessage(ChatMessage event)
 	{
 		final String message = event.getMessage();
-		if (reminderRegex != null)
+		if (reminderRegex != null && (!config.matchGameMessagesOnly() || event.getType() == ChatMessageType.GAMEMESSAGE))
 		{
 			Matcher reminderMatcher = reminderRegex.matcher(message);
 			if (reminderMatcher.matches())
@@ -176,7 +173,7 @@ public class ThrallHelperPlugin extends Plugin
 			}
 		}
 
-		if (hiderRegex != null)
+		if (hiderRegex != null && (!config.matchGameMessagesOnly() || event.getType() == ChatMessageType.GAMEMESSAGE))
 		{
 			Matcher hiderMatcher = hiderRegex.matcher(message);
 			if (hiderMatcher.matches())

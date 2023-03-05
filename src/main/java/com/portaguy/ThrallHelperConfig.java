@@ -95,4 +95,12 @@ public interface ThrallHelperConfig extends Config
 			position = 9
 	)
 	default String hiderRegex() { return ""; }
+
+	@ConfigItem(
+			keyName = "matchGameMessagesOnly",
+			name = "Only match game messages",
+			description = "Only attempt to match game messages with the regex.",
+			position = 10
+	)
+	default boolean matchGameMessagesOnly() { return false; }
 }
