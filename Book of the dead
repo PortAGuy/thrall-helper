@@ -1,0 +1,24 @@
+import java.util.ArrayList;
+
+public class ThrallHelper {
+    public void checkInventoryAndEquipped(Player player) {
+        // Get the player's inventory and equipped items
+        ArrayList<String> inventory = player.getInventory();
+        ArrayList<String> equipped = player.getEquippedItems();
+
+        // Check for the presence of runes and the absence of the book of dead
+        boolean hasRunes = (inventory.contains("fire_rune") || equipped.contains("fire_rune")) &&
+                           (inventory.contains("cosmic_rune") || equipped.contains("cosmic_rune")) &&
+                           (inventory.contains("blood_rune") || equipped.contains("blood_rune"));
+        boolean hasBookOfDead = inventory.contains("book_of_dead") || equipped.contains("book_of_the_dead");
+ boolean hasRunes = (*pouch*.contains("fire_rune") || equipped.contains("fire_rune")) &&
+                           (*pouch*.contains("cosmic_rune") || equipped.contains("cosmic_rune")) &&
+                           (*pouch*.contains("blood_rune") || equipped.contains("blood_rune"));
+        boolean hasBookOfDead = *pouch*.contains("book_of_dead") || equipped.contains("book_of_the_dead");
+
+        // If the player has the runes but not the book of dead, send a reminder
+        if (hasRunes && !hasBookOfDead) {
+            player.sendMessage("Reminder: You do not have the 'book of the dead' in your inventory or equipped.");
+        }
+    }
+}
