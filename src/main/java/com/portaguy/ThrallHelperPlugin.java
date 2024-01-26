@@ -39,6 +39,7 @@ public class ThrallHelperPlugin extends Plugin
 	private static final String SPELL_TARGET_REGEX = "<col=00ff00>Resurrect (Greater|Superior|Lesser) (Skeleton|Ghost|Zombie)</col>";
 	private static final Pattern SPELL_TARGET_PATTERN = Pattern.compile(SPELL_TARGET_REGEX);
 	private static final int SPELLBOOK_VARBIT = 4070;
+	private static final int SUMMON_ANIMATION = 8973;
 	private static final int ARCEUUS_SPELLBOOK = 3;
 	private static final Set<Integer> activeSpellSpriteIds = new HashSet<>(Arrays.asList(
 			// Ghost, Skeleton, Zombie
@@ -138,6 +139,10 @@ public class ThrallHelperPlugin extends Plugin
 	@Subscribe
 	public void onGameTick(GameTick event)
 	{
+		if (isSpellClicked && client.getLocalPlayer().getAnimation() == SUMMON_ANIMATION) {
+			overlayManager.remove(overlay);
+		}
+
 		if (lastThrallExpiry != null)
 		{
 			final Duration thrallOverlayTimeout = Duration.ofSeconds(config.thrallTimeoutSeconds());
@@ -193,11 +198,13 @@ public class ThrallHelperPlugin extends Plugin
 			// If the spell has been cast there is no need to notify
 			if (!isSpellClicked)
 			{
-				overlayManager.add(overlay);
-				lastThrallExpiry = Instant.now();
-				if (config.shouldNotify())
-				{
-					notifier.notify("You need to summon a thrall!");
+				if (!config.onlyArceuus() || (config.onlyArceuus() && client.getVarbitValue(SPELLBOOK_VARBIT) == ARCEUUS_SPELLBOOK)) {
+					overlayManager.add(overlay);
+					lastThrallExpiry = Instant.now();
+					if (config.shouldNotify())
+					{
+						notifier.notify("You need to summon a thrall!");
+					}
 				}
 			}
 		}
