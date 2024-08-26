@@ -25,9 +25,15 @@ for a configurable amount of time
   - Removes the thrall reminder upon a chat message that matches the specified regex.
 - Only match game messages
   - Only matches game messages instead of all messages for the two regex options.
+- Reminder Style
+  - Changes the style or text of the reminder box
 
 ## Examples
 ### Flashing Enabled
 ![](https://i.imgur.com/5Veu8cq.gif)
 ### Flashing Disabled
 ![](https://i.imgur.com/Ima9DgP.png)
+### Short Text
+![](https://i.imgur.com/S4rSbz7.png)
+### Infobox
+![](https://i.imgur.com/U6RBtJG.png)
