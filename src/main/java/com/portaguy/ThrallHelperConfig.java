@@ -103,4 +103,13 @@ public interface ThrallHelperConfig extends Config
 			position = 10
 	)
 	default boolean matchGameMessagesOnly() { return false; }
+
+	@ConfigItem(
+			keyName = "reminderStyle",
+			name = "Reminder style",
+			description = "Changes the style of the reminder box",
+			position = 11
+	)
+
+	default ThrallHelperStyle reminderStyle() { return ThrallHelperStyle.LONG_TEXT; }
 }
