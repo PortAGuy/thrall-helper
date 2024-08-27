@@ -112,4 +112,13 @@ public interface ThrallHelperConfig extends Config
 	)
 
 	default ThrallHelperStyle reminderStyle() { return ThrallHelperStyle.LONG_TEXT; }
+
+	@ConfigItem(
+			keyName = "customText",
+			name = "Custom Text",
+			description = "Changes the text in the reminder box if the style is set to custom text",
+			position = 12
+	)
+
+	default String customText() { return "You need to summon a thrall!"; }
 }

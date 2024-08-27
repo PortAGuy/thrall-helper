@@ -42,6 +42,11 @@ public class ThrallHelperOverlay extends OverlayPanel
 						.build());
 				panelComponent.setPreferredSize(new Dimension(graphics.getFontMetrics().stringWidth(SHORT_TEXT) + 10, 0));
 				break;
+			case CUSTOM_TEXT:
+				panelComponent.getChildren().add((LineComponent.builder())
+						.left(config.customText())
+						.build());
+				break;
 		}
 
 		if (config.shouldFlash()) {
@@ -57,6 +62,11 @@ public class ThrallHelperOverlay extends OverlayPanel
 		}
 
 		setPosition(OverlayPosition.ABOVE_CHATBOX_RIGHT);
-		return panelComponent.render(graphics);
+
+		if (config.reminderStyle() == ThrallHelperStyle.CUSTOM_TEXT) {
+			return super.render(graphics);
+		} else {
+			return panelComponent.render(graphics);
+		}
 	}
 }
