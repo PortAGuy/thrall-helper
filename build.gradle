@@ -24,7 +24,7 @@ dependencies {
 }
 
 group = 'com.portaguy'
-version = '1.9'
+version = '1.9.1'
 sourceCompatibility = '1.8'
 
 tasks.withType(JavaCompile) {
