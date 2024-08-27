@@ -27,6 +27,8 @@ for a configurable amount of time
   - Only matches game messages instead of all messages for the two regex options.
 - Reminder Style
   - Changes the style or text of the reminder box
+- Custom Text
+  - Allows for custom text in the reminder box if the custom text style is selected
 
 ## Examples
 ### Flashing Enabled
