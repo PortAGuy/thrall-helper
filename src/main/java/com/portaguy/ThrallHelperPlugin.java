@@ -243,7 +243,13 @@ public class ThrallHelperPlugin extends Plugin
 			if (!isSpellClicked)
 			{
 				if (!config.onlyArceuus() || (config.onlyArceuus() && client.getVarbitValue(SPELLBOOK_VARBIT) == ARCEUUS_SPELLBOOK)) {
-					overlayManager.add(overlay);
+					if (config.reminderStyle() == ThrallHelperStyle.INFOBOX) {
+						if (!infoBoxManager.getInfoBoxes().contains(infobox)) {
+							infoBoxManager.addInfoBox(infobox);
+						}
+					} else {
+						overlayManager.add(overlay);
+					}
 					lastThrallExpiry = Instant.now();
 					if (config.shouldNotify())
 					{
