@@ -10,14 +10,14 @@ import net.runelite.client.ui.overlay.components.LineComponent;
 public class ThrallHelperOverlay extends OverlayPanel
 {
 
-	private final ThrallHelperConfig config;
+	private final SpellHelperConfig config;
 	private final Client client;
 
 	private final String LONG_TEXT = "You need to summon a thrall!";
 	private final String SHORT_TEXT = "Thrall";
 
 	@Inject
-	private ThrallHelperOverlay(ThrallHelperConfig config, Client client)
+	private ThrallHelperOverlay(SpellHelperConfig config, Client client)
 	{
 		this.config = config;
 		this.client = client;
@@ -63,7 +63,7 @@ public class ThrallHelperOverlay extends OverlayPanel
 
 		setPosition(OverlayPosition.ABOVE_CHATBOX_RIGHT);
 
-		if (config.reminderStyle() == ThrallHelperStyle.CUSTOM_TEXT) {
+		if (config.reminderStyle() == SpellHelperStyle.CUSTOM_TEXT) {
 			return super.render(graphics);
 		} else {
 			return panelComponent.render(graphics);

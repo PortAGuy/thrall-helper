@@ -30,9 +30,9 @@ import net.runelite.client.util.HotkeyListener;
 
 @Slf4j
 @PluginDescriptor(
-	name = "Thrall Helper"
+	name = "Spell Helper"
 )
-public class ThrallHelperPlugin extends Plugin
+public class SpellHelperPlugin extends Plugin
 {
 	private static final String RESURRECT_THRALL_MESSAGE_START = ">You resurrect a ";
 	private static final String RESURRECT_THRALL_MESSAGE_END = " thrall.</col>";
@@ -65,7 +65,7 @@ public class ThrallHelperPlugin extends Plugin
 	private ThrallHelperOverlay overlay;
 
 	@Inject
-	private ThrallHelperConfig config;
+	private SpellHelperConfig config;
 
 	@Inject
 	private OverlayManager overlayManager;
@@ -125,7 +125,7 @@ public class ThrallHelperPlugin extends Plugin
 	@Subscribe
 	public void onConfigChanged(ConfigChanged event)
 	{
-		if (!ThrallHelperConfig.GROUP.equals(event.getGroup())) return;
+		if (!SpellHelperConfig.GROUP.equals(event.getGroup())) return;
 
 		if (event.getKey().equals("reminderRegex"))
 		{
@@ -205,7 +205,7 @@ public class ThrallHelperPlugin extends Plugin
 			Matcher reminderMatcher = reminderRegex.matcher(message);
 			if (reminderMatcher.matches())
 			{
-				if (config.reminderStyle() == ThrallHelperStyle.INFOBOX) {
+				if (config.reminderStyle() == SpellHelperStyle.INFOBOX) {
 					if (!infoBoxManager.getInfoBoxes().contains(infobox)) {
 						infoBoxManager.addInfoBox(infobox);
 					}
@@ -243,7 +243,7 @@ public class ThrallHelperPlugin extends Plugin
 			if (!isSpellClicked)
 			{
 				if (!config.onlyArceuus() || (config.onlyArceuus() && client.getVarbitValue(SPELLBOOK_VARBIT) == ARCEUUS_SPELLBOOK)) {
-					if (config.reminderStyle() == ThrallHelperStyle.INFOBOX) {
+					if (config.reminderStyle() == SpellHelperStyle.INFOBOX) {
 						if (!infoBoxManager.getInfoBoxes().contains(infobox)) {
 							infoBoxManager.addInfoBox(infobox);
 						}
@@ -320,8 +320,8 @@ public class ThrallHelperPlugin extends Plugin
 	}
 
 	@Provides
-	ThrallHelperConfig provideConfig(ConfigManager configManager)
+	SpellHelperConfig provideConfig(ConfigManager configManager)
 	{
-		return configManager.getConfig(ThrallHelperConfig.class);
+		return configManager.getConfig(SpellHelperConfig.class);
 	}
 }
