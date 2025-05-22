@@ -11,6 +11,8 @@ import net.runelite.client.eventbus.Subscribe;
 import javax.inject.Inject;
 
 public class ThrallTracker extends SpellTracker {
+  private int summonTick = 0;
+
   @Inject
   protected ThrallReminderOverlay overlay;
 
@@ -25,13 +27,21 @@ public class ThrallTracker extends SpellTracker {
   @Subscribe
   @Override
   protected void onVarbitChanged(VarbitChanged event) {
-    if (event.getVarbitId() == VarbitID.ARCEUUS_RESURRECTION_ACTIVE) {
-      if (event.getValue() == 1 && !active) {
-        start();
-      } else if (event.getValue() == 0 && active) {
-        stop();
-      }
+	// Additional gameCycle check is due to resummoning a thrall, both cooldown and active are changed in the same tick.
+	if (event.getVarbitId() == VarbitID.ARCEUUS_RESURRECTION_COOLDOWN) {
+	  if (event.getValue() == 1 && !active) {
+	    start();
+	  } else if (event.getValue() == 1 && active) {
+	    start();
+	    summonTick = client.getGameCycle();
+	  }
     }
+
+	if (event.getVarbitId() == VarbitID.ARCEUUS_RESURRECTION_ACTIVE) {
+	  if (event.getValue() == 0 && active && client.getGameCycle() != summonTick) {
+	    stop();
+	  }
+	}
   }
 
   @Override
