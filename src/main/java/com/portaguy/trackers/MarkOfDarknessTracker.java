@@ -9,10 +9,12 @@ import net.runelite.api.events.ChatMessage;
 import net.runelite.client.eventbus.Subscribe;
 
 import javax.inject.Inject;
+import net.runelite.client.util.Text;
 
 public class MarkOfDarknessTracker extends SpellTracker {
-  private static final String MARK_PLACED_MESSAGE = "<col=6800bf>You have placed a Mark of Darkness upon yourself.</col>";
-  private static final String MARK_FADED_MESSAGE = "<col=6800bf>Your Mark of Darkness has faded away.</col>";
+  // Lowercase due to Text.standardize call later
+  private static final String MARK_PLACED_MESSAGE = "you have placed a mark of darkness upon yourself.";
+  private static final String MARK_FADED_MESSAGE = "your mark of darkness has faded away.";
 
   @Inject
   protected MarkOfDarknessReminderOverlay overlay;
@@ -29,9 +31,10 @@ public class MarkOfDarknessTracker extends SpellTracker {
   @Override
   protected void onChatMessage(ChatMessage event) {
     int magicLevel = client.getBoostedSkillLevel(Skill.MAGIC);
-    if (event.getMessage().equals(MARK_PLACED_MESSAGE)) {
+	String standardizedMessage = Text.standardize(event.getMessage());
+    if (standardizedMessage.equals(MARK_PLACED_MESSAGE)) {
       start(magicLevel);
-    } else if (event.getMessage().equals(MARK_FADED_MESSAGE)) {
+    } else if (standardizedMessage.equals(MARK_FADED_MESSAGE)) {
       stop();
     }
   }
