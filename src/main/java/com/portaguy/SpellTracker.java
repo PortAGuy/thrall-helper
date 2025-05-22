@@ -47,11 +47,14 @@ public abstract class SpellTracker {
     this.expired = true;
   }
 
+
   @Subscribe
   protected void onActorDeath(ActorDeath event) {
-    if (removedOnDeath && active) {
-      stop();
-    }
+	if (event.getActor() == client.getLocalPlayer()) {
+		if (removedOnDeath && active) {
+			stop();
+		}
+	}
   }
 
   @Subscribe
