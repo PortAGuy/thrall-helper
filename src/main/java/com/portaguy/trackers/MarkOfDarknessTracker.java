@@ -1,0 +1,61 @@
+package com.portaguy.trackers;
+
+import com.portaguy.SpellReminderConfig;
+import com.portaguy.SpellReminderOverlay;
+import com.portaguy.SpellTracker;
+import com.portaguy.overlays.MarkOfDarknessReminderOverlay;
+import net.runelite.api.Skill;
+import net.runelite.api.events.ChatMessage;
+import net.runelite.client.eventbus.Subscribe;
+
+import javax.inject.Inject;
+import net.runelite.client.util.Text;
+
+public class MarkOfDarknessTracker extends SpellTracker {
+  // Lowercase due to Text.standardize call later
+  private static final String MARK_PLACED_MESSAGE = "you have placed a mark of darkness upon yourself.";
+  private static final String MARK_FADED_MESSAGE = "your mark of darkness has faded away.";
+
+  @Inject
+  protected MarkOfDarknessReminderOverlay overlay;
+
+  @Inject
+  protected SpellReminderConfig config;
+
+  @Inject
+  public MarkOfDarknessTracker() {
+    super(true);
+  }
+
+  @Subscribe
+  @Override
+  protected void onChatMessage(ChatMessage event) {
+    int magicLevel = client.getBoostedSkillLevel(Skill.MAGIC);
+	String standardizedMessage = Text.standardize(event.getMessage());
+    if (standardizedMessage.equals(MARK_PLACED_MESSAGE)) {
+      start(magicLevel);
+    } else if (standardizedMessage.equals(MARK_FADED_MESSAGE)) {
+      stop();
+    }
+  }
+
+  @Override
+  protected boolean isSpellTracked() {
+    return config.markOfDarknessEnabled();
+  }
+
+  @Override
+  protected boolean shouldNotify() {
+    return config.markOfDarknessShouldNotify();
+  }
+
+  @Override
+  protected String getCustomMessage() {
+    return config.markOfDarknessCustomText();
+  }
+
+  @Override
+  protected SpellReminderOverlay getOverlay() {
+    return overlay;
+  }
+}
