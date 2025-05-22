@@ -11,8 +11,8 @@ import net.runelite.client.eventbus.Subscribe;
 import javax.inject.Inject;
 
 public class MarkOfDarknessTracker extends SpellTracker {
-  private static final String MARK_PLACED_MESSAGE = "<col=6800bf>You have placed a Mark of Darkness upon yourself.</col>";
-  private static final String MARK_FADED_MESSAGE = "<col=6800bf>Your Mark of Darkness has faded away.</col>";
+  private static final String MARK_PLACED_MESSAGE = "<col=a53fff>You have placed a Mark of Darkness upon yourself.</col>";
+  private static final String MARK_FADED_MESSAGE = "<col=a53fff>Your Mark of Darkness has faded away.</col>";
 
   @Inject
   protected MarkOfDarknessReminderOverlay overlay;

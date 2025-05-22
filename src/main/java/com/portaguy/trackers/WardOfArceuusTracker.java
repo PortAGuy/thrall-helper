@@ -12,7 +12,7 @@ import net.runelite.client.eventbus.Subscribe;
 import javax.inject.Inject;
 
 public class WardOfArceuusTracker extends SpellTracker {
-  private static final String WARD_EXPIRED_MESSAGE = "<col=0000b2>Your Ward of Arceuus has expired.</col>";
+  private static final String WARD_EXPIRED_MESSAGE = "<col=3366ff>Your Ward of Arceuus has expired.</col>";
 
   @Inject
   protected WardOfArceuusReminderOverlay overlay;
@@ -31,8 +31,6 @@ public class WardOfArceuusTracker extends SpellTracker {
     if (event.getVarbitId() == VarbitID.ARCEUUS_WARD_COOLDOWN) {
       if (event.getValue() == 1 && !active) {
         start();
-      } else if (event.getValue() == 0 && active) {
-        stop();
       }
     }
   }

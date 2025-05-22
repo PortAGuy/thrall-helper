@@ -25,7 +25,7 @@ public class ChargeTracker extends SpellTracker {
   @Subscribe
   protected void onVarbitChanged(VarbitChanged event) {
     if (event.getVarpId() == VarPlayerID.MAGEARENA_CHARGE) {
-      if (event.getValue() == 1 && !active) {
+      if (event.getValue() > 0 && !active) {
         start();
       } else if (event.getValue() == 0 && active) {
         stop();
