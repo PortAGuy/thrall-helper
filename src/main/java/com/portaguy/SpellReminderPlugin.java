@@ -129,9 +129,7 @@ public class SpellReminderPlugin extends Plugin {
 
       if (tracker.isExpired()) {
         overlayFactory.createOverlay(tracker);
-        if (tracker.shouldNotify()) {
-          notifier.notify(tracker.getCustomMessage());
-        }
+        notifier.notify(tracker.getCustomNotification(), tracker.getCustomMessage());
       }
 
       if (tracker.isActive()) {

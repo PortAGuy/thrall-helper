@@ -8,6 +8,7 @@ import net.runelite.api.ChatMessageType;
 import net.runelite.api.events.ChatMessage;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.gameval.VarbitID;
+import net.runelite.client.config.Notification;
 import net.runelite.client.eventbus.Subscribe;
 
 import javax.inject.Inject;
@@ -54,7 +55,7 @@ public class WardOfArceuusTracker extends SpellTracker {
   }
 
   @Override
-  protected boolean shouldNotify() {
+  protected Notification getCustomNotification() {
     return config.wardOfArceuusShouldNotify();
   }
 

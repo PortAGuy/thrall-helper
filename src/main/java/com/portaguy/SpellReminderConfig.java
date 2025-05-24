@@ -107,8 +107,8 @@ public interface SpellReminderConfig extends Config {
       position = 1,
       section = THRALL_SECTION
   )
-  default boolean shouldNotify() {
-    return true;
+  default Notification shouldNotify() {
+    return Notification.ON;
   }
 
   @ConfigItem(
@@ -255,8 +255,8 @@ public interface SpellReminderConfig extends Config {
       position = 1,
       section = DEATH_CHARGE_SECTION
   )
-  default boolean deathChargeShouldNotify() {
-    return true;
+  default Notification deathChargeShouldNotify() {
+    return Notification.ON;
   }
 
   @ConfigItem(
@@ -403,8 +403,8 @@ public interface SpellReminderConfig extends Config {
       position = 1,
       section = MARK_OF_DARKNESS_SECTION
   )
-  default boolean markOfDarknessShouldNotify() {
-    return true;
+  default Notification markOfDarknessShouldNotify() {
+    return Notification.ON;
   }
 
   @ConfigItem(
@@ -551,8 +551,8 @@ public interface SpellReminderConfig extends Config {
       position = 1,
       section = WARD_OF_ARCEUUS_SECTION
   )
-  default boolean wardOfArceuusShouldNotify() {
-    return true;
+  default Notification wardOfArceuusShouldNotify() {
+    return Notification.ON;
   }
 
   @ConfigItem(
@@ -699,8 +699,8 @@ public interface SpellReminderConfig extends Config {
       position = 1,
       section = SHADOW_VEIL_SECTION
   )
-  default boolean shadowVeilShouldNotify() {
-    return true;
+  default Notification shadowVeilShouldNotify() {
+    return Notification.ON;
   }
 
   @ConfigItem(
@@ -847,8 +847,8 @@ public interface SpellReminderConfig extends Config {
       position = 1,
       section = CORRUPTION_SECTION
   )
-  default boolean corruptionShouldNotify() {
-    return true;
+  default Notification corruptionShouldNotify() {
+    return Notification.ON;
   }
 
   @ConfigItem(
@@ -995,8 +995,8 @@ public interface SpellReminderConfig extends Config {
       position = 1,
       section = CHARGE_SECTION
   )
-  default boolean chargeShouldNotify() {
-    return true;
+  default Notification chargeShouldNotify() {
+    return Notification.ON;
   }
 
   @ConfigItem(
@@ -1143,8 +1143,8 @@ public interface SpellReminderConfig extends Config {
       position = 1,
       section = VENGEANCE_SECTION
   )
-  default boolean vengeanceShouldNotify() {
-    return true;
+  default Notification vengeanceShouldNotify() {
+    return Notification.ON;
   }
 
   @ConfigItem(
@@ -1302,8 +1302,8 @@ public interface SpellReminderConfig extends Config {
       position = 2,
       section = VILE_VIGOUR_SECTION
   )
-  default boolean vileVigourShouldNotify() {
-    return true;
+  default Notification vileVigourShouldNotify() {
+    return Notification.ON;
   }
 
   @ConfigItem(

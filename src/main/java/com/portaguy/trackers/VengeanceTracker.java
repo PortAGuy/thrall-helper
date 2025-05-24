@@ -6,6 +6,7 @@ import com.portaguy.SpellTracker;
 import com.portaguy.overlays.VengeanceReminderOverlay;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.gameval.VarbitID;
+import net.runelite.client.config.Notification;
 import net.runelite.client.eventbus.Subscribe;
 
 import javax.inject.Inject;
@@ -48,7 +49,7 @@ public class VengeanceTracker extends SpellTracker {
   }
 
   @Override
-  protected boolean shouldNotify() {
+  protected Notification getCustomNotification() {
     return config.vengeanceShouldNotify();
   }
 

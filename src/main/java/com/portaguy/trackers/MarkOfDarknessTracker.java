@@ -6,6 +6,7 @@ import com.portaguy.SpellTracker;
 import com.portaguy.overlays.MarkOfDarknessReminderOverlay;
 import net.runelite.api.Skill;
 import net.runelite.api.events.ChatMessage;
+import net.runelite.client.config.Notification;
 import net.runelite.client.eventbus.Subscribe;
 
 import javax.inject.Inject;
@@ -45,7 +46,7 @@ public class MarkOfDarknessTracker extends SpellTracker {
   }
 
   @Override
-  protected boolean shouldNotify() {
+  protected Notification getCustomNotification() {
     return config.markOfDarknessShouldNotify();
   }
 

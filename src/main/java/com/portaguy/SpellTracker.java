@@ -7,6 +7,7 @@ import net.runelite.api.events.ActorDeath;
 import net.runelite.api.events.ChatMessage;
 import net.runelite.api.events.GameTick;
 import net.runelite.api.events.VarbitChanged;
+import net.runelite.client.config.Notification;
 import net.runelite.client.eventbus.Subscribe;
 
 import javax.inject.Inject;
@@ -85,9 +86,9 @@ public abstract class SpellTracker {
   /**
    * Checks if this spell should show notifications based on config settings
    *
-   * @return true if the spell should notify, false otherwise
+   * @return The custom notification for this spell
    */
-  protected abstract boolean shouldNotify();
+  protected abstract Notification getCustomNotification();
 
   /**
    * Gets the custom message to display when the spell expires
