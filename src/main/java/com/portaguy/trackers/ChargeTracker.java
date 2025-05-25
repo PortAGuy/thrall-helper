@@ -46,7 +46,7 @@ public class ChargeTracker extends SpellTracker {
 
   @Override
   protected String getCustomMessage() {
-    return config.deathChargeCustomText();
+    return config.chargeCustomText();
   }
 
   @Override
