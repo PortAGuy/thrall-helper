@@ -3,6 +3,7 @@ package com.portaguy;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
+import net.runelite.api.Player;
 import net.runelite.api.events.ActorDeath;
 import net.runelite.api.events.ChatMessage;
 import net.runelite.api.events.GameTick;
@@ -51,11 +52,21 @@ public abstract class SpellTracker {
 
   @Subscribe
   protected void onActorDeath(ActorDeath event) {
-	if (event.getActor() == client.getLocalPlayer()) {
-		if (removedOnDeath && active) {
-			stop();
-		}
-	}
+    Player player = client.getLocalPlayer();
+    if (player == null) {
+      return;
+    }
+
+    if (event.getActor() instanceof Player) {
+      Player actor = (Player) event.getActor();
+      if (!actor.equals(player)) {
+        return;
+      }
+
+      if (removedOnDeath && active) {
+        stop();
+      }
+    }
   }
 
   @Subscribe
