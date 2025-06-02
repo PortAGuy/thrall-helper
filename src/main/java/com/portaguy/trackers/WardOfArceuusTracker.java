@@ -10,9 +10,9 @@ import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.gameval.VarbitID;
 import net.runelite.client.config.Notification;
 import net.runelite.client.eventbus.Subscribe;
+import net.runelite.client.util.Text;
 
 import javax.inject.Inject;
-import net.runelite.client.util.Text;
 
 public class WardOfArceuusTracker extends SpellTracker {
   // Lowercase due to Text.standardize call later
@@ -42,11 +42,14 @@ public class WardOfArceuusTracker extends SpellTracker {
   @Subscribe
   @Override
   protected void onChatMessage(ChatMessage event) {
-	if (event.getType() == ChatMessageType.GAMEMESSAGE) {
-		if (Text.standardize(event.getMessage()).equals(WARD_EXPIRED_MESSAGE)) {
-			stop();
-		}
-	}
+    String message = Text.standardize(event.getMessage());
+    if (event.getType() != ChatMessageType.GAMEMESSAGE) {
+      return;
+    }
+
+    if (message.equals(WARD_EXPIRED_MESSAGE)) {
+      stop();
+    }
   }
 
   @Override

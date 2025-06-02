@@ -8,9 +8,9 @@ import net.runelite.api.Skill;
 import net.runelite.api.events.ChatMessage;
 import net.runelite.client.config.Notification;
 import net.runelite.client.eventbus.Subscribe;
+import net.runelite.client.util.Text;
 
 import javax.inject.Inject;
-import net.runelite.client.util.Text;
 
 public class MarkOfDarknessTracker extends SpellTracker {
   // Lowercase due to Text.standardize call later
@@ -32,7 +32,7 @@ public class MarkOfDarknessTracker extends SpellTracker {
   @Override
   protected void onChatMessage(ChatMessage event) {
     int magicLevel = client.getBoostedSkillLevel(Skill.MAGIC);
-	String standardizedMessage = Text.standardize(event.getMessage());
+    String standardizedMessage = Text.standardize(event.getMessage());
     if (standardizedMessage.equals(MARK_PLACED_MESSAGE)) {
       start(magicLevel);
     } else if (standardizedMessage.equals(MARK_FADED_MESSAGE)) {
