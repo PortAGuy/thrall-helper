@@ -32,10 +32,10 @@ public class MarkOfDarknessTracker extends SpellTracker {
   @Override
   protected void onChatMessage(ChatMessage event) {
     int magicLevel = client.getBoostedSkillLevel(Skill.MAGIC);
-    String standardizedMessage = Text.standardize(event.getMessage());
-    if (standardizedMessage.equals(MARK_PLACED_MESSAGE)) {
+    String message = Text.standardize(event.getMessage());
+    if (message.equals(MARK_PLACED_MESSAGE)) {
       start(magicLevel);
-    } else if (standardizedMessage.equals(MARK_FADED_MESSAGE)) {
+    } else if (message.equals(MARK_FADED_MESSAGE)) {
       stop();
     }
   }
