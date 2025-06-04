@@ -49,7 +49,6 @@ public abstract class SpellTracker {
     this.expired = true;
   }
 
-
   @Subscribe
   protected void onActorDeath(ActorDeath event) {
     Player player = client.getLocalPlayer();

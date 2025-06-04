@@ -4,6 +4,7 @@ import com.portaguy.SpellReminderConfig;
 import com.portaguy.SpellReminderOverlay;
 import com.portaguy.SpellTracker;
 import com.portaguy.overlays.ThrallReminderOverlay;
+import net.runelite.api.Skill;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.gameval.VarbitID;
 import net.runelite.client.config.Notification;
@@ -12,8 +13,6 @@ import net.runelite.client.eventbus.Subscribe;
 import javax.inject.Inject;
 
 public class ThrallTracker extends SpellTracker {
-  private int summonTick = 0;
-
   @Inject
   protected ThrallReminderOverlay overlay;
 
@@ -28,21 +27,21 @@ public class ThrallTracker extends SpellTracker {
   @Subscribe
   @Override
   protected void onVarbitChanged(VarbitChanged event) {
-	// Additional gameCycle check is due to resummoning a thrall, both cooldown and active are changed in the same tick.
-	if (event.getVarbitId() == VarbitID.ARCEUUS_RESURRECTION_COOLDOWN) {
-	  if (event.getValue() == 1 && !active) {
-	    start();
-	  } else if (event.getValue() == 1 && active) {
-	    start();
-	    summonTick = client.getGameCycle();
-	  }
+    if (event.getVarbitId() != VarbitID.ARCEUUS_RESURRECTION_ACTIVE) {
+      return;
     }
 
-	if (event.getVarbitId() == VarbitID.ARCEUUS_RESURRECTION_ACTIVE) {
-	  if (event.getValue() == 0 && active && client.getGameCycle() != summonTick) {
-	    stop();
-	  }
-	}
+    if (event.getValue() == 1) {
+      // Thralls last as long as your magic level in game ticks.
+      // This timer can be extended 50% or 100% depending on CA completions.
+      int ticks = client.getBoostedSkillLevel(Skill.MAGIC);
+      if (client.getVarbitValue(VarbitID.CA_TIER_STATUS_GRANDMASTER) == 2) {
+        ticks += ticks;
+      } else if (client.getVarbitValue(VarbitID.CA_TIER_STATUS_MASTER) == 2) {
+        ticks += ticks / 2;
+      }
+      start(ticks);
+    }
   }
 
   @Override
