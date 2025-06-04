@@ -52,6 +52,9 @@ public class SpellReminderPlugin extends Plugin {
   protected VengeanceTracker vengeanceTracker;
 
   @Inject
+  protected VileVigourTracker vileVigourTracker;
+
+  @Inject
   protected Client client;
 
   @Inject
@@ -101,6 +104,7 @@ public class SpellReminderPlugin extends Plugin {
     spellTrackers.add(corruptionTracker);
     spellTrackers.add(chargeTracker);
     spellTrackers.add(vengeanceTracker);
+    spellTrackers.add(vileVigourTracker);
 
     for (SpellTracker tracker : spellTrackers) {
       eventBus.register(tracker);
