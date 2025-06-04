@@ -347,7 +347,7 @@ public interface SpellReminderConfig extends Config {
       section = DEATH_CHARGE_SECTION
   )
   default Color deathChargeFlashColor2() {
-    return new Color(70, 61, 50, 150);
+    return new Color(48, 200, 215, 150);
   }
 
   @ConfigItem(
@@ -495,7 +495,7 @@ public interface SpellReminderConfig extends Config {
       section = MARK_OF_DARKNESS_SECTION
   )
   default Color markOfDarknessFlashColor2() {
-    return new Color(70, 61, 50, 150);
+    return new Color(85, 0, 205, 150);
   }
 
   @ConfigItem(
@@ -643,7 +643,7 @@ public interface SpellReminderConfig extends Config {
       section = WARD_OF_ARCEUUS_SECTION
   )
   default Color wardOfArceuusFlashColor2() {
-    return new Color(70, 61, 50, 150);
+    return new Color(0, 170, 128, 150);
   }
 
   @ConfigItem(
@@ -791,7 +791,7 @@ public interface SpellReminderConfig extends Config {
       section = SHADOW_VEIL_SECTION
   )
   default Color shadowVeilFlashColor2() {
-    return new Color(70, 61, 50, 150);
+    return new Color(30, 30, 50, 150);
   }
 
   @ConfigItem(
@@ -1087,7 +1087,7 @@ public interface SpellReminderConfig extends Config {
       section = CHARGE_SECTION
   )
   default Color chargeFlashColor2() {
-    return new Color(70, 61, 50, 150);
+    return new Color(192, 188, 0, 150);
   }
 
   @ConfigItem(
@@ -1235,7 +1235,7 @@ public interface SpellReminderConfig extends Config {
       section = VENGEANCE_SECTION
   )
   default Color vengeanceFlashColor2() {
-    return new Color(70, 61, 50, 150);
+    return new Color(175, 175, 200, 150);
   }
 
   @ConfigItem(
