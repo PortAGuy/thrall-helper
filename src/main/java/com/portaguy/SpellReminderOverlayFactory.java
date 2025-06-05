@@ -1,13 +1,11 @@
 package com.portaguy;
 
 import com.google.inject.Inject;
-import lombok.extern.slf4j.Slf4j;
 import net.runelite.client.ui.overlay.OverlayManager;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Slf4j
 public class SpellReminderOverlayFactory {
   private final OverlayManager overlayManager;
   private final Map<SpellTracker, SpellReminderOverlay> activeOverlays;
