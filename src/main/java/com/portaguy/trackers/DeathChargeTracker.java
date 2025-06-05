@@ -26,6 +26,7 @@ public class DeathChargeTracker extends SpellTracker {
   }
 
   @Subscribe
+  @Override
   protected void onVarbitChanged(VarbitChanged event) {
     if (event.getVarbitId() == VarbitID.ARCEUUS_DEATH_CHARGE_COOLDOWN) {
       if (event.getValue() == 1 && !active) {
