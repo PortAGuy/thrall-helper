@@ -180,26 +180,26 @@ public interface SpellReminderConfig extends Config {
 
   @Alpha
   @ConfigItem(
-      keyName = "flashColor1",
-      name = "Flash Color",
-      description = "The first color to flash between, also controls the non-flashing color.",
-      position = 8,
-      section = THRALL_SECTION
-  )
-  default Color flashColor() {
-    return new Color(255, 0, 0, 150);
-  }
-
-  @Alpha
-  @ConfigItem(
       keyName = "flashColor2",
       name = "Color",
       description = "The second color to flash between.",
-      position = 9,
+      position = 8,
       section = THRALL_SECTION
   )
   default Color color() {
     return new Color(70, 61, 50, 150);
+  }
+
+  @Alpha
+  @ConfigItem(
+      keyName = "flashColor1",
+      name = "Flash Color",
+      description = "The first color to flash between, also controls the non-flashing color.",
+      position = 9,
+      section = THRALL_SECTION
+  )
+  default Color flashColor() {
+    return new Color(255, 0, 0, 150);
   }
 
   @ConfigItem(
@@ -328,26 +328,26 @@ public interface SpellReminderConfig extends Config {
 
   @Alpha
   @ConfigItem(
-      keyName = "deathChargeFlashColor",
-      name = "Flash Color",
-      description = "The first color to flash between, also controls the non-flashing color.",
-      position = 8,
-      section = DEATH_CHARGE_SECTION
-  )
-  default Color deathChargeFlashColor() {
-    return new Color(255, 0, 0, 150);
-  }
-
-  @Alpha
-  @ConfigItem(
       keyName = "deathChargeColor",
       name = "Color",
       description = "The second color to flash between.",
-      position = 9,
+      position = 8,
       section = DEATH_CHARGE_SECTION
   )
   default Color deathChargeColor() {
     return new Color(48, 200, 215, 150);
+  }
+
+  @Alpha
+  @ConfigItem(
+      keyName = "deathChargeFlashColor",
+      name = "Flash Color",
+      description = "The first color to flash between, also controls the non-flashing color.",
+      position = 9,
+      section = DEATH_CHARGE_SECTION
+  )
+  default Color deathChargeFlashColor() {
+    return new Color(255, 0, 0, 150);
   }
 
   @ConfigItem(
@@ -476,26 +476,26 @@ public interface SpellReminderConfig extends Config {
 
   @Alpha
   @ConfigItem(
-      keyName = "markOfDarknessFlashColor",
-      name = "Flash Color",
-      description = "The first color to flash between, also controls the non-flashing color.",
-      position = 8,
-      section = MARK_OF_DARKNESS_SECTION
-  )
-  default Color markOfDarknessFlashColor() {
-    return new Color(255, 0, 0, 150);
-  }
-
-  @Alpha
-  @ConfigItem(
       keyName = "markOfDarknessColor",
       name = "Color",
       description = "The second color to flash between.",
-      position = 9,
+      position = 8,
       section = MARK_OF_DARKNESS_SECTION
   )
   default Color markOfDarknessColor() {
     return new Color(85, 0, 205, 150);
+  }
+
+  @Alpha
+  @ConfigItem(
+      keyName = "markOfDarknessFlashColor",
+      name = "Flash Color",
+      description = "The first color to flash between, also controls the non-flashing color.",
+      position = 9,
+      section = MARK_OF_DARKNESS_SECTION
+  )
+  default Color markOfDarknessFlashColor() {
+    return new Color(255, 0, 0, 150);
   }
 
   @ConfigItem(
@@ -624,26 +624,26 @@ public interface SpellReminderConfig extends Config {
 
   @Alpha
   @ConfigItem(
-      keyName = "wardOfArceuusFlashColor",
-      name = "Flash Color",
-      description = "The first color to flash between, also controls the non-flashing color.",
-      position = 8,
-      section = WARD_OF_ARCEUUS_SECTION
-  )
-  default Color wardOfArceuusFlashColor() {
-    return new Color(255, 0, 0, 150);
-  }
-
-  @Alpha
-  @ConfigItem(
       keyName = "wardOfArceuusColor",
       name = "Color",
       description = "The second color to flash between.",
-      position = 9,
+      position = 8,
       section = WARD_OF_ARCEUUS_SECTION
   )
   default Color wardOfArceuusColor() {
     return new Color(0, 170, 128, 150);
+  }
+
+  @Alpha
+  @ConfigItem(
+      keyName = "wardOfArceuusFlashColor",
+      name = "Flash Color",
+      description = "The first color to flash between, also controls the non-flashing color.",
+      position = 9,
+      section = WARD_OF_ARCEUUS_SECTION
+  )
+  default Color wardOfArceuusFlashColor() {
+    return new Color(255, 0, 0, 150);
   }
 
   @ConfigItem(
@@ -772,26 +772,26 @@ public interface SpellReminderConfig extends Config {
 
   @Alpha
   @ConfigItem(
-      keyName = "shadowVeilFlashColor",
-      name = "Flash Color",
-      description = "The first color to flash between, also controls the non-flashing color.",
-      position = 8,
-      section = SHADOW_VEIL_SECTION
-  )
-  default Color shadowVeilFlashColor() {
-    return new Color(255, 0, 0, 150);
-  }
-
-  @Alpha
-  @ConfigItem(
       keyName = "shadowVeilColor",
       name = "Color",
       description = "The second color to flash between.",
-      position = 9,
+      position = 8,
       section = SHADOW_VEIL_SECTION
   )
   default Color shadowVeilColor() {
     return new Color(30, 30, 50, 150);
+  }
+
+  @Alpha
+  @ConfigItem(
+      keyName = "shadowVeilFlashColor",
+      name = "Flash Color",
+      description = "The first color to flash between, also controls the non-flashing color.",
+      position = 9,
+      section = SHADOW_VEIL_SECTION
+  )
+  default Color shadowVeilFlashColor() {
+    return new Color(255, 0, 0, 150);
   }
 
   @ConfigItem(
@@ -920,26 +920,26 @@ public interface SpellReminderConfig extends Config {
 
   @Alpha
   @ConfigItem(
-      keyName = "corruptionFlashColor",
-      name = "Flash Color",
-      description = "The first color to flash between, also controls the non-flashing color.",
-      position = 8,
-      section = CORRUPTION_SECTION
-  )
-  default Color corruptionFlashColor() {
-    return new Color(255, 0, 0, 150);
-  }
-
-  @Alpha
-  @ConfigItem(
       keyName = "corruptionColor",
       name = "Color",
       description = "The second color to flash between.",
-      position = 9,
+      position = 8,
       section = CORRUPTION_SECTION
   )
   default Color corruptionColor() {
     return new Color(70, 61, 50, 150);
+  }
+
+  @Alpha
+  @ConfigItem(
+      keyName = "corruptionFlashColor",
+      name = "Flash Color",
+      description = "The first color to flash between, also controls the non-flashing color.",
+      position = 9,
+      section = CORRUPTION_SECTION
+  )
+  default Color corruptionFlashColor() {
+    return new Color(255, 0, 0, 150);
   }
 
   @ConfigItem(
@@ -1068,26 +1068,26 @@ public interface SpellReminderConfig extends Config {
 
   @Alpha
   @ConfigItem(
-      keyName = "chargeFlashColor",
-      name = "Flash Color",
-      description = "The first color to flash between, also controls the non-flashing color.",
-      position = 8,
-      section = CHARGE_SECTION
-  )
-  default Color chargeFlashColor() {
-    return new Color(255, 0, 0, 150);
-  }
-
-  @Alpha
-  @ConfigItem(
       keyName = "chargeColor",
       name = "Color",
       description = "The second color to flash between.",
-      position = 9,
+      position = 8,
       section = CHARGE_SECTION
   )
   default Color chargeColor() {
     return new Color(192, 188, 0, 150);
+  }
+
+  @Alpha
+  @ConfigItem(
+      keyName = "chargeFlashColor",
+      name = "Flash Color",
+      description = "The first color to flash between, also controls the non-flashing color.",
+      position = 9,
+      section = CHARGE_SECTION
+  )
+  default Color chargeFlashColor() {
+    return new Color(255, 0, 0, 150);
   }
 
   @ConfigItem(
@@ -1216,26 +1216,26 @@ public interface SpellReminderConfig extends Config {
 
   @Alpha
   @ConfigItem(
-      keyName = "vengeanceFlashColor",
-      name = "Flash Color",
-      description = "The first color to flash between, also controls the non-flashing color.",
-      position = 8,
-      section = VENGEANCE_SECTION
-  )
-  default Color vengeanceFlashColor() {
-    return new Color(255, 0, 0, 150);
-  }
-
-  @Alpha
-  @ConfigItem(
       keyName = "vengeanceColor",
       name = "Color",
       description = "The second color to flash between.",
-      position = 9,
+      position = 8,
       section = VENGEANCE_SECTION
   )
   default Color vengeanceColor() {
     return new Color(175, 175, 200, 150);
+  }
+
+  @Alpha
+  @ConfigItem(
+      keyName = "vengeanceFlashColor",
+      name = "Flash Color",
+      description = "The first color to flash between, also controls the non-flashing color.",
+      position = 9,
+      section = VENGEANCE_SECTION
+  )
+  default Color vengeanceFlashColor() {
+    return new Color(255, 0, 0, 150);
   }
 
   @ConfigItem(
@@ -1375,26 +1375,26 @@ public interface SpellReminderConfig extends Config {
 
   @Alpha
   @ConfigItem(
-      keyName = "vileVigourFlashColor",
-      name = "Flash Color",
-      description = "The first color to flash between, also controls the non-flashing color.",
-      position = 9,
-      section = VILE_VIGOUR_SECTION
-  )
-  default Color vileVigourFlashColor() {
-    return new Color(255, 0, 0, 150);
-  }
-
-  @Alpha
-  @ConfigItem(
       keyName = "vileVigourColor",
       name = "Color",
       description = "The second color to flash between.",
-      position = 10,
+      position = 9,
       section = VILE_VIGOUR_SECTION
   )
   default Color vileVigourColor() {
     return new Color(70, 61, 50, 150);
+  }
+
+  @Alpha
+  @ConfigItem(
+      keyName = "vileVigourFlashColor",
+      name = "Flash Color",
+      description = "The first color to flash between, also controls the non-flashing color.",
+      position = 10,
+      section = VILE_VIGOUR_SECTION
+  )
+  default Color vileVigourFlashColor() {
+    return new Color(255, 0, 0, 150);
   }
 
   @ConfigItem(
