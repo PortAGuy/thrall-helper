@@ -5,6 +5,7 @@ import com.portaguy.trackers.*;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.events.GameTick;
+import net.runelite.api.gameval.VarbitID;
 import net.runelite.client.Notifier;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.EventBus;
@@ -132,6 +133,13 @@ public class SpellReminderPlugin extends Plugin {
       }
 
       if (tracker.isExpired()) {
+        final int spellbookVarbit = client.getVarbitValue(VarbitID.SPELLBOOK);
+
+        Spellbook spellbook = Spellbook.fromVarbit(spellbookVarbit);
+        if (tracker.onlyOnSpellbook() && tracker.getSpellbook() != spellbook) {
+          return;
+        }
+
         overlayFactory.createOverlay(tracker);
         notifier.notify(tracker.getCustomNotification(), tracker.getCustomMessage());
       }

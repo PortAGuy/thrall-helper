@@ -3,6 +3,7 @@ package com.portaguy.trackers;
 import com.portaguy.SpellReminderConfig;
 import com.portaguy.SpellReminderOverlay;
 import com.portaguy.SpellTracker;
+import com.portaguy.Spellbook;
 import com.portaguy.overlays.ThrallReminderOverlay;
 import net.runelite.api.Skill;
 import net.runelite.api.events.VarbitChanged;
@@ -21,7 +22,7 @@ public class ThrallTracker extends SpellTracker {
 
   @Inject
   public ThrallTracker() {
-    super(false);
+    super(Spellbook.ARCEUUS, false);
   }
 
   @Subscribe
@@ -42,6 +43,11 @@ public class ThrallTracker extends SpellTracker {
       }
       start(ticks);
     }
+  }
+
+  @Override
+  protected boolean onlyOnSpellbook() {
+    return config.onlyArceuus();
   }
 
   @Override

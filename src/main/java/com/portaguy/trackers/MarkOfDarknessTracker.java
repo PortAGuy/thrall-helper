@@ -3,6 +3,7 @@ package com.portaguy.trackers;
 import com.portaguy.SpellReminderConfig;
 import com.portaguy.SpellReminderOverlay;
 import com.portaguy.SpellTracker;
+import com.portaguy.Spellbook;
 import com.portaguy.overlays.MarkOfDarknessReminderOverlay;
 import net.runelite.api.Skill;
 import net.runelite.api.events.ChatMessage;
@@ -25,7 +26,7 @@ public class MarkOfDarknessTracker extends SpellTracker {
 
   @Inject
   public MarkOfDarknessTracker() {
-    super(true);
+    super(Spellbook.ARCEUUS, true);
   }
 
   @Subscribe
@@ -38,6 +39,11 @@ public class MarkOfDarknessTracker extends SpellTracker {
     } else if (message.equals(MARK_FADED_MESSAGE)) {
       stop();
     }
+  }
+
+  @Override
+  protected boolean onlyOnSpellbook() {
+    return config.markOfDarknessOnlyArceuus();
   }
 
   @Override

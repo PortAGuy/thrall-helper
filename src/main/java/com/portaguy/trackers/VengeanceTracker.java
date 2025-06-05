@@ -3,6 +3,7 @@ package com.portaguy.trackers;
 import com.portaguy.SpellReminderConfig;
 import com.portaguy.SpellReminderOverlay;
 import com.portaguy.SpellTracker;
+import com.portaguy.Spellbook;
 import com.portaguy.overlays.VengeanceReminderOverlay;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.gameval.VarbitID;
@@ -20,7 +21,7 @@ public class VengeanceTracker extends SpellTracker {
 
   @Inject
   public VengeanceTracker() {
-    super(false);
+    super(Spellbook.LUNAR, false);
   }
 
   @Subscribe
@@ -41,6 +42,11 @@ public class VengeanceTracker extends SpellTracker {
         stop();
       }
     }
+  }
+
+  @Override
+  protected boolean onlyOnSpellbook() {
+    return config.vengeanceOnlyLunar();
   }
 
   @Override

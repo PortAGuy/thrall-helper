@@ -3,6 +3,7 @@ package com.portaguy.trackers;
 import com.portaguy.SpellReminderConfig;
 import com.portaguy.SpellReminderOverlay;
 import com.portaguy.SpellTracker;
+import com.portaguy.Spellbook;
 import com.portaguy.overlays.DeathChargeReminderOverlay;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.gameval.VarbitID;
@@ -20,7 +21,7 @@ public class DeathChargeTracker extends SpellTracker {
 
   @Inject
   public DeathChargeTracker() {
-    super(false);
+    super(Spellbook.ARCEUUS, false);
   }
 
   @Subscribe
@@ -32,6 +33,11 @@ public class DeathChargeTracker extends SpellTracker {
         stop();
       }
     }
+  }
+
+  @Override
+  protected boolean onlyOnSpellbook() {
+    return config.deathChargeOnlyArceuus();
   }
 
   @Override

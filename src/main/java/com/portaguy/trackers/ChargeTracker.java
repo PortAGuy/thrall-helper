@@ -3,6 +3,7 @@ package com.portaguy.trackers;
 import com.portaguy.SpellReminderConfig;
 import com.portaguy.SpellReminderOverlay;
 import com.portaguy.SpellTracker;
+import com.portaguy.Spellbook;
 import com.portaguy.overlays.ChargeReminderOverlay;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.gameval.VarPlayerID;
@@ -20,7 +21,7 @@ public class ChargeTracker extends SpellTracker {
 
   @Inject
   public ChargeTracker() {
-    super(false);
+    super(Spellbook.STANDARD, false);
   }
 
   @Subscribe
@@ -32,6 +33,11 @@ public class ChargeTracker extends SpellTracker {
         stop();
       }
     }
+  }
+
+  @Override
+  protected boolean onlyOnSpellbook() {
+    return config.chargeOnlyStandard();
   }
 
   @Override

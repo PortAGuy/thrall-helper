@@ -14,22 +14,24 @@ import net.runelite.client.eventbus.Subscribe;
 import javax.inject.Inject;
 
 @Slf4j
+@Getter
 public abstract class SpellTracker {
+  protected Spellbook spellbook;
+  protected boolean removedOnDeath;
+
+  protected boolean active;
+  protected boolean expired;
+  protected int startTick;
+  protected int finalTick;
+
   @Inject
   protected Client client;
 
-  @Getter
-  protected boolean active = false;
-
-  @Getter
-  protected boolean expired = false;
-
-  protected int startTick;
-  protected int finalTick;
-  protected boolean removedOnDeath;
-
-  public SpellTracker(boolean removedOnDeath) {
+  public SpellTracker(Spellbook spellbook, boolean removedOnDeath) {
+    this.spellbook = spellbook;
     this.removedOnDeath = removedOnDeath;
+    this.active = false;
+    this.expired = false;
   }
 
   public void start() {
@@ -85,6 +87,13 @@ public abstract class SpellTracker {
       startTick = 0;
     }
   }
+
+  /**
+   * Checks if this spell should show notifications only when its spellbook is active
+   *
+   * @return true if the spell should be tracked only on its spellbook, false otherwise
+   */
+  protected abstract boolean onlyOnSpellbook();
 
   /**
    * Checks if this spell should be tracked based on config settings

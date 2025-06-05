@@ -3,10 +3,12 @@ package com.portaguy.trackers;
 import com.portaguy.SpellReminderConfig;
 import com.portaguy.SpellReminderOverlay;
 import com.portaguy.SpellTracker;
+import com.portaguy.Spellbook;
 import com.portaguy.overlays.WardOfArceuusReminderOverlay;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.events.ChatMessage;
 import net.runelite.api.events.VarbitChanged;
+import net.runelite.api.gameval.InterfaceID;
 import net.runelite.api.gameval.VarbitID;
 import net.runelite.client.config.Notification;
 import net.runelite.client.eventbus.Subscribe;
@@ -26,7 +28,7 @@ public class WardOfArceuusTracker extends SpellTracker {
 
   @Inject
   public WardOfArceuusTracker() {
-    super(true);
+    super(Spellbook.ARCEUUS, true);
   }
 
   @Subscribe
@@ -50,6 +52,11 @@ public class WardOfArceuusTracker extends SpellTracker {
     if (message.equals(WARD_EXPIRED_MESSAGE)) {
       stop();
     }
+  }
+
+  @Override
+  protected boolean onlyOnSpellbook() {
+    return config.wardOfArceuusOnlyArceuus();
   }
 
   @Override

@@ -3,6 +3,7 @@ package com.portaguy.trackers;
 import com.portaguy.SpellReminderConfig;
 import com.portaguy.SpellReminderOverlay;
 import com.portaguy.SpellTracker;
+import com.portaguy.Spellbook;
 import com.portaguy.overlays.ShadowVeilReminderOverlay;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.gameval.VarbitID;
@@ -20,7 +21,7 @@ public class ShadowVeilTracker extends SpellTracker {
 
   @Inject
   public ShadowVeilTracker() {
-    super(false);
+    super(Spellbook.ARCEUUS, false);
   }
 
   @Subscribe
@@ -33,6 +34,11 @@ public class ShadowVeilTracker extends SpellTracker {
         stop();
       }
     }
+  }
+
+  @Override
+  protected boolean onlyOnSpellbook() {
+    return config.shadowVeilOnlyArceuus();
   }
 
   @Override
