@@ -5,12 +5,17 @@ import com.portaguy.SpellReminderOverlay;
 import com.portaguy.SpellTracker;
 import com.portaguy.Spellbook;
 import com.portaguy.overlays.MarkOfDarknessReminderOverlay;
+import net.runelite.api.EquipmentInventorySlot;
+import net.runelite.api.Item;
+import net.runelite.api.ItemContainer;
 import net.runelite.api.Skill;
 import net.runelite.api.events.ChatMessage;
+import net.runelite.api.gameval.InventoryID;
+import net.runelite.api.gameval.ItemID;
+import net.runelite.client.config.Keybind;
 import net.runelite.client.config.Notification;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.util.Text;
-import net.runelite.client.config.Keybind;
 
 import javax.inject.Inject;
 
@@ -32,14 +37,30 @@ public class MarkOfDarknessTracker extends SpellTracker {
   @Subscribe
   @Override
   protected void onChatMessage(ChatMessage event) {
-    final int magicLevel = client.getBoostedSkillLevel(Skill.MAGIC);
-
     String message = Text.standardize(event.getMessage());
     if (message.equals(MARK_PLACED_MESSAGE)) {
-      start(magicLevel);
+      int ticks = client.getBoostedSkillLevel(Skill.MAGIC);
+      if (isPurgingStaffEquipped()) {
+        ticks *= 5;
+      }
+      start(ticks);
     } else if (message.equals(MARK_FADED_MESSAGE)) {
       stop();
     }
+  }
+
+  private boolean isPurgingStaffEquipped() {
+    final ItemContainer container = client.getItemContainer(InventoryID.WORN);
+    if (container == null) {
+      return false;
+    }
+
+    final Item weapon = container.getItem(EquipmentInventorySlot.WEAPON.getSlotIdx());
+    if (weapon == null) {
+      return false;
+    }
+
+    return weapon.getId() == ItemID.PURGING_STAFF;
   }
 
   @Override
