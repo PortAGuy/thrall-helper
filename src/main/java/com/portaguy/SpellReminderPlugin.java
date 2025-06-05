@@ -4,6 +4,7 @@ import com.google.inject.Provides;
 import com.portaguy.trackers.*;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
+import net.runelite.api.events.ChatMessage;
 import net.runelite.api.events.GameTick;
 import net.runelite.api.gameval.VarbitID;
 import net.runelite.client.Notifier;
@@ -20,6 +21,7 @@ import net.runelite.client.util.HotkeyListener;
 import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
 
 @Slf4j
 @PluginDescriptor(name = "Spell Reminder")
@@ -108,6 +110,7 @@ public class SpellReminderPlugin extends Plugin {
     spellTrackers.add(vileVigourTracker);
 
     for (SpellTracker tracker : spellTrackers) {
+      tracker.initializePatterns();
       eventBus.register(tracker);
     }
 
@@ -141,10 +144,31 @@ public class SpellReminderPlugin extends Plugin {
         }
 
         overlayFactory.createOverlay(tracker);
-        notifier.notify(tracker.getCustomNotification(), tracker.getCustomMessage());
+        if (tracker.getNotification().isEnabled()) {
+          notifier.notify(tracker.getNotification(), tracker.getCustomMessage());
+        }
       }
 
       if (tracker.isActive()) {
+        overlayFactory.removeOverlay(tracker);
+      }
+    }
+  }
+
+  @Subscribe
+  protected void onChatMessage(ChatMessage event) {
+    final String message = event.getMessage();
+    for (SpellTracker tracker : spellTrackers) {
+      Matcher notifyMatcher = tracker.notifyMessage.matcher(message);
+      if (notifyMatcher.matches()) {
+        overlayFactory.createOverlay(tracker);
+        if (tracker.getNotification().isEnabled()) {
+          notifier.notify(tracker.getNotification(), tracker.getCustomMessage());
+        }
+      }
+
+      Matcher removeMatcher = tracker.removeMessage.matcher(message);
+      if (removeMatcher.matches()) {
         overlayFactory.removeOverlay(tracker);
       }
     }

@@ -14,10 +14,10 @@ import javax.inject.Inject;
 
 public class DeathChargeTracker extends SpellTracker {
   @Inject
-  protected SpellReminderConfig config;
+  protected DeathChargeReminderOverlay overlay;
 
   @Inject
-  protected DeathChargeReminderOverlay overlay;
+  protected SpellReminderConfig config;
 
   @Inject
   public DeathChargeTracker() {
@@ -46,8 +46,18 @@ public class DeathChargeTracker extends SpellTracker {
   }
 
   @Override
-  protected Notification getCustomNotification() {
+  protected Notification getNotification() {
     return config.deathChargeShouldNotify();
+  }
+
+  @Override
+  protected String getNotifyPattern() {
+    return config.deathChargeReminderRegex();
+  }
+
+  @Override
+  protected String getRemovePattern() {
+    return config.deathChargeHiderRegex();
   }
 
   @Override

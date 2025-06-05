@@ -14,10 +14,10 @@ import javax.inject.Inject;
 
 public class ChargeTracker extends SpellTracker {
   @Inject
-  protected SpellReminderConfig config;
+  protected ChargeReminderOverlay overlay;
 
   @Inject
-  protected ChargeReminderOverlay overlay;
+  protected SpellReminderConfig config;
 
   @Inject
   public ChargeTracker() {
@@ -46,8 +46,18 @@ public class ChargeTracker extends SpellTracker {
   }
 
   @Override
-  protected Notification getCustomNotification() {
+  protected Notification getNotification() {
     return config.chargeShouldNotify();
+  }
+
+  @Override
+  protected String getNotifyPattern() {
+    return config.chargeReminderRegex();
+  }
+
+  @Override
+  protected String getRemovePattern() {
+    return config.chargeHiderRegex();
   }
 
   @Override

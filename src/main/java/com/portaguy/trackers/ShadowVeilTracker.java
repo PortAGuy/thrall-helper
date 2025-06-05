@@ -47,8 +47,18 @@ public class ShadowVeilTracker extends SpellTracker {
   }
 
   @Override
-  protected Notification getCustomNotification() {
+  protected Notification getNotification() {
     return config.shadowVeilShouldNotify();
+  }
+
+  @Override
+  protected String getNotifyPattern() {
+    return config.shadowVeilReminderRegex();
+  }
+
+  @Override
+  protected String getRemovePattern() {
+    return config.shadowVeilHiderRegex();
   }
 
   @Override

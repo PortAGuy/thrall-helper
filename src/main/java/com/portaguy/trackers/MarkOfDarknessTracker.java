@@ -14,7 +14,6 @@ import net.runelite.client.util.Text;
 import javax.inject.Inject;
 
 public class MarkOfDarknessTracker extends SpellTracker {
-  // Lowercase due to Text.standardize call later
   private static final String MARK_PLACED_MESSAGE = "you have placed a mark of darkness upon yourself.";
   private static final String MARK_FADED_MESSAGE = "your mark of darkness has faded away.";
 
@@ -32,7 +31,8 @@ public class MarkOfDarknessTracker extends SpellTracker {
   @Subscribe
   @Override
   protected void onChatMessage(ChatMessage event) {
-    int magicLevel = client.getBoostedSkillLevel(Skill.MAGIC);
+    final int magicLevel = client.getBoostedSkillLevel(Skill.MAGIC);
+
     String message = Text.standardize(event.getMessage());
     if (message.equals(MARK_PLACED_MESSAGE)) {
       start(magicLevel);
@@ -52,8 +52,18 @@ public class MarkOfDarknessTracker extends SpellTracker {
   }
 
   @Override
-  protected Notification getCustomNotification() {
+  protected Notification getNotification() {
     return config.markOfDarknessShouldNotify();
+  }
+
+  @Override
+  protected String getNotifyPattern() {
+    return config.markOfDarknessReminderRegex();
+  }
+
+  @Override
+  protected String getRemovePattern() {
+    return config.markOfDarknessHiderRegex();
   }
 
   @Override

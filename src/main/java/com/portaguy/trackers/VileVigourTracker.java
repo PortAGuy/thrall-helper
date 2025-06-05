@@ -47,8 +47,18 @@ public class VileVigourTracker extends SpellTracker {
   }
 
   @Override
-  protected Notification getCustomNotification() {
+  protected Notification getNotification() {
     return config.vileVigourShouldNotify();
+  }
+
+  @Override
+  protected String getNotifyPattern() {
+    return config.vileVigourReminderRegex();
+  }
+
+  @Override
+  protected String getRemovePattern() {
+    return config.vileVigourHiderRegex();
   }
 
   @Override

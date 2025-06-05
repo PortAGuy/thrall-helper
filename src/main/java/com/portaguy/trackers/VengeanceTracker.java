@@ -55,8 +55,18 @@ public class VengeanceTracker extends SpellTracker {
   }
 
   @Override
-  protected Notification getCustomNotification() {
+  protected Notification getNotification() {
     return config.vengeanceShouldNotify();
+  }
+
+  @Override
+  protected String getNotifyPattern() {
+    return config.vengeanceReminderRegex();
+  }
+
+  @Override
+  protected String getRemovePattern() {
+    return config.vengeanceHiderRegex();
   }
 
   @Override

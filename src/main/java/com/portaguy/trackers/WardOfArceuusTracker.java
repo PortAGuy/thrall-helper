@@ -8,7 +8,6 @@ import com.portaguy.overlays.WardOfArceuusReminderOverlay;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.events.ChatMessage;
 import net.runelite.api.events.VarbitChanged;
-import net.runelite.api.gameval.InterfaceID;
 import net.runelite.api.gameval.VarbitID;
 import net.runelite.client.config.Notification;
 import net.runelite.client.eventbus.Subscribe;
@@ -17,7 +16,6 @@ import net.runelite.client.util.Text;
 import javax.inject.Inject;
 
 public class WardOfArceuusTracker extends SpellTracker {
-  // Lowercase due to Text.standardize call later
   private static final String WARD_EXPIRED_MESSAGE = "your ward of arceuus has expired.";
 
   @Inject
@@ -65,8 +63,18 @@ public class WardOfArceuusTracker extends SpellTracker {
   }
 
   @Override
-  protected Notification getCustomNotification() {
+  protected Notification getNotification() {
     return config.wardOfArceuusShouldNotify();
+  }
+
+  @Override
+  protected String getNotifyPattern() {
+    return config.wardOfArceuusReminderRegex();
+  }
+
+  @Override
+  protected String getRemovePattern() {
+    return config.wardOfArceuusHiderRegex();
   }
 
   @Override

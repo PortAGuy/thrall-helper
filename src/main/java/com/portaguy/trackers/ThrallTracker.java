@@ -56,8 +56,18 @@ public class ThrallTracker extends SpellTracker {
   }
 
   @Override
-  protected Notification getCustomNotification() {
+  protected Notification getNotification() {
     return config.shouldNotify();
+  }
+
+  @Override
+  protected String getNotifyPattern() {
+    return config.reminderRegex();
+  }
+
+  @Override
+  protected String getRemovePattern() {
+    return config.hiderRegex();
   }
 
   @Override

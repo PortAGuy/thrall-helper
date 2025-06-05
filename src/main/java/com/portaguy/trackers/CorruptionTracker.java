@@ -47,8 +47,18 @@ public class CorruptionTracker extends SpellTracker {
   }
 
   @Override
-  protected Notification getCustomNotification() {
+  protected Notification getNotification() {
     return config.corruptionShouldNotify();
+  }
+
+  @Override
+  protected String getNotifyPattern() {
+    return config.corruptionReminderRegex();
+  }
+
+  @Override
+  protected String getRemovePattern() {
+    return config.corruptionHiderRegex();
   }
 
   @Override
