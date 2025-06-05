@@ -62,6 +62,9 @@ public class CorruptionTracker extends SpellTracker {
   }
 
   @Override
+  protected boolean onGameMessageOnly() { return config.corruptionMatchGameMessagesOnly(); }
+
+  @Override
   protected String getCustomMessage() {
     return config.corruptionCustomText();
   }

@@ -71,6 +71,9 @@ public class ThrallTracker extends SpellTracker {
   }
 
   @Override
+  protected boolean onGameMessageOnly() { return config.matchGameMessagesOnly(); }
+
+  @Override
   protected String getCustomMessage() {
     return config.customText();
   }

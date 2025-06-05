@@ -62,6 +62,9 @@ public class ShadowVeilTracker extends SpellTracker {
   }
 
   @Override
+  protected boolean onGameMessageOnly() { return config.shadowVeilMatchGameMessagesOnly(); }
+
+  @Override
   protected String getCustomMessage() {
     return config.shadowVeilCustomText();
   }

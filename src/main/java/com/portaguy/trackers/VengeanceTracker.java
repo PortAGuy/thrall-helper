@@ -70,6 +70,9 @@ public class VengeanceTracker extends SpellTracker {
   }
 
   @Override
+  protected boolean onGameMessageOnly() { return config.vengeanceMatchGameMessagesOnly(); }
+
+  @Override
   protected String getCustomMessage() {
     return config.vengeanceCustomText();
   }

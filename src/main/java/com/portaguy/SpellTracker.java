@@ -157,6 +157,13 @@ public abstract class SpellTracker {
   protected abstract String getRemovePattern();
 
   /**
+   * Checks if the patterns should only be applied to game messages
+   *
+   * @return true if patterns should only be applied on game messages, false otherwise
+   */
+  protected abstract boolean onGameMessageOnly();
+
+  /**
    * Checks if this spell should show notifications based on config settings
    *
    * @return The custom notification for this spell

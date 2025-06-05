@@ -78,6 +78,9 @@ public class WardOfArceuusTracker extends SpellTracker {
   }
 
   @Override
+  protected boolean onGameMessageOnly() { return config.wardOfArceuusMatchGameMessagesOnly(); }
+
+  @Override
   protected String getCustomMessage() {
     return config.wardOfArceuusCustomText();
   }

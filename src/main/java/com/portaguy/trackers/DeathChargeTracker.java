@@ -61,6 +61,9 @@ public class DeathChargeTracker extends SpellTracker {
   }
 
   @Override
+  protected boolean onGameMessageOnly() { return config.deathChargeMatchGameMessagesOnly(); }
+
+  @Override
   protected String getCustomMessage() {
     return config.deathChargeCustomText();
   }

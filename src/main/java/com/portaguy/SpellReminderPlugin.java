@@ -3,6 +3,7 @@ package com.portaguy;
 import com.google.inject.Provides;
 import com.portaguy.trackers.*;
 import lombok.extern.slf4j.Slf4j;
+import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
 import net.runelite.api.events.ChatMessage;
 import net.runelite.api.events.GameTick;
@@ -158,7 +159,13 @@ public class SpellReminderPlugin extends Plugin {
   @Subscribe
   protected void onChatMessage(ChatMessage event) {
     final String message = event.getMessage();
+    final ChatMessageType type = event.getType();
+
     for (SpellTracker tracker : spellTrackers) {
+      if (tracker.onGameMessageOnly() && type != ChatMessageType.GAMEMESSAGE) {
+        continue;
+      }
+
       Matcher notifyMatcher = tracker.notifyMessage.matcher(message);
       if (notifyMatcher.matches()) {
         overlayFactory.createOverlay(tracker);

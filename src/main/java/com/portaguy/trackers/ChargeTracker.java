@@ -61,6 +61,9 @@ public class ChargeTracker extends SpellTracker {
   }
 
   @Override
+  protected boolean onGameMessageOnly() { return config.chargeMatchGameMessagesOnly(); }
+
+  @Override
   protected String getCustomMessage() {
     return config.chargeCustomText();
   }

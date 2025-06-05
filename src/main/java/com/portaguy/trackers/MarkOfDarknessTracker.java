@@ -67,6 +67,9 @@ public class MarkOfDarknessTracker extends SpellTracker {
   }
 
   @Override
+  protected boolean onGameMessageOnly() { return config.markOfDarknessMatchGameMessagesOnly(); }
+
+  @Override
   protected String getCustomMessage() {
     return config.markOfDarknessCustomText();
   }

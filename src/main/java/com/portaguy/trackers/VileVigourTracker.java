@@ -62,6 +62,9 @@ public class VileVigourTracker extends SpellTracker {
   }
 
   @Override
+  protected boolean onGameMessageOnly() { return config.vileVigourMatchGameMessagesOnly(); }
+
+  @Override
   protected String getCustomMessage() {
     return config.vileVigourCustomText();
   }
