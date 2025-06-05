@@ -120,7 +120,7 @@ public interface SpellReminderConfig extends Config {
   )
   @Units(Units.SECONDS)
   default int thrallTimeoutSeconds() {
-    return 120;
+    return 60;
   }
 
   @ConfigItem(
@@ -268,7 +268,7 @@ public interface SpellReminderConfig extends Config {
   )
   @Units(Units.SECONDS)
   default int deathChargeTimeoutSeconds() {
-    return 120;
+    return 60;
   }
 
   @ConfigItem(
@@ -416,7 +416,7 @@ public interface SpellReminderConfig extends Config {
   )
   @Units(Units.SECONDS)
   default int markOfDarknessTimeoutSeconds() {
-    return 120;
+    return 60;
   }
 
   @ConfigItem(
@@ -564,7 +564,7 @@ public interface SpellReminderConfig extends Config {
   )
   @Units(Units.SECONDS)
   default int wardOfArceuusTimeoutSeconds() {
-    return 120;
+    return 60;
   }
 
   @ConfigItem(
@@ -712,7 +712,7 @@ public interface SpellReminderConfig extends Config {
   )
   @Units(Units.SECONDS)
   default int shadowVeilTimeoutSeconds() {
-    return 120;
+    return 60;
   }
 
   @ConfigItem(
@@ -860,7 +860,7 @@ public interface SpellReminderConfig extends Config {
   )
   @Units(Units.SECONDS)
   default int corruptionTimeoutSeconds() {
-    return 120;
+    return 60;
   }
 
   @ConfigItem(
@@ -1008,7 +1008,7 @@ public interface SpellReminderConfig extends Config {
   )
   @Units(Units.SECONDS)
   default int chargeTimeoutSeconds() {
-    return 120;
+    return 60;
   }
 
   @ConfigItem(
@@ -1156,7 +1156,7 @@ public interface SpellReminderConfig extends Config {
   )
   @Units(Units.SECONDS)
   default int vengeanceTimeoutSeconds() {
-    return 120;
+    return 60;
   }
 
   @ConfigItem(
@@ -1315,7 +1315,7 @@ public interface SpellReminderConfig extends Config {
   )
   @Units(Units.SECONDS)
   default int vileVigourTimeoutSeconds() {
-    return 120;
+    return 60;
   }
 
   @ConfigItem(
