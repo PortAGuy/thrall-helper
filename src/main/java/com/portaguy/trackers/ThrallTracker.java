@@ -62,12 +62,12 @@ public class ThrallTracker extends SpellTracker {
 
   @Override
   protected String getNotifyPattern() {
-    return config.reminderRegex();
+    return config.notifyRegex();
   }
 
   @Override
   protected String getRemovePattern() {
-    return config.hiderRegex();
+    return config.removeRegex();
   }
 
   @Override

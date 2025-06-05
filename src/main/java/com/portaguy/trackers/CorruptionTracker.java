@@ -53,12 +53,12 @@ public class CorruptionTracker extends SpellTracker {
 
   @Override
   protected String getNotifyPattern() {
-    return config.corruptionReminderRegex();
+    return config.corruptionNotifyRegex();
   }
 
   @Override
   protected String getRemovePattern() {
-    return config.corruptionHiderRegex();
+    return config.corruptionRemoveRegex();
   }
 
   @Override

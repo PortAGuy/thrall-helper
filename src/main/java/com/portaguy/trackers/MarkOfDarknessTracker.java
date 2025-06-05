@@ -58,12 +58,12 @@ public class MarkOfDarknessTracker extends SpellTracker {
 
   @Override
   protected String getNotifyPattern() {
-    return config.markOfDarknessReminderRegex();
+    return config.markOfDarknessNotifyRegex();
   }
 
   @Override
   protected String getRemovePattern() {
-    return config.markOfDarknessHiderRegex();
+    return config.markOfDarknessRemoveRegex();
   }
 
   @Override

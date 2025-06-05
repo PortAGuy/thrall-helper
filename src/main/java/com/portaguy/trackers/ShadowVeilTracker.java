@@ -53,12 +53,12 @@ public class ShadowVeilTracker extends SpellTracker {
 
   @Override
   protected String getNotifyPattern() {
-    return config.shadowVeilReminderRegex();
+    return config.shadowVeilNotifyRegex();
   }
 
   @Override
   protected String getRemovePattern() {
-    return config.shadowVeilHiderRegex();
+    return config.shadowVeilRemoveRegex();
   }
 
   @Override

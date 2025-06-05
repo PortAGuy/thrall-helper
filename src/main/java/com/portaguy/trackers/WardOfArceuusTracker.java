@@ -69,12 +69,12 @@ public class WardOfArceuusTracker extends SpellTracker {
 
   @Override
   protected String getNotifyPattern() {
-    return config.wardOfArceuusReminderRegex();
+    return config.wardOfArceuusNotifyRegex();
   }
 
   @Override
   protected String getRemovePattern() {
-    return config.wardOfArceuusHiderRegex();
+    return config.wardOfArceuusRemoveRegex();
   }
 
   @Override

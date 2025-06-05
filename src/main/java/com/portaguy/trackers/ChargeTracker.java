@@ -52,12 +52,12 @@ public class ChargeTracker extends SpellTracker {
 
   @Override
   protected String getNotifyPattern() {
-    return config.chargeReminderRegex();
+    return config.chargeNotifyRegex();
   }
 
   @Override
   protected String getRemovePattern() {
-    return config.chargeHiderRegex();
+    return config.chargeRemoveRegex();
   }
 
   @Override

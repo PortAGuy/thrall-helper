@@ -52,12 +52,12 @@ public class DeathChargeTracker extends SpellTracker {
 
   @Override
   protected String getNotifyPattern() {
-    return config.deathChargeReminderRegex();
+    return config.deathChargeNotifyRegex();
   }
 
   @Override
   protected String getRemovePattern() {
-    return config.deathChargeHiderRegex();
+    return config.deathChargeRemoveRegex();
   }
 
   @Override

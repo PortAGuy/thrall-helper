@@ -209,7 +209,7 @@ public interface SpellReminderConfig extends Config {
       position = 10,
       section = THRALL_SECTION
   )
-  default String reminderRegex() {
+  default String notifyRegex() {
     return "";
   }
 
@@ -220,7 +220,7 @@ public interface SpellReminderConfig extends Config {
       position = 11,
       section = THRALL_SECTION
   )
-  default String hiderRegex() {
+  default String removeRegex() {
     return "";
   }
 
@@ -351,24 +351,24 @@ public interface SpellReminderConfig extends Config {
   }
 
   @ConfigItem(
-      keyName = "deathChargeReminderRegex",
+      keyName = "deathChargeNotifyRegex",
       name = "Remind on Regex",
       description = "Displays the reminder box upon a chat message matching the regex.",
       position = 10,
       section = DEATH_CHARGE_SECTION
   )
-  default String deathChargeReminderRegex() {
+  default String deathChargeNotifyRegex() {
     return "";
   }
 
   @ConfigItem(
-      keyName = "deathChargeHiderRegex",
+      keyName = "deathChargeRemoveRegex",
       name = "Hide on Regex",
       description = "Hides the reminder (if active) upon a chat message matching the regex.",
       position = 11,
       section = DEATH_CHARGE_SECTION
   )
-  default String deathChargeHiderRegex() {
+  default String deathChargeRemoveRegex() {
     return "";
   }
 
@@ -499,24 +499,24 @@ public interface SpellReminderConfig extends Config {
   }
 
   @ConfigItem(
-      keyName = "markOfDarknessReminderRegex",
+      keyName = "markOfDarknessNotifyRegex",
       name = "Remind on Regex",
       description = "Displays the reminder box upon a chat message matching the regex.",
       position = 10,
       section = MARK_OF_DARKNESS_SECTION
   )
-  default String markOfDarknessReminderRegex() {
+  default String markOfDarknessNotifyRegex() {
     return "";
   }
 
   @ConfigItem(
-      keyName = "markOfDarknessHiderRegex",
+      keyName = "markOfDarknessRemoveRegex",
       name = "Hide on Regex",
       description = "Hides the reminder (if active) upon a chat message matching the regex.",
       position = 11,
       section = MARK_OF_DARKNESS_SECTION
   )
-  default String markOfDarknessHiderRegex() {
+  default String markOfDarknessRemoveRegex() {
     return "";
   }
 
@@ -647,24 +647,24 @@ public interface SpellReminderConfig extends Config {
   }
 
   @ConfigItem(
-      keyName = "wardOfArceuusReminderRegex",
+      keyName = "wardOfArceuusNotifyRegex",
       name = "Remind on Regex",
       description = "Displays the reminder box upon a chat message matching the regex.",
       position = 10,
       section = WARD_OF_ARCEUUS_SECTION
   )
-  default String wardOfArceuusReminderRegex() {
+  default String wardOfArceuusNotifyRegex() {
     return "";
   }
 
   @ConfigItem(
-      keyName = "wardOfArceuusHiderRegex",
+      keyName = "wardOfArceuusRemoveRegex",
       name = "Hide on Regex",
       description = "Hides the reminder (if active) upon a chat message matching the regex.",
       position = 11,
       section = WARD_OF_ARCEUUS_SECTION
   )
-  default String wardOfArceuusHiderRegex() {
+  default String wardOfArceuusRemoveRegex() {
     return "";
   }
 
@@ -795,24 +795,24 @@ public interface SpellReminderConfig extends Config {
   }
 
   @ConfigItem(
-      keyName = "shadowVeilReminderRegex",
+      keyName = "shadowVeilNotifyRegex",
       name = "Remind on Regex",
       description = "Displays the reminder box upon a chat message matching the regex.",
       position = 10,
       section = SHADOW_VEIL_SECTION
   )
-  default String shadowVeilReminderRegex() {
+  default String shadowVeilNotifyRegex() {
     return "";
   }
 
   @ConfigItem(
-      keyName = "shadowVeilHiderRegex",
+      keyName = "shadowVeilRemoveRegex",
       name = "Hide on Regex",
       description = "Hides the reminder (if active) upon a chat message matching the regex.",
       position = 11,
       section = SHADOW_VEIL_SECTION
   )
-  default String shadowVeilHiderRegex() {
+  default String shadowVeilRemoveRegex() {
     return "";
   }
 
@@ -943,24 +943,24 @@ public interface SpellReminderConfig extends Config {
   }
 
   @ConfigItem(
-      keyName = "corruptionReminderRegex",
+      keyName = "corruptionNotifyRegex",
       name = "Remind on Regex",
       description = "Displays the reminder box upon a chat message matching the regex.",
       position = 10,
       section = CORRUPTION_SECTION
   )
-  default String corruptionReminderRegex() {
+  default String corruptionNotifyRegex() {
     return "";
   }
 
   @ConfigItem(
-      keyName = "corruptionHiderRegex",
+      keyName = "corruptionRemoveRegex",
       name = "Hide on Regex",
       description = "Hides the reminder (if active) upon a chat message matching the regex.",
       position = 11,
       section = CORRUPTION_SECTION
   )
-  default String corruptionHiderRegex() {
+  default String corruptionRemoveRegex() {
     return "";
   }
 
@@ -1091,24 +1091,24 @@ public interface SpellReminderConfig extends Config {
   }
 
   @ConfigItem(
-      keyName = "chargeReminderRegex",
+      keyName = "chargeNotifyRegex",
       name = "Remind on Regex",
       description = "Displays the reminder box upon a chat message matching the regex.",
       position = 10,
       section = CHARGE_SECTION
   )
-  default String chargeReminderRegex() {
+  default String chargeNotifyRegex() {
     return "";
   }
 
   @ConfigItem(
-      keyName = "chargeHiderRegex",
+      keyName = "chargeRemoveRegex",
       name = "Hide on Regex",
       description = "Hides the reminder (if active) upon a chat message matching the regex.",
       position = 11,
       section = CHARGE_SECTION
   )
-  default String chargeHiderRegex() {
+  default String chargeRemoveRegex() {
     return "";
   }
 
@@ -1239,24 +1239,24 @@ public interface SpellReminderConfig extends Config {
   }
 
   @ConfigItem(
-      keyName = "vengeanceReminderRegex",
+      keyName = "vengeanceNotifyRegex",
       name = "Remind on Regex",
       description = "Displays the reminder box upon a chat message matching the regex.",
       position = 10,
       section = VENGEANCE_SECTION
   )
-  default String vengeanceReminderRegex() {
+  default String vengeanceNotifyRegex() {
     return "";
   }
 
   @ConfigItem(
-      keyName = "vengeanceHiderRegex",
+      keyName = "vengeanceRemoveRegex",
       name = "Hide on Regex",
       description = "Hides the reminder (if active) upon a chat message matching the regex.",
       position = 11,
       section = VENGEANCE_SECTION
   )
-  default String vengeanceHiderRegex() {
+  default String vengeanceRemoveRegex() {
     return "";
   }
 
@@ -1398,24 +1398,24 @@ public interface SpellReminderConfig extends Config {
   }
 
   @ConfigItem(
-      keyName = "vileVigourReminderRegex",
+      keyName = "vileVigourNotifyRegex",
       name = "Remind on Regex",
       description = "Displays the reminder box upon a chat message matching the regex.",
       position = 11,
       section = VILE_VIGOUR_SECTION
   )
-  default String vileVigourReminderRegex() {
+  default String vileVigourNotifyRegex() {
     return "";
   }
 
   @ConfigItem(
-      keyName = "vileVigourHiderRegex",
+      keyName = "vileVigourRemoveRegex",
       name = "Hide on Regex",
       description = "Hides the reminder (if active) upon a chat message matching the regex.",
       position = 12,
       section = VILE_VIGOUR_SECTION
   )
-  default String vileVigourHiderRegex() {
+  default String vileVigourRemoveRegex() {
     return "";
   }
 

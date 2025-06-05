@@ -53,12 +53,12 @@ public class VileVigourTracker extends SpellTracker {
 
   @Override
   protected String getNotifyPattern() {
-    return config.vileVigourReminderRegex();
+    return config.vileVigourNotifyRegex();
   }
 
   @Override
   protected String getRemovePattern() {
-    return config.vileVigourHiderRegex();
+    return config.vileVigourRemoveRegex();
   }
 
   @Override

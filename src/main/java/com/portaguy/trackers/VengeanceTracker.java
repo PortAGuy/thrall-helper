@@ -61,12 +61,12 @@ public class VengeanceTracker extends SpellTracker {
 
   @Override
   protected String getNotifyPattern() {
-    return config.vengeanceReminderRegex();
+    return config.vengeanceNotifyRegex();
   }
 
   @Override
   protected String getRemovePattern() {
-    return config.vengeanceHiderRegex();
+    return config.vengeanceRemoveRegex();
   }
 
   @Override
