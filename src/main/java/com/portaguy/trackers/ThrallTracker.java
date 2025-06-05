@@ -29,7 +29,7 @@ public class ThrallTracker extends SpellTracker {
   @Subscribe
   @Override
   protected void onVarbitChanged(VarbitChanged event) {
-    if (event.getVarbitId() != VarbitID.ARCEUUS_RESURRECTION_ACTIVE) {
+    if (event.getVarbitId() != VarbitID.ARCEUUS_RESURRECTION_COOLDOWN) {
       return;
     }
 
@@ -42,7 +42,9 @@ public class ThrallTracker extends SpellTracker {
       } else if (client.getVarbitValue(VarbitID.CA_TIER_STATUS_MASTER) == 2) {
         ticks += ticks / 2;
       }
-      start(ticks);
+
+      // Thralls take 4 ticks from summon to become active
+      start(ticks + 4);
     }
   }
 
