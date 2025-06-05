@@ -1,9 +1,7 @@
 package com.portaguy.trackers;
 
-import com.portaguy.SpellReminderConfig;
-import com.portaguy.SpellReminderOverlay;
-import com.portaguy.SpellTracker;
-import com.portaguy.Spellbook;
+import com.portaguy.*;
+import com.portaguy.infoboxes.VengeanceReminderInfobox;
 import com.portaguy.overlays.VengeanceReminderOverlay;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.gameval.VarbitID;
@@ -16,6 +14,9 @@ import javax.inject.Inject;
 public class VengeanceTracker extends SpellTracker {
   @Inject
   protected VengeanceReminderOverlay overlay;
+
+  @Inject
+  protected VengeanceReminderInfobox infobox;
 
   @Inject
   protected SpellReminderConfig config;
@@ -86,7 +87,17 @@ public class VengeanceTracker extends SpellTracker {
   }
 
   @Override
+  protected SpellReminderInfobox getInfobox() {
+    return infobox;
+  }
+
+  @Override
   protected Keybind getHideReminderHotkey() {
     return config.vengeanceHideReminderHotkey();
+  }
+
+  @Override
+  protected SpellReminderStyle getReminderStyle() {
+    return config.vengeanceReminderStyle();
   }
 }

@@ -1,9 +1,7 @@
 package com.portaguy.trackers;
 
-import com.portaguy.SpellReminderConfig;
-import com.portaguy.SpellReminderOverlay;
-import com.portaguy.SpellTracker;
-import com.portaguy.Spellbook;
+import com.portaguy.*;
+import com.portaguy.infoboxes.CorruptionReminderInfobox;
 import com.portaguy.overlays.CorruptionReminderOverlay;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.gameval.VarbitID;
@@ -16,6 +14,9 @@ import javax.inject.Inject;
 public class CorruptionTracker extends SpellTracker {
   @Inject
   protected CorruptionReminderOverlay overlay;
+
+  @Inject
+  protected CorruptionReminderInfobox infobox;
 
   @Inject
   protected SpellReminderConfig config;
@@ -78,7 +79,17 @@ public class CorruptionTracker extends SpellTracker {
   }
 
   @Override
+  protected SpellReminderInfobox getInfobox() {
+    return infobox;
+  }
+
+  @Override
   protected Keybind getHideReminderHotkey() {
     return config.corruptionHideReminderHotkey();
+  }
+
+  @Override
+  protected SpellReminderStyle getReminderStyle() {
+    return config.corruptionReminderStyle();
   }
 }

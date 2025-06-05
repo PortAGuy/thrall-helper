@@ -1,9 +1,7 @@
 package com.portaguy.trackers;
 
-import com.portaguy.SpellReminderConfig;
-import com.portaguy.SpellReminderOverlay;
-import com.portaguy.SpellTracker;
-import com.portaguy.Spellbook;
+import com.portaguy.*;
+import com.portaguy.infoboxes.ThrallReminderInfobox;
 import com.portaguy.overlays.ThrallReminderOverlay;
 import net.runelite.api.Skill;
 import net.runelite.api.events.VarbitChanged;
@@ -17,6 +15,9 @@ import javax.inject.Inject;
 public class ThrallTracker extends SpellTracker {
   @Inject
   protected ThrallReminderOverlay overlay;
+
+  @Inject
+  protected ThrallReminderInfobox infobox;
 
   @Inject
   protected SpellReminderConfig config;
@@ -89,7 +90,17 @@ public class ThrallTracker extends SpellTracker {
   }
 
   @Override
+  protected SpellReminderInfobox getInfobox() {
+    return infobox;
+  }
+
+  @Override
   protected Keybind getHideReminderHotkey() {
     return config.hideReminderHotkey();
+  }
+
+  @Override
+  protected SpellReminderStyle getReminderStyle() {
+    return config.reminderStyle();
   }
 }

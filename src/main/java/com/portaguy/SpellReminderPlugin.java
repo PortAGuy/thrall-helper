@@ -31,10 +31,8 @@ import java.util.regex.Matcher;
   tags = {"spellbook", "thrall", "death charge", "mark of darkness", "ward of arceuus", "shadow veil", "corruption", "charge"}
 )
 public class SpellReminderPlugin extends Plugin {
-  protected ThrallHelperInfobox infobox;
   private final List<SpellTracker> spellTrackers = new ArrayList<>();
   private final List<HotkeyListener> hotkeyListeners = new ArrayList<>();
-  private static final int RESURRECT_GREATER_GHOST_SPRITE_ID = 2979;
 
   @Inject
   protected ThrallTracker thrallTracker;
@@ -87,6 +85,9 @@ public class SpellReminderPlugin extends Plugin {
   @Inject
   protected SpellReminderOverlayFactory overlayFactory;
 
+  @Inject
+  protected SpellReminderInfoboxFactory infoboxFactory;
+
   @Provides
   SpellReminderConfig provideConfig(ConfigManager configManager) {
     return configManager.getConfig(SpellReminderConfig.class);
@@ -94,9 +95,6 @@ public class SpellReminderPlugin extends Plugin {
 
   @Override
   protected void startUp() {
-    infobox = new ThrallHelperInfobox(this);
-    spriteManager.getSpriteAsync(RESURRECT_GREATER_GHOST_SPRITE_ID, 0, infobox::setImage);
-
     spellTrackers.add(thrallTracker);
     spellTrackers.add(deathChargeTracker);
     spellTrackers.add(markOfDarknessTracker);
@@ -115,6 +113,7 @@ public class SpellReminderPlugin extends Plugin {
         @Override
         public void hotkeyPressed() {
           overlayFactory.removeOverlay(tracker);
+          infoboxFactory.removeInfobox(tracker);
         }
       };
       keyManager.registerKeyListener(listener);
@@ -135,7 +134,7 @@ public class SpellReminderPlugin extends Plugin {
 
     hotkeyListeners.clear();
     overlayFactory.removeAllOverlays();
-    infoBoxManager.removeInfoBox(infobox);
+    infoboxFactory.removeAllInfoboxes();
   }
 
   @Subscribe
@@ -153,7 +152,12 @@ public class SpellReminderPlugin extends Plugin {
           return;
         }
 
-        overlayFactory.createOverlay(tracker);
+        if (tracker.getReminderStyle() == SpellReminderStyle.INFOBOX) {
+          infoboxFactory.createInfobox(tracker);
+        } else {
+          overlayFactory.createOverlay(tracker);
+        }
+
         if (tracker.getNotification().isEnabled()) {
           notifier.notify(tracker.getNotification(), tracker.getCustomMessage());
         }
@@ -161,6 +165,7 @@ public class SpellReminderPlugin extends Plugin {
 
       if (tracker.isActive()) {
         overlayFactory.removeOverlay(tracker);
+        infoboxFactory.removeInfobox(tracker);
       }
     }
   }
@@ -177,7 +182,12 @@ public class SpellReminderPlugin extends Plugin {
 
       Matcher notifyMatcher = tracker.notifyMessage.matcher(message);
       if (notifyMatcher.matches()) {
-        overlayFactory.createOverlay(tracker);
+        if (tracker.getReminderStyle() == SpellReminderStyle.INFOBOX) {
+          infoboxFactory.createInfobox(tracker);
+        } else {
+          overlayFactory.createOverlay(tracker);
+        }
+
         if (tracker.getNotification().isEnabled()) {
           notifier.notify(tracker.getNotification(), tracker.getCustomMessage());
         }
@@ -186,6 +196,7 @@ public class SpellReminderPlugin extends Plugin {
       Matcher removeMatcher = tracker.removeMessage.matcher(message);
       if (removeMatcher.matches()) {
         overlayFactory.removeOverlay(tracker);
+        infoboxFactory.removeInfobox(tracker);
       }
     }
   }

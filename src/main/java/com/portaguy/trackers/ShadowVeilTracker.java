@@ -1,9 +1,7 @@
 package com.portaguy.trackers;
 
-import com.portaguy.SpellReminderConfig;
-import com.portaguy.SpellReminderOverlay;
-import com.portaguy.SpellTracker;
-import com.portaguy.Spellbook;
+import com.portaguy.*;
+import com.portaguy.infoboxes.ShadowVeilReminderInfobox;
 import com.portaguy.overlays.ShadowVeilReminderOverlay;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.gameval.VarbitID;
@@ -16,6 +14,9 @@ import javax.inject.Inject;
 public class ShadowVeilTracker extends SpellTracker {
   @Inject
   protected ShadowVeilReminderOverlay overlay;
+
+  @Inject
+  protected ShadowVeilReminderInfobox infobox;
 
   @Inject
   protected SpellReminderConfig config;
@@ -78,7 +79,17 @@ public class ShadowVeilTracker extends SpellTracker {
   }
 
   @Override
+  protected SpellReminderInfobox getInfobox() {
+    return infobox;
+  }
+
+  @Override
   protected Keybind getHideReminderHotkey() {
     return config.shadowVeilHideReminderHotkey();
+  }
+
+  @Override
+  protected SpellReminderStyle getReminderStyle() {
+    return config.shadowVeilReminderStyle();
   }
 }

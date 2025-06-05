@@ -1,9 +1,7 @@
 package com.portaguy.trackers;
 
-import com.portaguy.SpellReminderConfig;
-import com.portaguy.SpellReminderOverlay;
-import com.portaguy.SpellTracker;
-import com.portaguy.Spellbook;
+import com.portaguy.*;
+import com.portaguy.infoboxes.DeathChargeReminderInfobox;
 import com.portaguy.overlays.DeathChargeReminderOverlay;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.gameval.VarbitID;
@@ -16,6 +14,9 @@ import javax.inject.Inject;
 public class DeathChargeTracker extends SpellTracker {
   @Inject
   protected DeathChargeReminderOverlay overlay;
+
+  @Inject
+  protected DeathChargeReminderInfobox infobox;
 
   @Inject
   protected SpellReminderConfig config;
@@ -78,7 +79,17 @@ public class DeathChargeTracker extends SpellTracker {
   }
 
   @Override
+  protected SpellReminderInfobox getInfobox() {
+    return infobox;
+  }
+
+  @Override
   protected Keybind getHideReminderHotkey() {
     return config.deathChargeHideReminderHotkey();
+  }
+
+  @Override
+  protected SpellReminderStyle getReminderStyle() {
+    return config.deathChargeReminderStyle();
   }
 }

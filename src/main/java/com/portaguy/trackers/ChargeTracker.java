@@ -1,9 +1,7 @@
 package com.portaguy.trackers;
 
-import com.portaguy.SpellReminderConfig;
-import com.portaguy.SpellReminderOverlay;
-import com.portaguy.SpellTracker;
-import com.portaguy.Spellbook;
+import com.portaguy.*;
+import com.portaguy.infoboxes.ChargeReminderInfobox;
 import com.portaguy.overlays.ChargeReminderOverlay;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.gameval.VarPlayerID;
@@ -18,7 +16,7 @@ public class ChargeTracker extends SpellTracker {
   protected ChargeReminderOverlay overlay;
 
   @Inject
-  protected SpellReminderConfig config;
+  protected ChargeReminderInfobox infobox;
 
   @Inject
   public ChargeTracker() {
@@ -78,7 +76,17 @@ public class ChargeTracker extends SpellTracker {
   }
 
   @Override
+  protected SpellReminderInfobox getInfobox() {
+    return infobox;
+  }
+
+  @Override
   protected Keybind getHideReminderHotkey() {
     return config.chargeHideReminderHotkey();
+  }
+
+  @Override
+  protected SpellReminderStyle getReminderStyle() {
+    return config.chargeReminderStyle();
   }
 }

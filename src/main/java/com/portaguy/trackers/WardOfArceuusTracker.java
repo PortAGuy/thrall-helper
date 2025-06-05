@@ -1,9 +1,7 @@
 package com.portaguy.trackers;
 
-import com.portaguy.SpellReminderConfig;
-import com.portaguy.SpellReminderOverlay;
-import com.portaguy.SpellTracker;
-import com.portaguy.Spellbook;
+import com.portaguy.*;
+import com.portaguy.infoboxes.WardOfArceuusReminderInfobox;
 import com.portaguy.overlays.WardOfArceuusReminderOverlay;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.events.ChatMessage;
@@ -21,6 +19,9 @@ public class WardOfArceuusTracker extends SpellTracker {
 
   @Inject
   protected WardOfArceuusReminderOverlay overlay;
+
+  @Inject
+  protected WardOfArceuusReminderInfobox infobox;
 
   @Inject
   protected SpellReminderConfig config;
@@ -94,7 +95,17 @@ public class WardOfArceuusTracker extends SpellTracker {
   }
 
   @Override
+  protected SpellReminderInfobox getInfobox() {
+    return infobox;
+  }
+
+  @Override
   protected Keybind getHideReminderHotkey() {
     return config.wardOfArceuusHideReminderHotkey();
+  }
+
+  @Override
+  protected SpellReminderStyle getReminderStyle() {
+    return config.wardOfArceuusReminderStyle();
   }
 }

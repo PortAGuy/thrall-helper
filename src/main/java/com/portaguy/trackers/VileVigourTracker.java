@@ -1,9 +1,7 @@
 package com.portaguy.trackers;
 
-import com.portaguy.SpellReminderConfig;
-import com.portaguy.SpellReminderOverlay;
-import com.portaguy.SpellTracker;
-import com.portaguy.Spellbook;
+import com.portaguy.*;
+import com.portaguy.infoboxes.VileVigourReminderInfobox;
 import com.portaguy.overlays.VileVigourReminderOverlay;
 import net.runelite.api.events.GameTick;
 import net.runelite.api.events.VarbitChanged;
@@ -20,6 +18,9 @@ public class VileVigourTracker extends SpellTracker {
 
   @Inject
   protected VileVigourReminderOverlay overlay;
+
+  @Inject
+  protected VileVigourReminderInfobox infobox;
 
   @Inject
   protected SpellReminderConfig config;
@@ -118,7 +119,17 @@ public class VileVigourTracker extends SpellTracker {
   }
 
   @Override
+  protected SpellReminderInfobox getInfobox() {
+    return infobox;
+  }
+
+  @Override
   protected Keybind getHideReminderHotkey() {
     return config.vileVigourHideReminderHotkey();
+  }
+
+  @Override
+  protected SpellReminderStyle getReminderStyle() {
+    return config.vileVigourReminderStyle();
   }
 }

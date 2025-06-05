@@ -34,6 +34,9 @@ public abstract class SpellTracker {
   protected Client client;
 
   @Inject
+  protected SpellReminderPlugin plugin;
+
+  @Inject
   protected SpellReminderConfig config;
 
   public SpellTracker(Spellbook spellbook, boolean removedOnDeath) {
@@ -193,9 +196,23 @@ public abstract class SpellTracker {
   protected abstract SpellReminderOverlay getOverlay();
 
   /**
+   * Gets the infobox to display when the spell expires
+   *
+   * @return The custom infobox for this spell
+   */
+  protected abstract SpellReminderInfobox getInfobox();
+
+  /**
    * Gets the hotkey to hide this spell's reminder overlay
    *
    * @return The hotkey binding for this spell
    */
   protected abstract Keybind getHideReminderHotkey();
+
+  /**
+   * Gets the type of notification style for a tracker
+   *
+   * @return The style to notify the user with
+   */
+  protected abstract SpellReminderStyle getReminderStyle();
 }

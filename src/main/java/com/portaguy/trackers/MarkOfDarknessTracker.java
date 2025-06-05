@@ -1,9 +1,7 @@
 package com.portaguy.trackers;
 
-import com.portaguy.SpellReminderConfig;
-import com.portaguy.SpellReminderOverlay;
-import com.portaguy.SpellTracker;
-import com.portaguy.Spellbook;
+import com.portaguy.*;
+import com.portaguy.infoboxes.MarkOfDarknessReminderInfobox;
 import com.portaguy.overlays.MarkOfDarknessReminderOverlay;
 import net.runelite.api.EquipmentInventorySlot;
 import net.runelite.api.Item;
@@ -25,6 +23,9 @@ public class MarkOfDarknessTracker extends SpellTracker {
 
   @Inject
   protected MarkOfDarknessReminderOverlay overlay;
+
+  @Inject
+  protected MarkOfDarknessReminderInfobox infobox;
 
   @Inject
   protected SpellReminderConfig config;
@@ -104,7 +105,17 @@ public class MarkOfDarknessTracker extends SpellTracker {
   }
 
   @Override
+  protected SpellReminderInfobox getInfobox() {
+    return infobox;
+  }
+
+  @Override
   protected Keybind getHideReminderHotkey() {
     return config.markOfDarknessHideReminderHotkey();
+  }
+
+  @Override
+  protected SpellReminderStyle getReminderStyle() {
+    return config.markOfDarknessReminderStyle();
   }
 }
