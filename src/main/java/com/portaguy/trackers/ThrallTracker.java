@@ -20,9 +20,6 @@ public class ThrallTracker extends SpellTracker {
   protected ThrallReminderInfobox infobox;
 
   @Inject
-  protected SpellReminderConfig config;
-
-  @Inject
   public ThrallTracker() {
     super(Spellbook.ARCEUUS, false);
   }

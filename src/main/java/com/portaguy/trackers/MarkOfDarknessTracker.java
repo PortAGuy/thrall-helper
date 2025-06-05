@@ -28,9 +28,6 @@ public class MarkOfDarknessTracker extends SpellTracker {
   protected MarkOfDarknessReminderInfobox infobox;
 
   @Inject
-  protected SpellReminderConfig config;
-
-  @Inject
   public MarkOfDarknessTracker() {
     super(Spellbook.ARCEUUS, true);
   }

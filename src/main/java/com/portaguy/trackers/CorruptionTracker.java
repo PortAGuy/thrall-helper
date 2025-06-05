@@ -19,9 +19,6 @@ public class CorruptionTracker extends SpellTracker {
   protected CorruptionReminderInfobox infobox;
 
   @Inject
-  protected SpellReminderConfig config;
-
-  @Inject
   public CorruptionTracker() {
     super(Spellbook.ARCEUUS, false);
   }

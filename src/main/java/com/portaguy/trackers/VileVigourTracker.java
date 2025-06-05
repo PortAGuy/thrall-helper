@@ -23,9 +23,6 @@ public class VileVigourTracker extends SpellTracker {
   protected VileVigourReminderInfobox infobox;
 
   @Inject
-  protected SpellReminderConfig config;
-
-  @Inject
   public VileVigourTracker() {
     super(Spellbook.ARCEUUS, false);
   }

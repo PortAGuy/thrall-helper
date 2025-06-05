@@ -19,9 +19,6 @@ public class VengeanceTracker extends SpellTracker {
   protected VengeanceReminderInfobox infobox;
 
   @Inject
-  protected SpellReminderConfig config;
-
-  @Inject
   public VengeanceTracker() {
     super(Spellbook.LUNAR, false);
   }

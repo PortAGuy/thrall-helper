@@ -19,9 +19,6 @@ public class ShadowVeilTracker extends SpellTracker {
   protected ShadowVeilReminderInfobox infobox;
 
   @Inject
-  protected SpellReminderConfig config;
-
-  @Inject
   public ShadowVeilTracker() {
     super(Spellbook.ARCEUUS, false);
   }

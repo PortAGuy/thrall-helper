@@ -24,9 +24,6 @@ public class WardOfArceuusTracker extends SpellTracker {
   protected WardOfArceuusReminderInfobox infobox;
 
   @Inject
-  protected SpellReminderConfig config;
-
-  @Inject
   public WardOfArceuusTracker() {
     super(Spellbook.ARCEUUS, true);
   }

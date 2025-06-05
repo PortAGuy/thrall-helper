@@ -19,9 +19,6 @@ public class DeathChargeTracker extends SpellTracker {
   protected DeathChargeReminderInfobox infobox;
 
   @Inject
-  protected SpellReminderConfig config;
-
-  @Inject
   public DeathChargeTracker() {
     super(Spellbook.ARCEUUS, false);
   }
