@@ -16,7 +16,7 @@ import javax.inject.Inject;
 import java.time.Instant;
 
 public class VileVigourTracker extends SpellTracker {
-  private Instant lastStop = null;
+  private Instant cooldownEndTime = null;
 
   @Inject
   protected VileVigourReminderOverlay overlay;
@@ -32,17 +32,15 @@ public class VileVigourTracker extends SpellTracker {
   @Override
   @Subscribe
   protected void onVarbitChanged(VarbitChanged event) {
-    if (event.getVarbitId() == VarbitID.ARCEUUS_VILE_VIGOUR_COOLDOWN) {
-      if (event.getValue() == 1 && !active) {
-        start();
-      } else if (event.getValue() == 0 && active) {
-        lastStop = Instant.now();
-        if (isBelowThreshold()) {
-          stop();
-        } else {
-          reset();
-        }
-      }
+    if (event.getVarbitId() != VarbitID.ARCEUUS_VILE_VIGOUR_COOLDOWN) {
+      return;
+    }
+
+    if (event.getValue() == 1 && !active) {
+      start();
+    } else if (event.getValue() == 0 && active) {
+      cooldownEndTime = Instant.now();
+      checkAndNotify();
     }
   }
 
@@ -55,12 +53,22 @@ public class VileVigourTracker extends SpellTracker {
       reset();
     }
 
-    if (lastStop != null) {
-      Instant timeout = lastStop.plusSeconds(config.vileVigourThresholdTimeout());
-      if (Instant.now().isBefore(timeout) && isBelowThreshold()) {
-        stop(); // Reset IsExpired to trigger a notification
-        lastStop = null;
+    if (cooldownEndTime != null) {
+      Instant thresholdTime = cooldownEndTime.plusSeconds(config.vileVigourThresholdTimeout());
+      if (Instant.now().isAfter(thresholdTime)) {
+        cooldownEndTime = null;
+      } else if (isBelowThreshold()) {
+        stop();
+        cooldownEndTime = null;
       }
+    }
+  }
+
+  private void checkAndNotify() {
+    if (isBelowThreshold()) {
+      stop();
+    } else {
+      reset();
     }
   }
 
