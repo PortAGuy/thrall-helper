@@ -10,6 +10,7 @@ import net.runelite.api.events.ChatMessage;
 import net.runelite.client.config.Notification;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.util.Text;
+import net.runelite.client.config.Keybind;
 
 import javax.inject.Inject;
 
@@ -67,7 +68,9 @@ public class MarkOfDarknessTracker extends SpellTracker {
   }
 
   @Override
-  protected boolean onGameMessageOnly() { return config.markOfDarknessMatchGameMessagesOnly(); }
+  protected boolean onGameMessageOnly() {
+    return config.markOfDarknessMatchGameMessagesOnly();
+  }
 
   @Override
   protected String getCustomMessage() {
@@ -77,5 +80,10 @@ public class MarkOfDarknessTracker extends SpellTracker {
   @Override
   protected SpellReminderOverlay getOverlay() {
     return overlay;
+  }
+
+  @Override
+  protected Keybind getHideReminderHotkey() {
+    return config.markOfDarknessHideReminderHotkey();
   }
 }

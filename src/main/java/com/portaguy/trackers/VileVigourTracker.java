@@ -7,6 +7,7 @@ import com.portaguy.Spellbook;
 import com.portaguy.overlays.VileVigourReminderOverlay;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.gameval.VarbitID;
+import net.runelite.client.config.Keybind;
 import net.runelite.client.config.Notification;
 import net.runelite.client.eventbus.Subscribe;
 
@@ -62,7 +63,9 @@ public class VileVigourTracker extends SpellTracker {
   }
 
   @Override
-  protected boolean onGameMessageOnly() { return config.vileVigourMatchGameMessagesOnly(); }
+  protected boolean onGameMessageOnly() {
+    return config.vileVigourMatchGameMessagesOnly();
+  }
 
   @Override
   protected String getCustomMessage() {
@@ -72,5 +75,10 @@ public class VileVigourTracker extends SpellTracker {
   @Override
   protected SpellReminderOverlay getOverlay() {
     return overlay;
+  }
+
+  @Override
+  protected Keybind getHideReminderHotkey() {
+    return config.vileVigourHideReminderHotkey();
   }
 }

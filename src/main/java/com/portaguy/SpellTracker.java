@@ -11,6 +11,7 @@ import net.runelite.api.events.VarbitChanged;
 import net.runelite.client.config.Notification;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.ConfigChanged;
+import net.runelite.client.config.Keybind;
 
 import javax.inject.Inject;
 import java.util.regex.Pattern;
@@ -159,7 +160,8 @@ public abstract class SpellTracker {
   /**
    * Checks if the patterns should only be applied to game messages
    *
-   * @return true if patterns should only be applied on game messages, false otherwise
+   * @return true if patterns should only be applied on game messages, false
+   *         otherwise
    */
   protected abstract boolean onGameMessageOnly();
 
@@ -183,4 +185,11 @@ public abstract class SpellTracker {
    * @return The custom overlay for this spell
    */
   protected abstract SpellReminderOverlay getOverlay();
+
+  /**
+   * Gets the hotkey to hide this spell's reminder overlay
+   *
+   * @return The hotkey binding for this spell
+   */
+  protected abstract Keybind getHideReminderHotkey();
 }

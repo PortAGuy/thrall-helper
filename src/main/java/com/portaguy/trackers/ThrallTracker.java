@@ -8,6 +8,7 @@ import com.portaguy.overlays.ThrallReminderOverlay;
 import net.runelite.api.Skill;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.gameval.VarbitID;
+import net.runelite.client.config.Keybind;
 import net.runelite.client.config.Notification;
 import net.runelite.client.eventbus.Subscribe;
 
@@ -71,7 +72,9 @@ public class ThrallTracker extends SpellTracker {
   }
 
   @Override
-  protected boolean onGameMessageOnly() { return config.matchGameMessagesOnly(); }
+  protected boolean onGameMessageOnly() {
+    return config.matchGameMessagesOnly();
+  }
 
   @Override
   protected String getCustomMessage() {
@@ -81,5 +84,10 @@ public class ThrallTracker extends SpellTracker {
   @Override
   protected SpellReminderOverlay getOverlay() {
     return overlay;
+  }
+
+  @Override
+  protected Keybind getHideReminderHotkey() {
+    return config.hideReminderHotkey();
   }
 }

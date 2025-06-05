@@ -9,6 +9,7 @@ import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.gameval.VarbitID;
 import net.runelite.client.config.Notification;
 import net.runelite.client.eventbus.Subscribe;
+import net.runelite.client.config.Keybind;
 
 import javax.inject.Inject;
 
@@ -62,7 +63,9 @@ public class ShadowVeilTracker extends SpellTracker {
   }
 
   @Override
-  protected boolean onGameMessageOnly() { return config.shadowVeilMatchGameMessagesOnly(); }
+  protected boolean onGameMessageOnly() {
+    return config.shadowVeilMatchGameMessagesOnly();
+  }
 
   @Override
   protected String getCustomMessage() {
@@ -72,5 +75,10 @@ public class ShadowVeilTracker extends SpellTracker {
   @Override
   protected SpellReminderOverlay getOverlay() {
     return overlay;
+  }
+
+  @Override
+  protected Keybind getHideReminderHotkey() {
+    return config.shadowVeilHideReminderHotkey();
   }
 }

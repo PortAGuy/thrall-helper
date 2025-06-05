@@ -29,6 +29,7 @@ import java.util.regex.Matcher;
 public class SpellReminderPlugin extends Plugin {
   protected ThrallHelperInfobox infobox;
   private final List<SpellTracker> spellTrackers = new ArrayList<>();
+  private final List<HotkeyListener> hotkeyListeners = new ArrayList<>();
   private static final int RESURRECT_GREATER_GHOST_SPRITE_ID = 2979;
 
   @Inject
@@ -87,14 +88,6 @@ public class SpellReminderPlugin extends Plugin {
     return configManager.getConfig(SpellReminderConfig.class);
   }
 
-  private final HotkeyListener hideReminderHotkeyListener = new HotkeyListener(() -> config.hideReminderHotkey()) {
-    @Override
-    public void hotkeyPressed() {
-      overlayFactory.removeAllOverlays();
-      infoBoxManager.removeInfoBox(infobox);
-    }
-  };
-
   @Override
   protected void startUp() {
     infobox = new ThrallHelperInfobox(this);
@@ -113,9 +106,17 @@ public class SpellReminderPlugin extends Plugin {
     for (SpellTracker tracker : spellTrackers) {
       tracker.initializePatterns();
       eventBus.register(tracker);
-    }
 
-    keyManager.registerKeyListener(hideReminderHotkeyListener);
+      HotkeyListener listener = new HotkeyListener(tracker::getHideReminderHotkey) {
+        @Override
+        public void hotkeyPressed() {
+          overlayFactory.removeOverlay(tracker);
+        }
+      };
+      keyManager.registerKeyListener(listener);
+
+      hotkeyListeners.add(listener);
+    }
   }
 
   @Override
@@ -124,9 +125,13 @@ public class SpellReminderPlugin extends Plugin {
       eventBus.unregister(tracker);
     }
 
+    for (HotkeyListener listener : hotkeyListeners) {
+      keyManager.unregisterKeyListener(listener);
+    }
+
+    hotkeyListeners.clear();
     overlayFactory.removeAllOverlays();
     infoBoxManager.removeInfoBox(infobox);
-    keyManager.unregisterKeyListener(hideReminderHotkeyListener);
   }
 
   @Subscribe

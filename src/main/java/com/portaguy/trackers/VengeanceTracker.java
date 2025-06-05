@@ -7,6 +7,7 @@ import com.portaguy.Spellbook;
 import com.portaguy.overlays.VengeanceReminderOverlay;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.gameval.VarbitID;
+import net.runelite.client.config.Keybind;
 import net.runelite.client.config.Notification;
 import net.runelite.client.eventbus.Subscribe;
 
@@ -70,7 +71,9 @@ public class VengeanceTracker extends SpellTracker {
   }
 
   @Override
-  protected boolean onGameMessageOnly() { return config.vengeanceMatchGameMessagesOnly(); }
+  protected boolean onGameMessageOnly() {
+    return config.vengeanceMatchGameMessagesOnly();
+  }
 
   @Override
   protected String getCustomMessage() {
@@ -80,5 +83,10 @@ public class VengeanceTracker extends SpellTracker {
   @Override
   protected SpellReminderOverlay getOverlay() {
     return overlay;
+  }
+
+  @Override
+  protected Keybind getHideReminderHotkey() {
+    return config.vengeanceHideReminderHotkey();
   }
 }

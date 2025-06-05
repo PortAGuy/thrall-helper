@@ -9,6 +9,7 @@ import net.runelite.api.ChatMessageType;
 import net.runelite.api.events.ChatMessage;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.gameval.VarbitID;
+import net.runelite.client.config.Keybind;
 import net.runelite.client.config.Notification;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.util.Text;
@@ -78,7 +79,9 @@ public class WardOfArceuusTracker extends SpellTracker {
   }
 
   @Override
-  protected boolean onGameMessageOnly() { return config.wardOfArceuusMatchGameMessagesOnly(); }
+  protected boolean onGameMessageOnly() {
+    return config.wardOfArceuusMatchGameMessagesOnly();
+  }
 
   @Override
   protected String getCustomMessage() {
@@ -88,5 +91,10 @@ public class WardOfArceuusTracker extends SpellTracker {
   @Override
   protected SpellReminderOverlay getOverlay() {
     return overlay;
+  }
+
+  @Override
+  protected Keybind getHideReminderHotkey() {
+    return config.wardOfArceuusHideReminderHotkey();
   }
 }
