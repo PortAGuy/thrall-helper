@@ -927,7 +927,7 @@ public interface SpellReminderConfig extends Config {
       section = CORRUPTION_SECTION
   )
   default Color corruptionColor() {
-    return new Color(70, 61, 50, 150);
+    return new Color(70, 3, 0, 150);
   }
 
   @Alpha
@@ -1292,14 +1292,25 @@ public interface SpellReminderConfig extends Config {
       section = VILE_VIGOUR_SECTION
   )
   default int vileVigourRunThreshold() {
-    return -1;
+    return 25;
+  }
+
+  @ConfigItem(
+      keyName = "vileVigourThresholdTimeout",
+      name = "Threshold Timeout",
+      description = "The duration in seconds after cooldown to check the run threshold",
+      position = 2,
+      section = VILE_VIGOUR_SECTION
+  )
+  default int vileVigourThresholdTimeout() {
+    return 60;
   }
 
   @ConfigItem(
       keyName = "vileVigourShouldNotify",
       name = "Notification on Reminder",
       description = "Sends a notification once the run energy threshold has been met.",
-      position = 2,
+      position = 3,
       section = VILE_VIGOUR_SECTION
   )
   default Notification vileVigourShouldNotify() {
@@ -1310,7 +1321,7 @@ public interface SpellReminderConfig extends Config {
       keyName = "vileVigourTimeoutSeconds",
       name = "Reminder Box Timeout",
       description = "The duration in seconds before the reminder box disappears.",
-      position = 3,
+      position = 4,
       section = VILE_VIGOUR_SECTION
   )
   @Units(Units.SECONDS)
@@ -1322,7 +1333,7 @@ public interface SpellReminderConfig extends Config {
       keyName = "vileVigourOnlyArceuus",
       name = "Only on Arceuus Spellbook",
       description = "Only display the reminder box when on the Arceuus spellbook.",
-      position = 4,
+      position = 5,
       section = VILE_VIGOUR_SECTION
   )
   default boolean vileVigourOnlyArceuus() {
@@ -1333,7 +1344,7 @@ public interface SpellReminderConfig extends Config {
       keyName = "vileVigourHideReminderHotkey",
       name = "Hide Reminder Hotkey",
       description = "Sets a hotkey to instantly hide the reminder box.",
-      position = 5,
+      position = 6,
       section = VILE_VIGOUR_SECTION
   )
   default Keybind vileVigourHideReminderHotkey() {
@@ -1344,7 +1355,7 @@ public interface SpellReminderConfig extends Config {
       keyName = "vileVigourReminderStyle",
       name = "Reminder style",
       description = "Changes the style of the reminder box",
-      position = 6,
+      position = 7,
       section = VILE_VIGOUR_SECTION
   )
   default SpellReminderStyle vileVigourReminderStyle() {
@@ -1355,7 +1366,7 @@ public interface SpellReminderConfig extends Config {
       keyName = "vileVigourCustomText",
       name = "Custom Text",
       description = "Changes the text in the reminder box if the style is set to custom text",
-      position = 7,
+      position = 8,
       section = VILE_VIGOUR_SECTION
   )
   default String vileVigourCustomText() {
@@ -1366,7 +1377,7 @@ public interface SpellReminderConfig extends Config {
       keyName = "vileVigourShouldFlash",
       name = "Flash the Reminder Box",
       description = "Makes the reminder box flash between the defined colors.",
-      position = 8,
+      position = 9,
       section = VILE_VIGOUR_SECTION
   )
   default boolean vileVigourShouldFlash() {
@@ -1378,11 +1389,11 @@ public interface SpellReminderConfig extends Config {
       keyName = "vileVigourColor",
       name = "Color",
       description = "The second color to flash between.",
-      position = 9,
+      position = 10,
       section = VILE_VIGOUR_SECTION
   )
   default Color vileVigourColor() {
-    return new Color(70, 61, 50, 150);
+    return new Color(107, 219, 0, 150);
   }
 
   @Alpha
@@ -1390,7 +1401,7 @@ public interface SpellReminderConfig extends Config {
       keyName = "vileVigourFlashColor",
       name = "Flash Color",
       description = "The first color to flash between, also controls the non-flashing color.",
-      position = 10,
+      position = 11,
       section = VILE_VIGOUR_SECTION
   )
   default Color vileVigourFlashColor() {
@@ -1401,7 +1412,7 @@ public interface SpellReminderConfig extends Config {
       keyName = "vileVigourNotifyRegex",
       name = "Remind on Regex",
       description = "Displays the reminder box upon a chat message matching the regex.",
-      position = 11,
+      position = 12,
       section = VILE_VIGOUR_SECTION
   )
   default String vileVigourNotifyRegex() {
@@ -1412,7 +1423,7 @@ public interface SpellReminderConfig extends Config {
       keyName = "vileVigourRemoveRegex",
       name = "Hide on Regex",
       description = "Hides the reminder (if active) upon a chat message matching the regex.",
-      position = 12,
+      position = 13,
       section = VILE_VIGOUR_SECTION
   )
   default String vileVigourRemoveRegex() {
@@ -1423,7 +1434,7 @@ public interface SpellReminderConfig extends Config {
       keyName = "vileVigourMatchGameMessagesOnly",
       name = "Only Match Game Messages",
       description = "Only attempt to match game messages with the regex.",
-      position = 13,
+      position = 14,
       section = VILE_VIGOUR_SECTION
   )
   default boolean vileVigourMatchGameMessagesOnly() {

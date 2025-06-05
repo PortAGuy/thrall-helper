@@ -64,7 +64,7 @@ public abstract class SpellTracker {
     expired = true;
   }
 
-  private void reset() {
+  protected void reset() {
     active = false;
     expired = false;
     startTick = -1;
