@@ -28,7 +28,7 @@ import java.util.regex.Matcher;
 @PluginDescriptor(
   name = "Spell Reminder",
   description = "Shows a box that reminds you to recast a spell",
-  tags = {"spellbook", "thrall", "death charge", "mark of darkness", "ward of arceuus", "shadow veil", "corruption", "charge"}
+  tags = {"spellbook", "thrall", "death charge", "mark of darkness", "ward of arceuus", "shadow veil", "corruption", "charge", "vile vigour", "vengeance"}
 )
 public class SpellReminderPlugin extends Plugin {
   private final List<SpellTracker> spellTrackers = new ArrayList<>();
