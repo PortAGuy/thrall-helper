@@ -25,7 +25,11 @@ import java.util.List;
 import java.util.regex.Matcher;
 
 @Slf4j
-@PluginDescriptor(name = "Spell Reminder")
+@PluginDescriptor(
+  name = "Spell Reminder",
+  description = "Shows a box that reminds you to recast a spell",
+  tags = {"spellbook", "thrall", "death charge", "mark of darkness", "ward of arceuus", "shadow veil", "corruption", "charge"}
+)
 public class SpellReminderPlugin extends Plugin {
   protected ThrallHelperInfobox infobox;
   private final List<SpellTracker> spellTrackers = new ArrayList<>();
