@@ -199,7 +199,7 @@ public interface SpellReminderConfig extends Config {
       section = THRALL_SECTION
   )
   default Color flashColor() {
-    return new Color(255, 0, 0, 150);
+    return new Color(70,  70, 70, 150);
   }
 
   @ConfigItem(
@@ -347,7 +347,7 @@ public interface SpellReminderConfig extends Config {
       section = DEATH_CHARGE_SECTION
   )
   default Color deathChargeFlashColor() {
-    return new Color(255, 0, 0, 150);
+    return new Color(70,  70, 70, 150);
   }
 
   @ConfigItem(
@@ -495,7 +495,7 @@ public interface SpellReminderConfig extends Config {
       section = MARK_OF_DARKNESS_SECTION
   )
   default Color markOfDarknessFlashColor() {
-    return new Color(255, 0, 0, 150);
+    return new Color(70,  70, 70, 150);
   }
 
   @ConfigItem(
@@ -643,7 +643,7 @@ public interface SpellReminderConfig extends Config {
       section = WARD_OF_ARCEUUS_SECTION
   )
   default Color wardOfArceuusFlashColor() {
-    return new Color(255, 0, 0, 150);
+    return new Color(70,  70, 70, 150);
   }
 
   @ConfigItem(
@@ -791,7 +791,7 @@ public interface SpellReminderConfig extends Config {
       section = SHADOW_VEIL_SECTION
   )
   default Color shadowVeilFlashColor() {
-    return new Color(255, 0, 0, 150);
+    return new Color(70,  70, 70, 150);
   }
 
   @ConfigItem(
@@ -939,7 +939,7 @@ public interface SpellReminderConfig extends Config {
       section = CORRUPTION_SECTION
   )
   default Color corruptionFlashColor() {
-    return new Color(255, 0, 0, 150);
+    return new Color(70,  70, 70, 150);
   }
 
   @ConfigItem(
@@ -1087,7 +1087,7 @@ public interface SpellReminderConfig extends Config {
       section = CHARGE_SECTION
   )
   default Color chargeFlashColor() {
-    return new Color(255, 0, 0, 150);
+    return new Color(70,  70, 70, 150);
   }
 
   @ConfigItem(
@@ -1235,7 +1235,7 @@ public interface SpellReminderConfig extends Config {
       section = VENGEANCE_SECTION
   )
   default Color vengeanceFlashColor() {
-    return new Color(255, 0, 0, 150);
+    return new Color(70,  70, 70, 150);
   }
 
   @ConfigItem(
@@ -1394,7 +1394,7 @@ public interface SpellReminderConfig extends Config {
       section = VILE_VIGOUR_SECTION
   )
   default Color vileVigourFlashColor() {
-    return new Color(255, 0, 0, 150);
+    return new Color(70,  70, 70, 150);
   }
 
   @ConfigItem(
