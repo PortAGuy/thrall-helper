@@ -41,13 +41,13 @@ public class CorruptionReminderOverlay extends SpellReminderOverlay {
   }
 
   @Override
-  protected Color getFlashColor1() {
-    return config.corruptionFlashColor1();
+  protected Color getColor() {
+    return config.corruptionColor();
   }
 
   @Override
-  protected Color getFlashColor2() {
-    return config.corruptionFlashColor2();
+  protected Color getFlashColor() {
+    return config.corruptionFlashColor();
   }
 
   @Override

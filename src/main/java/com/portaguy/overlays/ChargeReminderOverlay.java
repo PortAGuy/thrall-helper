@@ -41,13 +41,13 @@ public class ChargeReminderOverlay extends SpellReminderOverlay {
   }
 
   @Override
-  protected Color getFlashColor1() {
-    return config.chargeFlashColor1();
+  protected Color getColor() {
+    return config.chargeColor();
   }
 
   @Override
-  protected Color getFlashColor2() {
-    return config.chargeFlashColor2();
+  protected Color getFlashColor() {
+    return config.chargeFlashColor();
   }
 
   @Override

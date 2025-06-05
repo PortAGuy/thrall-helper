@@ -41,13 +41,13 @@ public class ThrallReminderOverlay extends SpellReminderOverlay {
   }
 
   @Override
-  protected Color getFlashColor1() {
-    return config.flashColor1();
+  protected Color getColor() {
+    return config.color();
   }
 
   @Override
-  protected Color getFlashColor2() {
-    return config.flashColor2();
+  protected Color getFlashColor() {
+    return config.flashColor();
   }
 
   @Override

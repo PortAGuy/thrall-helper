@@ -41,13 +41,13 @@ public class VengeanceReminderOverlay extends SpellReminderOverlay {
   }
 
   @Override
-  protected Color getFlashColor1() {
-    return config.vengeanceFlashColor1();
+  protected Color getColor() {
+    return config.vengeanceColor();
   }
 
   @Override
-  protected Color getFlashColor2() {
-    return config.vengeanceFlashColor2();
+  protected Color getFlashColor() {
+    return config.vengeanceFlashColor();
   }
 
   @Override

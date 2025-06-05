@@ -55,12 +55,12 @@ public abstract class SpellReminderOverlay extends OverlayPanel {
 
     if (shouldFlash()) {
       if (client.getGameCycle() % 40 >= 20) {
-        panelComponent.setBackgroundColor(getFlashColor1());
+        panelComponent.setBackgroundColor(getColor());
       } else {
-        panelComponent.setBackgroundColor(getFlashColor2());
+        panelComponent.setBackgroundColor(getFlashColor());
       }
     } else {
-      panelComponent.setBackgroundColor(getFlashColor1());
+      panelComponent.setBackgroundColor(getColor());
     }
 
     if (getReminderStyle() == SpellReminderStyle.CUSTOM_TEXT) {
@@ -84,9 +84,9 @@ public abstract class SpellReminderOverlay extends OverlayPanel {
 
   protected abstract boolean shouldFlash();
 
-  protected abstract Color getFlashColor1();
+  protected abstract Color getColor();
 
-  protected abstract Color getFlashColor2();
+  protected abstract Color getFlashColor();
 
   protected abstract int getTimeoutSeconds();
 }

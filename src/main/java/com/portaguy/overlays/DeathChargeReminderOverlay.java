@@ -41,13 +41,13 @@ public class DeathChargeReminderOverlay extends SpellReminderOverlay {
   }
 
   @Override
-  protected Color getFlashColor1() {
-    return config.deathChargeFlashColor1();
+  protected Color getColor() {
+    return config.deathChargeColor();
   }
 
   @Override
-  protected Color getFlashColor2() {
-    return config.deathChargeFlashColor2();
+  protected Color getFlashColor() {
+    return config.deathChargeFlashColor();
   }
 
   @Override

@@ -41,13 +41,13 @@ public class MarkOfDarknessReminderOverlay extends SpellReminderOverlay {
   }
 
   @Override
-  protected Color getFlashColor1() {
-    return config.markOfDarknessFlashColor1();
+  protected Color getColor() {
+    return config.markOfDarknessColor();
   }
 
   @Override
-  protected Color getFlashColor2() {
-    return config.markOfDarknessFlashColor2();
+  protected Color getFlashColor() {
+    return config.markOfDarknessFlashColor();
   }
 
   @Override

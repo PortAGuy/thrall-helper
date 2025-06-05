@@ -41,13 +41,13 @@ public class VileVigourReminderOverlay extends SpellReminderOverlay {
   }
 
   @Override
-  protected Color getFlashColor1() {
-    return config.vileVigourFlashColor1();
+  protected Color getColor() {
+    return config.vileVigourColor();
   }
 
   @Override
-  protected Color getFlashColor2() {
-    return config.vileVigourFlashColor2();
+  protected Color getFlashColor() {
+    return config.vileVigourFlashColor();
   }
 
   @Override

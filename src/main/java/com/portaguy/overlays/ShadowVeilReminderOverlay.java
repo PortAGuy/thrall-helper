@@ -41,13 +41,13 @@ public class ShadowVeilReminderOverlay extends SpellReminderOverlay {
   }
 
   @Override
-  protected Color getFlashColor1() {
-    return config.shadowVeilFlashColor1();
+  protected Color getColor() {
+    return config.shadowVeilColor();
   }
 
   @Override
-  protected Color getFlashColor2() {
-    return config.shadowVeilFlashColor2();
+  protected Color getFlashColor() {
+    return config.shadowVeilFlashColor();
   }
 
   @Override

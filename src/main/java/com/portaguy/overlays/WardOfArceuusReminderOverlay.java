@@ -41,13 +41,13 @@ public class WardOfArceuusReminderOverlay extends SpellReminderOverlay {
   }
 
   @Override
-  protected Color getFlashColor1() {
-    return config.wardOfArceuusFlashColor1();
+  protected Color getColor() {
+    return config.wardOfArceuusColor();
   }
 
   @Override
-  protected Color getFlashColor2() {
-    return config.wardOfArceuusFlashColor2();
+  protected Color getFlashColor() {
+    return config.wardOfArceuusFlashColor();
   }
 
   @Override
