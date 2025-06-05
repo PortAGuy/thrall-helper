@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import javax.annotation.Nullable;
-import java.util.Map;
 
 @Getter
 @AllArgsConstructor
@@ -15,15 +14,15 @@ public enum Spellbook {
   ARCEUUS(3);
 
   private final int varbit;
-  private static final Map<Integer, Spellbook> spellbookMap = Map.of(
-      0, STANDARD,
-      1, ANCIENT,
-      2, LUNAR,
-      3, ARCEUUS
-  );
 
   @Nullable
   public static Spellbook fromVarbit(int varbitValue) {
-    return spellbookMap.get(varbitValue);
+    switch (varbitValue) {
+      case 0: return STANDARD;
+      case 1: return ANCIENT;
+      case 2: return LUNAR;
+      case 3: return ARCEUUS;
+      default: return null;
+    }
   }
 }
