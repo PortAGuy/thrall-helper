@@ -42,27 +42,33 @@ public abstract class SpellTracker {
     this.notifyMessage = Pattern.compile("");
     this.removeMessage = Pattern.compile("");
 
-    this.active = false;
-    this.expired = false;
-    this.startTick = -1;
-    this.finalTick = Integer.MAX_VALUE;
+    reset();
   }
 
   public void start() {
     active = true;
+    expired = false;
     startTick = client.getTickCount();
     finalTick = Integer.MAX_VALUE;
   }
 
   public void start(int maxDuration) {
     active = true;
+    expired = false;
     startTick = client.getTickCount();
     finalTick = startTick + maxDuration;
   }
 
   public void stop() {
-    this.active = false;
-    this.expired = true;
+    active = false;
+    expired = true;
+  }
+
+  private void reset() {
+    active = false;
+    expired = false;
+    startTick = -1;
+    finalTick = Integer.MAX_VALUE;
   }
 
   public void initializePatterns() {
@@ -120,10 +126,10 @@ public abstract class SpellTracker {
   // Run this after the plugin's main game tick to reset a tracker
   @Subscribe(priority = -1)
   protected void onGameTick(GameTick ignored) {
-    if (isExpired() || client.getTickCount() > finalTick) {
-      active = false;
-      expired = false;
-      startTick = 0;
+    if (active && client.getTickCount() == finalTick) {
+      stop();
+    } else if (isExpired() || client.getTickCount() > finalTick) {
+      reset();
     }
   }
 
