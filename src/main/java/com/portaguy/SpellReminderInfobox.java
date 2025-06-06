@@ -17,6 +17,7 @@ public abstract class SpellReminderInfobox extends InfoBox {
     super(null, plugin);
     this.config = config;
     this.tracker = tracker;
+    this.startTime = null;
   }
 
   @Override
