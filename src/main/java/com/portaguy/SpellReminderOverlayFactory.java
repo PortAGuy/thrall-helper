@@ -22,7 +22,11 @@ public class SpellReminderOverlayFactory {
     }
 
     SpellReminderOverlay overlay = tracker.getOverlay();
-    overlay.startTime = System.currentTimeMillis();
+    if (overlay == null) {
+      return;
+    }
+
+    overlay.setStartTime(System.currentTimeMillis());
     activeOverlays.put(tracker, overlay);
     overlayManager.add(overlay);
   }

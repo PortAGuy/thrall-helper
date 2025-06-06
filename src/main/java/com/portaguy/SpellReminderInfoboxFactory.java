@@ -26,12 +26,14 @@ public class SpellReminderInfoboxFactory {
     }
 
     SpellReminderInfobox infobox = tracker.getInfobox();
-    if (infobox != null) {
-      infobox.setStartTime(System.currentTimeMillis());
-      spriteManager.getSpriteAsync(infobox.getSpriteId(), 0, infobox::setImage);
-      activeInfoboxes.put(tracker, infobox);
-      infoBoxManager.addInfoBox(infobox);
+    if (infobox == null) {
+      return;
     }
+
+    infobox.setStartTime(System.currentTimeMillis());
+    spriteManager.getSpriteAsync(infobox.getSpriteId(), 0, infobox::setImage);
+    activeInfoboxes.put(tracker, infobox);
+    infoBoxManager.addInfoBox(infobox);
   }
 
   public void removeInfobox(SpellTracker tracker) {

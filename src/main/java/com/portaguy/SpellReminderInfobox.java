@@ -43,7 +43,11 @@ public abstract class SpellReminderInfobox extends InfoBox {
     if (startTime == null) {
       return true;
     }
-    return System.currentTimeMillis() - startTime > getTimeoutSeconds() * 1000L;
+
+    final long timeoutMillis = getTimeoutSeconds() * 1000L;
+    final long elapsedMillis = System.currentTimeMillis() - startTime;
+
+    return elapsedMillis > timeoutMillis;
   }
 
   protected abstract int getSpriteId();
