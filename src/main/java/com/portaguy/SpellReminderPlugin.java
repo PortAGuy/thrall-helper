@@ -41,7 +41,8 @@ import java.util.regex.Matcher;
       "charge",
       "vile vigour",
       "vengeance"
-  }
+  },
+  configName = "ThrallHelperPlugin"
 )
 public class SpellReminderPlugin extends Plugin {
   private final List<SpellTracker> spellTrackers = new ArrayList<>();
