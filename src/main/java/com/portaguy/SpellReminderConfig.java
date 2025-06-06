@@ -245,7 +245,7 @@ public interface SpellReminderConfig extends Config {
       section = DEATH_CHARGE_SECTION
   )
   default boolean deathChargeEnabled() {
-    return true;
+    return false;
   }
 
   @ConfigItem(
@@ -393,7 +393,7 @@ public interface SpellReminderConfig extends Config {
       section = MARK_OF_DARKNESS_SECTION
   )
   default boolean markOfDarknessEnabled() {
-    return true;
+    return false;
   }
 
   @ConfigItem(
@@ -541,7 +541,7 @@ public interface SpellReminderConfig extends Config {
       section = WARD_OF_ARCEUUS_SECTION
   )
   default boolean wardOfArceuusEnabled() {
-    return true;
+    return false;
   }
 
   @ConfigItem(
@@ -689,7 +689,7 @@ public interface SpellReminderConfig extends Config {
       section = SHADOW_VEIL_SECTION
   )
   default boolean shadowVeilEnabled() {
-    return true;
+    return false;
   }
 
   @ConfigItem(
@@ -837,7 +837,7 @@ public interface SpellReminderConfig extends Config {
       section = CORRUPTION_SECTION
   )
   default boolean corruptionEnabled() {
-    return true;
+    return false;
   }
 
   @ConfigItem(
@@ -985,7 +985,7 @@ public interface SpellReminderConfig extends Config {
       section = CHARGE_SECTION
   )
   default boolean chargeEnabled() {
-    return true;
+    return false;
   }
 
   @ConfigItem(
@@ -1133,7 +1133,7 @@ public interface SpellReminderConfig extends Config {
       section = VENGEANCE_SECTION
   )
   default boolean vengeanceEnabled() {
-    return true;
+    return false;
   }
 
   @ConfigItem(
@@ -1281,7 +1281,7 @@ public interface SpellReminderConfig extends Config {
       section = VILE_VIGOUR_SECTION
   )
   default boolean vileVigourEnabled() {
-    return true;
+    return false;
   }
 
   @ConfigItem(
