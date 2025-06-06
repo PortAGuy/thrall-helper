@@ -3,55 +3,55 @@ package com.portaguy.overlays;
 import com.portaguy.SpellReminderConfig;
 import com.portaguy.SpellReminderOverlay;
 import com.portaguy.SpellReminderStyle;
-import com.portaguy.trackers.ShadowVeilTracker;
+import com.portaguy.trackers.CorruptionTracker;
 import net.runelite.api.Client;
 
 import javax.inject.Inject;
 import java.awt.*;
 
-public class ShadowVeilReminderOverlay extends SpellReminderOverlay {
+public class CorruptionOverlay extends SpellReminderOverlay {
   @Inject
-  public ShadowVeilReminderOverlay(SpellReminderConfig config, Client client, ShadowVeilTracker tracker) {
+  public CorruptionOverlay(SpellReminderConfig config, Client client, CorruptionTracker tracker) {
     super(config, client, tracker);
   }
 
   @Override
   protected String getLongText() {
-    return "You need to cast Shadow Veil!";
+    return "You need to cast Corruption!";
   }
 
   @Override
   protected String getShortText() {
-    return "Veil";
+    return "Corrupt";
   }
 
   @Override
   protected String getCustomText() {
-    return config.shadowVeilCustomText();
+    return config.corruptionCustomText();
   }
 
   @Override
   protected SpellReminderStyle getReminderStyle() {
-    return config.shadowVeilReminderStyle();
+    return config.corruptionReminderStyle();
   }
 
   @Override
   protected boolean shouldFlash() {
-    return config.shadowVeilShouldFlash();
+    return config.corruptionShouldFlash();
   }
 
   @Override
   protected Color getColor() {
-    return config.shadowVeilColor();
+    return config.corruptionColor();
   }
 
   @Override
   protected Color getFlashColor() {
-    return config.shadowVeilFlashColor();
+    return config.corruptionFlashColor();
   }
 
   @Override
   protected int getTimeoutSeconds() {
-    return config.shadowVeilTimeoutSeconds();
+    return config.corruptionTimeoutSeconds();
   }
 }

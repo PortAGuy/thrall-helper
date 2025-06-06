@@ -3,55 +3,55 @@ package com.portaguy.overlays;
 import com.portaguy.SpellReminderConfig;
 import com.portaguy.SpellReminderOverlay;
 import com.portaguy.SpellReminderStyle;
-import com.portaguy.trackers.DeathChargeTracker;
+import com.portaguy.trackers.ChargeTracker;
 import net.runelite.api.Client;
 
 import javax.inject.Inject;
 import java.awt.*;
 
-public class DeathChargeReminderOverlay extends SpellReminderOverlay {
+public class ChargeOverlay extends SpellReminderOverlay {
   @Inject
-  public DeathChargeReminderOverlay(SpellReminderConfig config, Client client, DeathChargeTracker tracker) {
+  public ChargeOverlay(SpellReminderConfig config, Client client, ChargeTracker tracker) {
     super(config, client, tracker);
   }
 
   @Override
   protected String getLongText() {
-    return "You need to cast Death Charge!";
+    return "You need to cast Charge!";
   }
 
   @Override
   protected String getShortText() {
-    return "Death Charge";
+    return "Charge";
   }
 
   @Override
   protected String getCustomText() {
-    return config.deathChargeCustomText();
+    return config.chargeCustomText();
   }
 
   @Override
   protected SpellReminderStyle getReminderStyle() {
-    return config.deathChargeReminderStyle();
+    return config.chargeReminderStyle();
   }
 
   @Override
   protected boolean shouldFlash() {
-    return config.deathChargeShouldFlash();
+    return config.chargeShouldFlash();
   }
 
   @Override
   protected Color getColor() {
-    return config.deathChargeColor();
+    return config.chargeColor();
   }
 
   @Override
   protected Color getFlashColor() {
-    return config.deathChargeFlashColor();
+    return config.chargeFlashColor();
   }
 
   @Override
   protected int getTimeoutSeconds() {
-    return config.deathChargeTimeoutSeconds();
+    return config.chargeTimeoutSeconds();
   }
 }

@@ -2,7 +2,7 @@ package com.portaguy.trackers;
 
 import com.portaguy.*;
 import com.portaguy.infoboxes.ThrallInfobox;
-import com.portaguy.overlays.ThrallReminderOverlay;
+import com.portaguy.overlays.ThrallOverlay;
 import net.runelite.api.Skill;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.gameval.VarbitID;
@@ -14,7 +14,7 @@ import javax.inject.Inject;
 
 public class ThrallTracker extends SpellTracker {
   @Inject
-  protected ThrallReminderOverlay overlay;
+  protected ThrallOverlay overlay;
 
   @Inject
   protected ThrallInfobox infobox;

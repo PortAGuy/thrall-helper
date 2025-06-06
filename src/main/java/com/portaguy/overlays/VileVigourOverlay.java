@@ -3,55 +3,55 @@ package com.portaguy.overlays;
 import com.portaguy.SpellReminderConfig;
 import com.portaguy.SpellReminderOverlay;
 import com.portaguy.SpellReminderStyle;
-import com.portaguy.trackers.CorruptionTracker;
+import com.portaguy.trackers.VileVigourTracker;
 import net.runelite.api.Client;
 
 import javax.inject.Inject;
 import java.awt.*;
 
-public class CorruptionReminderOverlay extends SpellReminderOverlay {
+public class VileVigourOverlay extends SpellReminderOverlay {
   @Inject
-  public CorruptionReminderOverlay(SpellReminderConfig config, Client client, CorruptionTracker tracker) {
+  public VileVigourOverlay(SpellReminderConfig config, Client client, VileVigourTracker tracker) {
     super(config, client, tracker);
   }
 
   @Override
   protected String getLongText() {
-    return "You need to cast Corruption!";
+    return "You need to cast Vile Vigour!";
   }
 
   @Override
   protected String getShortText() {
-    return "Corrupt";
+    return "Vile";
   }
 
   @Override
   protected String getCustomText() {
-    return config.corruptionCustomText();
+    return config.vileVigourCustomText();
   }
 
   @Override
   protected SpellReminderStyle getReminderStyle() {
-    return config.corruptionReminderStyle();
+    return config.vileVigourReminderStyle();
   }
 
   @Override
   protected boolean shouldFlash() {
-    return config.corruptionShouldFlash();
+    return config.vileVigourShouldFlash();
   }
 
   @Override
   protected Color getColor() {
-    return config.corruptionColor();
+    return config.vileVigourColor();
   }
 
   @Override
   protected Color getFlashColor() {
-    return config.corruptionFlashColor();
+    return config.vileVigourFlashColor();
   }
 
   @Override
   protected int getTimeoutSeconds() {
-    return config.corruptionTimeoutSeconds();
+    return config.vileVigourTimeoutSeconds();
   }
 }

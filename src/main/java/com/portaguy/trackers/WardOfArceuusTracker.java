@@ -2,7 +2,7 @@ package com.portaguy.trackers;
 
 import com.portaguy.*;
 import com.portaguy.infoboxes.WardOfArceuusInfobox;
-import com.portaguy.overlays.WardOfArceuusReminderOverlay;
+import com.portaguy.overlays.WardOfArceuusOverlay;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.events.ChatMessage;
 import net.runelite.api.events.VarbitChanged;
@@ -18,7 +18,7 @@ public class WardOfArceuusTracker extends SpellTracker {
   private static final String WARD_EXPIRED_MESSAGE = "your ward of arceuus has expired.";
 
   @Inject
-  protected WardOfArceuusReminderOverlay overlay;
+  protected WardOfArceuusOverlay overlay;
 
   @Inject
   protected WardOfArceuusInfobox infobox;

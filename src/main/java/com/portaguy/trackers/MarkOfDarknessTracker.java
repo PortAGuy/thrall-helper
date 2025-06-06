@@ -2,7 +2,7 @@ package com.portaguy.trackers;
 
 import com.portaguy.*;
 import com.portaguy.infoboxes.MarkOfDarknessInfobox;
-import com.portaguy.overlays.MarkOfDarknessReminderOverlay;
+import com.portaguy.overlays.MarkOfDarknessOverlay;
 import net.runelite.api.EquipmentInventorySlot;
 import net.runelite.api.Item;
 import net.runelite.api.ItemContainer;
@@ -22,7 +22,7 @@ public class MarkOfDarknessTracker extends SpellTracker {
   private static final String MARK_FADED_MESSAGE = "your mark of darkness has faded away.";
 
   @Inject
-  protected MarkOfDarknessReminderOverlay overlay;
+  protected MarkOfDarknessOverlay overlay;
 
   @Inject
   protected MarkOfDarknessInfobox infobox;

@@ -2,7 +2,7 @@ package com.portaguy.trackers;
 
 import com.portaguy.*;
 import com.portaguy.infoboxes.VengeanceInfobox;
-import com.portaguy.overlays.VengeanceReminderOverlay;
+import com.portaguy.overlays.VengeanceOverlay;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.gameval.VarbitID;
 import net.runelite.client.config.Keybind;
@@ -13,7 +13,7 @@ import javax.inject.Inject;
 
 public class VengeanceTracker extends SpellTracker {
   @Inject
-  protected VengeanceReminderOverlay overlay;
+  protected VengeanceOverlay overlay;
 
   @Inject
   protected VengeanceInfobox infobox;

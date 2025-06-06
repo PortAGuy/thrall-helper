@@ -2,7 +2,7 @@ package com.portaguy.trackers;
 
 import com.portaguy.*;
 import com.portaguy.infoboxes.DeathChargeInfobox;
-import com.portaguy.overlays.DeathChargeReminderOverlay;
+import com.portaguy.overlays.DeathChargeOverlay;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.gameval.VarbitID;
 import net.runelite.client.config.Notification;
@@ -13,7 +13,7 @@ import javax.inject.Inject;
 
 public class DeathChargeTracker extends SpellTracker {
   @Inject
-  protected DeathChargeReminderOverlay overlay;
+  protected DeathChargeOverlay overlay;
 
   @Inject
   protected DeathChargeInfobox infobox;

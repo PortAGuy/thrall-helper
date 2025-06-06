@@ -2,7 +2,7 @@ package com.portaguy.trackers;
 
 import com.portaguy.*;
 import com.portaguy.infoboxes.VileVigourInfobox;
-import com.portaguy.overlays.VileVigourReminderOverlay;
+import com.portaguy.overlays.VileVigourOverlay;
 import net.runelite.api.events.GameTick;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.gameval.VarbitID;
@@ -17,7 +17,7 @@ public class VileVigourTracker extends SpellTracker {
   private Instant cooldownEndTime = null;
 
   @Inject
-  protected VileVigourReminderOverlay overlay;
+  protected VileVigourOverlay overlay;
 
   @Inject
   protected VileVigourInfobox infobox;

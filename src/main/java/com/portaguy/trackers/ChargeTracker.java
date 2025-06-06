@@ -2,7 +2,7 @@ package com.portaguy.trackers;
 
 import com.portaguy.*;
 import com.portaguy.infoboxes.ChargeInfobox;
-import com.portaguy.overlays.ChargeReminderOverlay;
+import com.portaguy.overlays.ChargeOverlay;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.gameval.VarPlayerID;
 import net.runelite.client.config.Notification;
@@ -13,7 +13,7 @@ import javax.inject.Inject;
 
 public class ChargeTracker extends SpellTracker {
   @Inject
-  protected ChargeReminderOverlay overlay;
+  protected ChargeOverlay overlay;
 
   @Inject
   protected ChargeInfobox infobox;

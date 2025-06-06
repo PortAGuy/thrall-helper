@@ -3,55 +3,55 @@ package com.portaguy.overlays;
 import com.portaguy.SpellReminderConfig;
 import com.portaguy.SpellReminderOverlay;
 import com.portaguy.SpellReminderStyle;
-import com.portaguy.trackers.VileVigourTracker;
+import com.portaguy.trackers.ThrallTracker;
 import net.runelite.api.Client;
 
 import javax.inject.Inject;
 import java.awt.*;
 
-public class VileVigourReminderOverlay extends SpellReminderOverlay {
+public class ThrallOverlay extends SpellReminderOverlay {
   @Inject
-  public VileVigourReminderOverlay(SpellReminderConfig config, Client client, VileVigourTracker tracker) {
+  public ThrallOverlay(SpellReminderConfig config, Client client, ThrallTracker tracker) {
     super(config, client, tracker);
   }
 
   @Override
   protected String getLongText() {
-    return "You need to cast Vile Vigour!";
+    return "You need to summon a thrall!";
   }
 
   @Override
   protected String getShortText() {
-    return "Vile";
+    return "Thrall";
   }
 
   @Override
   protected String getCustomText() {
-    return config.vileVigourCustomText();
+    return config.customText();
   }
 
   @Override
   protected SpellReminderStyle getReminderStyle() {
-    return config.vileVigourReminderStyle();
+    return config.reminderStyle();
   }
 
   @Override
   protected boolean shouldFlash() {
-    return config.vileVigourShouldFlash();
+    return config.shouldFlash();
   }
 
   @Override
   protected Color getColor() {
-    return config.vileVigourColor();
+    return config.color();
   }
 
   @Override
   protected Color getFlashColor() {
-    return config.vileVigourFlashColor();
+    return config.flashColor();
   }
 
   @Override
   protected int getTimeoutSeconds() {
-    return config.vileVigourTimeoutSeconds();
+    return config.thrallTimeoutSeconds();
   }
 }

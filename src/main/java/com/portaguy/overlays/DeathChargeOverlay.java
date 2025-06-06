@@ -3,55 +3,55 @@ package com.portaguy.overlays;
 import com.portaguy.SpellReminderConfig;
 import com.portaguy.SpellReminderOverlay;
 import com.portaguy.SpellReminderStyle;
-import com.portaguy.trackers.MarkOfDarknessTracker;
+import com.portaguy.trackers.DeathChargeTracker;
 import net.runelite.api.Client;
 
 import javax.inject.Inject;
 import java.awt.*;
 
-public class MarkOfDarknessReminderOverlay extends SpellReminderOverlay {
+public class DeathChargeOverlay extends SpellReminderOverlay {
   @Inject
-  public MarkOfDarknessReminderOverlay(SpellReminderConfig config, Client client, MarkOfDarknessTracker tracker) {
+  public DeathChargeOverlay(SpellReminderConfig config, Client client, DeathChargeTracker tracker) {
     super(config, client, tracker);
   }
 
   @Override
   protected String getLongText() {
-    return "You need to cast Mark of Darkness!";
+    return "You need to cast Death Charge!";
   }
 
   @Override
   protected String getShortText() {
-    return "Mark";
+    return "Death Charge";
   }
 
   @Override
   protected String getCustomText() {
-    return config.markOfDarknessCustomText();
+    return config.deathChargeCustomText();
   }
 
   @Override
   protected SpellReminderStyle getReminderStyle() {
-    return config.markOfDarknessReminderStyle();
+    return config.deathChargeReminderStyle();
   }
 
   @Override
   protected boolean shouldFlash() {
-    return config.markOfDarknessShouldFlash();
+    return config.deathChargeShouldFlash();
   }
 
   @Override
   protected Color getColor() {
-    return config.markOfDarknessColor();
+    return config.deathChargeColor();
   }
 
   @Override
   protected Color getFlashColor() {
-    return config.markOfDarknessFlashColor();
+    return config.deathChargeFlashColor();
   }
 
   @Override
   protected int getTimeoutSeconds() {
-    return config.markOfDarknessTimeoutSeconds();
+    return config.deathChargeTimeoutSeconds();
   }
 }

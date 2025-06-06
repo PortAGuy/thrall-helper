@@ -9,9 +9,9 @@ import net.runelite.api.Client;
 import javax.inject.Inject;
 import java.awt.*;
 
-public class VengeanceReminderOverlay extends SpellReminderOverlay {
+public class VengeanceOverlay extends SpellReminderOverlay {
   @Inject
-  public VengeanceReminderOverlay(SpellReminderConfig config, Client client, VengeanceTracker tracker) {
+  public VengeanceOverlay(SpellReminderConfig config, Client client, VengeanceTracker tracker) {
     super(config, client, tracker);
   }
 

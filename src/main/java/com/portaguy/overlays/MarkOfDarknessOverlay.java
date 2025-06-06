@@ -3,55 +3,55 @@ package com.portaguy.overlays;
 import com.portaguy.SpellReminderConfig;
 import com.portaguy.SpellReminderOverlay;
 import com.portaguy.SpellReminderStyle;
-import com.portaguy.trackers.WardOfArceuusTracker;
+import com.portaguy.trackers.MarkOfDarknessTracker;
 import net.runelite.api.Client;
 
 import javax.inject.Inject;
 import java.awt.*;
 
-public class WardOfArceuusReminderOverlay extends SpellReminderOverlay {
+public class MarkOfDarknessOverlay extends SpellReminderOverlay {
   @Inject
-  public WardOfArceuusReminderOverlay(SpellReminderConfig config, Client client, WardOfArceuusTracker tracker) {
+  public MarkOfDarknessOverlay(SpellReminderConfig config, Client client, MarkOfDarknessTracker tracker) {
     super(config, client, tracker);
   }
 
   @Override
   protected String getLongText() {
-    return "You need to cast Ward of Arceuus!";
+    return "You need to cast Mark of Darkness!";
   }
 
   @Override
   protected String getShortText() {
-    return "Ward";
+    return "Mark";
   }
 
   @Override
   protected String getCustomText() {
-    return config.wardOfArceuusCustomText();
+    return config.markOfDarknessCustomText();
   }
 
   @Override
   protected SpellReminderStyle getReminderStyle() {
-    return config.wardOfArceuusReminderStyle();
+    return config.markOfDarknessReminderStyle();
   }
 
   @Override
   protected boolean shouldFlash() {
-    return config.wardOfArceuusShouldFlash();
+    return config.markOfDarknessShouldFlash();
   }
 
   @Override
   protected Color getColor() {
-    return config.wardOfArceuusColor();
+    return config.markOfDarknessColor();
   }
 
   @Override
   protected Color getFlashColor() {
-    return config.wardOfArceuusFlashColor();
+    return config.markOfDarknessFlashColor();
   }
 
   @Override
   protected int getTimeoutSeconds() {
-    return config.wardOfArceuusTimeoutSeconds();
+    return config.markOfDarknessTimeoutSeconds();
   }
 }

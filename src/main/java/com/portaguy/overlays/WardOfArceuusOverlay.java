@@ -3,55 +3,55 @@ package com.portaguy.overlays;
 import com.portaguy.SpellReminderConfig;
 import com.portaguy.SpellReminderOverlay;
 import com.portaguy.SpellReminderStyle;
-import com.portaguy.trackers.ChargeTracker;
+import com.portaguy.trackers.WardOfArceuusTracker;
 import net.runelite.api.Client;
 
 import javax.inject.Inject;
 import java.awt.*;
 
-public class ChargeReminderOverlay extends SpellReminderOverlay {
+public class WardOfArceuusOverlay extends SpellReminderOverlay {
   @Inject
-  public ChargeReminderOverlay(SpellReminderConfig config, Client client, ChargeTracker tracker) {
+  public WardOfArceuusOverlay(SpellReminderConfig config, Client client, WardOfArceuusTracker tracker) {
     super(config, client, tracker);
   }
 
   @Override
   protected String getLongText() {
-    return "You need to cast Charge!";
+    return "You need to cast Ward of Arceuus!";
   }
 
   @Override
   protected String getShortText() {
-    return "Charge";
+    return "Ward";
   }
 
   @Override
   protected String getCustomText() {
-    return config.chargeCustomText();
+    return config.wardOfArceuusCustomText();
   }
 
   @Override
   protected SpellReminderStyle getReminderStyle() {
-    return config.chargeReminderStyle();
+    return config.wardOfArceuusReminderStyle();
   }
 
   @Override
   protected boolean shouldFlash() {
-    return config.chargeShouldFlash();
+    return config.wardOfArceuusShouldFlash();
   }
 
   @Override
   protected Color getColor() {
-    return config.chargeColor();
+    return config.wardOfArceuusColor();
   }
 
   @Override
   protected Color getFlashColor() {
-    return config.chargeFlashColor();
+    return config.wardOfArceuusFlashColor();
   }
 
   @Override
   protected int getTimeoutSeconds() {
-    return config.chargeTimeoutSeconds();
+    return config.wardOfArceuusTimeoutSeconds();
   }
 }

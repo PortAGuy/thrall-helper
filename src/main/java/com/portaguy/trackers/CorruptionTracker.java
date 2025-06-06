@@ -2,7 +2,7 @@ package com.portaguy.trackers;
 
 import com.portaguy.*;
 import com.portaguy.infoboxes.CorruptionInfobox;
-import com.portaguy.overlays.CorruptionReminderOverlay;
+import com.portaguy.overlays.CorruptionOverlay;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.gameval.VarbitID;
 import net.runelite.client.config.Notification;
@@ -13,7 +13,7 @@ import javax.inject.Inject;
 
 public class CorruptionTracker extends SpellTracker {
   @Inject
-  protected CorruptionReminderOverlay overlay;
+  protected CorruptionOverlay overlay;
 
   @Inject
   protected CorruptionInfobox infobox;
