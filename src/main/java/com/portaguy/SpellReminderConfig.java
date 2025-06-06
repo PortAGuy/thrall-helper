@@ -312,7 +312,7 @@ public interface SpellReminderConfig extends Config {
       section = DEATH_CHARGE_SECTION
   )
   default String deathChargeCustomText() {
-    return "You need to death charge!";
+    return "You need to cast Death Charge!";
   }
 
   @ConfigItem(
@@ -460,7 +460,7 @@ public interface SpellReminderConfig extends Config {
       section = MARK_OF_DARKNESS_SECTION
   )
   default String markOfDarknessCustomText() {
-    return "You need to Mark of Darkness!";
+    return "You need to cast Mark of Darkness!";
   }
 
   @ConfigItem(
@@ -608,7 +608,7 @@ public interface SpellReminderConfig extends Config {
       section = WARD_OF_ARCEUUS_SECTION
   )
   default String wardOfArceuusCustomText() {
-    return "You need to Ward of Arceuus!";
+    return "You need to cast Ward of Arceuus!";
   }
 
   @ConfigItem(
@@ -756,7 +756,7 @@ public interface SpellReminderConfig extends Config {
       section = SHADOW_VEIL_SECTION
   )
   default String shadowVeilCustomText() {
-    return "You need to Shadow Veil!";
+    return "You need to cast Shadow Veil!";
   }
 
   @ConfigItem(
