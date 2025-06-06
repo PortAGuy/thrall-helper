@@ -13,6 +13,17 @@ import net.runelite.client.eventbus.Subscribe;
 import javax.inject.Inject;
 import java.time.Instant;
 
+/***
+ * Vile Vigour is a special case for spell tracking as you might not want to cast
+ * it immediately after the cooldown ends, since it depends on your run energy being low.
+ * <br/>
+ * The cases that we want to handle are:
+ * <ul>
+ *   <li>If it comes off cooldown and you're below the run energy threshold, you get a notification</li>
+ *   <li>If it comes off cooldown and you're not below the run energy threshold, you do not get a notification</li>
+ *   <li>If you've casted it X seconds ago and you hit the run energy threshold, you get a notification</li>
+ * </ul>
+ */
 public class VileVigourTracker extends SpellTracker {
   private Instant cooldownEndTime = null;
 
