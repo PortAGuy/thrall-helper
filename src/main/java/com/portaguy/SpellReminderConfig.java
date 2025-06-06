@@ -187,7 +187,7 @@ public interface SpellReminderConfig extends Config {
       section = THRALL_SECTION
   )
   default Color color() {
-    return new Color(70, 61, 50, 150);
+    return new Color(255, 0, 0, 150);
   }
 
   @Alpha
