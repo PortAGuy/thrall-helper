@@ -5,6 +5,11 @@ import lombok.Getter;
 
 import javax.annotation.Nullable;
 
+/**
+ * Represents the player's current spellbook.
+ * <br/>
+ * This enum maps the values of VarbitID.SPELLBOOK (4070).
+ */
 @Getter
 @AllArgsConstructor
 public enum Spellbook {
