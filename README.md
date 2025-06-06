@@ -1,4 +1,4 @@
-# Spell Reminder
+# 🪄 Spell Reminder
 A plugin that reminds you to cast different buff spells.
 
 This plugin was previous the Thrall Helper plugin but has since expanded into being a general spell reminder plugin.
