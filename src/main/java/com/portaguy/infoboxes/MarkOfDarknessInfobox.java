@@ -3,27 +3,26 @@ package com.portaguy.infoboxes;
 import com.portaguy.SpellReminderConfig;
 import com.portaguy.SpellReminderInfobox;
 import com.portaguy.SpellReminderPlugin;
-import com.portaguy.trackers.ThrallTracker;
+import com.portaguy.trackers.MarkOfDarknessTracker;
+import net.runelite.api.SpriteID;
 
 import javax.inject.Inject;
 
-public class ThrallReminderInfobox extends SpellReminderInfobox {
-  private static final int SPRITE_SPELL_RESURRECT_GREATER_GHOST = 2979;
-
+public class MarkOfDarknessInfobox extends SpellReminderInfobox {
   @Inject
-  public ThrallReminderInfobox(SpellReminderPlugin plugin,
+  public MarkOfDarknessInfobox(SpellReminderPlugin plugin,
                                SpellReminderConfig config,
-                               ThrallTracker tracker) {
+                               MarkOfDarknessTracker tracker) {
     super(plugin, config, tracker);
   }
 
   @Override
   protected int getSpriteId() {
-    return SPRITE_SPELL_RESURRECT_GREATER_GHOST;
+    return SpriteID.SPELL_MARK_OF_DARKNESS;
   }
 
   @Override
   protected int getTimeoutSeconds() {
-    return config.thrallTimeoutSeconds();
+    return config.markOfDarknessTimeoutSeconds();
   }
 }

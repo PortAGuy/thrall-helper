@@ -1,7 +1,7 @@
 package com.portaguy.trackers;
 
 import com.portaguy.*;
-import com.portaguy.infoboxes.VileVigourReminderInfobox;
+import com.portaguy.infoboxes.VileVigourInfobox;
 import com.portaguy.overlays.VileVigourReminderOverlay;
 import net.runelite.api.events.GameTick;
 import net.runelite.api.events.VarbitChanged;
@@ -20,7 +20,7 @@ public class VileVigourTracker extends SpellTracker {
   protected VileVigourReminderOverlay overlay;
 
   @Inject
-  protected VileVigourReminderInfobox infobox;
+  protected VileVigourInfobox infobox;
 
   @Inject
   public VileVigourTracker() {

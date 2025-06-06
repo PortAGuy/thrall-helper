@@ -1,7 +1,7 @@
 package com.portaguy.trackers;
 
 import com.portaguy.*;
-import com.portaguy.infoboxes.ShadowVeilReminderInfobox;
+import com.portaguy.infoboxes.ShadowVeilInfobox;
 import com.portaguy.overlays.ShadowVeilReminderOverlay;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.gameval.VarbitID;
@@ -16,7 +16,7 @@ public class ShadowVeilTracker extends SpellTracker {
   protected ShadowVeilReminderOverlay overlay;
 
   @Inject
-  protected ShadowVeilReminderInfobox infobox;
+  protected ShadowVeilInfobox infobox;
 
   @Inject
   public ShadowVeilTracker() {

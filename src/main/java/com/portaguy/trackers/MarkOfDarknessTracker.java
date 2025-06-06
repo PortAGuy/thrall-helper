@@ -1,7 +1,7 @@
 package com.portaguy.trackers;
 
 import com.portaguy.*;
-import com.portaguy.infoboxes.MarkOfDarknessReminderInfobox;
+import com.portaguy.infoboxes.MarkOfDarknessInfobox;
 import com.portaguy.overlays.MarkOfDarknessReminderOverlay;
 import net.runelite.api.EquipmentInventorySlot;
 import net.runelite.api.Item;
@@ -25,7 +25,7 @@ public class MarkOfDarknessTracker extends SpellTracker {
   protected MarkOfDarknessReminderOverlay overlay;
 
   @Inject
-  protected MarkOfDarknessReminderInfobox infobox;
+  protected MarkOfDarknessInfobox infobox;
 
   @Inject
   public MarkOfDarknessTracker() {

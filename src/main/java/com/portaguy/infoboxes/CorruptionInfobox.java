@@ -8,11 +8,11 @@ import net.runelite.api.SpriteID;
 
 import javax.inject.Inject;
 
-public class CorruptionReminderInfobox extends SpellReminderInfobox {
+public class CorruptionInfobox extends SpellReminderInfobox {
   @Inject
-  public CorruptionReminderInfobox(SpellReminderPlugin plugin,
-                                   SpellReminderConfig config,
-                                   CorruptionTracker tracker) {
+  public CorruptionInfobox(SpellReminderPlugin plugin,
+                           SpellReminderConfig config,
+                           CorruptionTracker tracker) {
     super(plugin, config, tracker);
   }
 

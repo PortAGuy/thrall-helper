@@ -1,7 +1,7 @@
 package com.portaguy.trackers;
 
 import com.portaguy.*;
-import com.portaguy.infoboxes.WardOfArceuusReminderInfobox;
+import com.portaguy.infoboxes.WardOfArceuusInfobox;
 import com.portaguy.overlays.WardOfArceuusReminderOverlay;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.events.ChatMessage;
@@ -21,7 +21,7 @@ public class WardOfArceuusTracker extends SpellTracker {
   protected WardOfArceuusReminderOverlay overlay;
 
   @Inject
-  protected WardOfArceuusReminderInfobox infobox;
+  protected WardOfArceuusInfobox infobox;
 
   @Inject
   public WardOfArceuusTracker() {

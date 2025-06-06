@@ -8,11 +8,11 @@ import net.runelite.api.SpriteID;
 
 import javax.inject.Inject;
 
-public class ShadowVeilReminderInfobox extends SpellReminderInfobox {
+public class ShadowVeilInfobox extends SpellReminderInfobox {
   @Inject
-  public ShadowVeilReminderInfobox(SpellReminderPlugin plugin,
-                                   SpellReminderConfig config,
-                                   ShadowVeilTracker tracker) {
+  public ShadowVeilInfobox(SpellReminderPlugin plugin,
+                           SpellReminderConfig config,
+                           ShadowVeilTracker tracker) {
     super(plugin, config, tracker);
   }
 
