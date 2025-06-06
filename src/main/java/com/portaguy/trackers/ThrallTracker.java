@@ -27,6 +27,8 @@ public class ThrallTracker extends SpellTracker {
   @Subscribe
   @Override
   protected void onVarbitChanged(VarbitChanged event) {
+    // We use ARCEUUS_RESURRECTION_COOLDOWN instead of ARCEUUS_RESURRECTION_ACTIVE
+    // so that the reminder is cleared immediately upon casting a new thrall.
     if (event.getVarbitId() != VarbitID.ARCEUUS_RESURRECTION_COOLDOWN) {
       return;
     }
