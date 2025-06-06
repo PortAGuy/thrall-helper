@@ -173,7 +173,7 @@ public class SpellReminderPlugin extends Plugin {
         }
 
         if (tracker.getNotification().isEnabled()) {
-          notifier.notify(tracker.getNotification(), tracker.getCustomMessage());
+          notifier.notify(tracker.getNotification(), "Spell Reminder: " + tracker.getCustomMessage());
         }
       }
 
@@ -203,7 +203,7 @@ public class SpellReminderPlugin extends Plugin {
         }
 
         if (tracker.getNotification().isEnabled()) {
-          notifier.notify(tracker.getNotification(), tracker.getCustomMessage());
+          notifier.notify(tracker.getNotification(), "Spell Reminder: " + tracker.getCustomMessage());
         }
       }
 
