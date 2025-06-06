@@ -7,8 +7,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SpellReminderOverlayFactory {
-  private final OverlayManager overlayManager;
   private final Map<SpellTracker, SpellReminderOverlay> activeOverlays;
+
+  @Inject
+  private final OverlayManager overlayManager;
 
   @Inject
   public SpellReminderOverlayFactory(OverlayManager overlayManager) {
