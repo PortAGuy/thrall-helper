@@ -1,7 +1,6 @@
 package com.portaguy;
 
 import com.google.inject.Inject;
-import com.portaguy.infoboxes.*;
 import net.runelite.client.game.SpriteManager;
 import net.runelite.client.ui.overlay.infobox.InfoBoxManager;
 
@@ -9,9 +8,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SpellReminderInfoboxFactory {
-  private final InfoBoxManager infoBoxManager;
-  private final SpriteManager spriteManager;
   private final Map<SpellTracker, SpellReminderInfobox> activeInfoboxes;
+
+  @Inject
+  private final InfoBoxManager infoBoxManager;
+
+  @Inject
+  private final SpriteManager spriteManager;
 
   @Inject
   public SpellReminderInfoboxFactory(InfoBoxManager infoBoxManager, SpriteManager spriteManager) {

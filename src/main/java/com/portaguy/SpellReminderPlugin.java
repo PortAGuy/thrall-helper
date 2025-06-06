@@ -12,11 +12,9 @@ import net.runelite.client.Notifier;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
-import net.runelite.client.game.SpriteManager;
 import net.runelite.client.input.KeyManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
-import net.runelite.client.ui.overlay.infobox.InfoBoxManager;
 import net.runelite.client.util.HotkeyListener;
 
 import javax.inject.Inject;
@@ -69,12 +67,6 @@ public class SpellReminderPlugin extends Plugin {
 
   @Inject
   protected Notifier notifier;
-
-  @Inject
-  protected InfoBoxManager infoBoxManager;
-
-  @Inject
-  protected SpriteManager spriteManager;
 
   @Inject
   protected KeyManager keyManager;
