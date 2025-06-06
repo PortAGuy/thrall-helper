@@ -1,11 +1,13 @@
 package com.portaguy;
 
+import lombok.NonNull;
 import lombok.Setter;
 import net.runelite.api.Client;
 import net.runelite.client.ui.overlay.OverlayPanel;
 import net.runelite.client.ui.overlay.OverlayPosition;
 import net.runelite.client.ui.overlay.components.LineComponent;
 
+import javax.annotation.Nullable;
 import java.awt.*;
 
 public abstract class SpellReminderOverlay extends OverlayPanel {
@@ -19,6 +21,7 @@ public abstract class SpellReminderOverlay extends OverlayPanel {
     this.config = config;
     this.client = client;
     this.tracker = tracker;
+    this.startTime = null;
     setPosition(OverlayPosition.ABOVE_CHATBOX_RIGHT);
   }
 
@@ -28,47 +31,59 @@ public abstract class SpellReminderOverlay extends OverlayPanel {
       return null;
     }
 
-    panelComponent.getChildren().clear();
-
-    switch (getReminderStyle()) {
-      case LONG_TEXT:
-        panelComponent.getChildren().add(LineComponent.builder()
-            .left(getLongText())
-            .build());
-        panelComponent.setPreferredSize(new Dimension(
-            graphics.getFontMetrics().stringWidth(getLongText()) - 20, 0));
-        break;
-      case SHORT_TEXT:
-        panelComponent.getChildren().add(LineComponent.builder()
-            .left(getShortText())
-            .build());
-        panelComponent.setPreferredSize(new Dimension(
-            graphics.getFontMetrics().stringWidth(getShortText()) + 10, 0));
-        break;
-      case CUSTOM_TEXT:
-        panelComponent.getChildren().add(LineComponent.builder()
-            .left(getCustomText())
-            .build());
-        panelComponent.setPreferredSize(new Dimension(
-            graphics.getFontMetrics().stringWidth(getCustomText()) - 20, 0));
-        break;
+    final int padding = getTextPadding();
+    final String displayText = getDisplayText();
+    if (displayText == null) {
+      return null;
     }
 
-    if (shouldFlash()) {
-      if (client.getGameCycle() % 40 >= 20) {
-        panelComponent.setBackgroundColor(getColor());
-      } else {
-        panelComponent.setBackgroundColor(getFlashColor());
-      }
+    panelComponent.getChildren().clear();
+
+    panelComponent.getChildren().add(LineComponent.builder()
+        .left(displayText)
+        .build());
+    panelComponent.setPreferredSize(getTextWidth(graphics, displayText, padding));
+
+    if (shouldFlash() && client.getGameCycle() % 40 >= 20) {
+      panelComponent.setBackgroundColor(getFlashColor());
     } else {
       panelComponent.setBackgroundColor(getColor());
     }
 
-    if (getReminderStyle() == SpellReminderStyle.CUSTOM_TEXT) {
-      return super.render(graphics);
-    } else {
-      return panelComponent.render(graphics);
+    return panelComponent.render(graphics);
+  }
+
+  @Nullable
+  private String getDisplayText() {
+    switch (getReminderStyle()) {
+      case LONG_TEXT:
+        return getLongText();
+      case SHORT_TEXT:
+        return getShortText();
+      case CUSTOM_TEXT:
+        return getCustomText();
+      default:
+        return null;
     }
+  }
+
+  private int getTextPadding() {
+    switch (getReminderStyle()) {
+      case LONG_TEXT:
+      case CUSTOM_TEXT:
+        return -20;
+      case SHORT_TEXT:
+        return 10;
+      default:
+        return 0;
+    }
+  }
+
+  @NonNull
+  private Dimension getTextWidth(Graphics2D graphics, String string, int offset) {
+    FontMetrics fontMetrics = graphics.getFontMetrics();
+    int stringWidth = fontMetrics.stringWidth(string);
+    return new Dimension(stringWidth + offset, 0);
   }
 
   protected boolean isExpired() {
