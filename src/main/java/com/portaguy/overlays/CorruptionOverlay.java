@@ -22,7 +22,7 @@ public class CorruptionOverlay extends SpellReminderOverlay {
 
   @Override
   protected String getShortText() {
-    return "Corrupt";
+    return "Corruption";
   }
 
   @Override
