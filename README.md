@@ -1,71 +1,59 @@
-# 🪄 Thrall Helper – Never Forget to Summon Again!  
+# 🪄 Spell Reminder
+A plugin that reminds you to cast different buff spells.
 
-A plugin that displays a reminder box when your thrall expires, ensuring you never miss a summon. The reminder stays visible for a configurable amount of time.  
+This plugin was previous the Thrall Helper plugin but has since expanded into being a general spell reminder plugin.
 
-## Configuration Options
+# Supported Spells
+- Thralls
+- Death Charge
+- Mark of Darkness
+- Ward of Arceuus
+- Vengeance
+- Corruption
+- Charge
+- Shadow Veil
+- Vile Vigour
+
+# Configuration Options
+Each spell has a separate set of configuration options, allowing for different coloured reminders & timeout duration.
 
 <p>
-<img src="https://github.com/user-attachments/assets/27073ed8-b34e-40cb-8bff-bf9a853709f7" align="right">
+<img src="https://i.imgur.com/heLfu00.gif" align="right" alt="A gif of the dfferent configuration options for the Spell Reminder plugin">
 </p>
 
+- (Spell) Enabled
+  - Controls whether reminders will occur for this spell
+- Notification on Reminder
+  - Controls if the spell will display trigger a RuneLite or Native notification
+- Reminder Box Timeout
+  - Controls the duration before the reminder box disappears
+- Only on (x) Spellbook
+  - Controls if the notification displays even on the incorrect spellbook
+- Hide Reminder Hotkey
+  - Allows for a specific key to hide the reminder overlay
+- Reminder style
+  - Controls the overlay that is displayed when the reminder occurs
+- Custom Text
+  - Controls the text that is displayed with the "Custom Text" Reminder style
+- Flash the Reminder Box
+  - Controls if the reminder overlay will flash between the two specified colours
+- Color
+  - Controls the static or first flashing colour of the reminder overlay
+- Flash Color
+  - Controls the second flashing colour of the reminder overlay
+- Remind on Regex/Hide on Regex
+  - Allows for the reminder to occur if the provided regex matches a chat message
+- Only Match Game Messages
+  - Only allows the regex to match with game messages instead of all forms
 
-- **Notify when thrall expires**  
-  - Sends a notification when your thrall expires.  
-
-- **Timeout Thrall Box**  
-  - Defines how long the reminder box remains on the screen.  
-
-- **Flash the Reminder Box**  
-  - Enables a flashing effect to make the reminder more noticeable. (See Examples Below)
-
-- **Only on Arceuus Spellbook**  
-  - Removes the reminder unless you're using the Arceuus spellbook.  
-
-- **Mute Reminder Hotkey**  
-  - Allows a specified hotkey to completely remove the reminder box.  
-
-- **Flash Color #1**  
-  - The first color to flash between if flashing is enabled, also sets the color for the non-flashing reminder box.  
-
-- **Flash Color #2**  
-  - The second color to flash between if this option is set.  
-
-- **Remind on Regex**  
-  - Displays the thrall reminder when a chat message matches a specified regex pattern.  
-
-- **Hide on Regex**  
-  - Removes the thrall reminder when a chat message matches a specified regex pattern.
- 
-- If you're having trouble or want to test your regex: [Regex Tester](https://regex101.com/) or [Regex Guide](https://regexr.com/)  
-
-- **Only match game messages**  
-  - Restricts regex matching to game messages instead of all messages.  
-
-- **Reminder Style**  
-  - Allows customization of the text or style of the reminder box.  
-
-- **Custom Text**  
-  - Allows for custom text in the reminder box if custom text style is selected.
-
----
-
-## Examples  
-
-### ✨ Flashing Enabled  
-![Flashing Enabled](https://i.imgur.com/5Veu8cq.gif)  
-
-### 🚨 Flashing Enabled with 2 Colors
-![Flashing Enabled with 2 Colors](https://i.imgur.com/sNGamn0.gif)
-
-### 🚫 Flashing Disabled  
-![Flashing Disabled](https://i.imgur.com/Ima9DgP.png)  
-
-### 📝 Short Text  
-![Short Text](https://i.imgur.com/S4rSbz7.png)  
-
-### ℹ️ Infobox  
-![Infobox](https://i.imgur.com/U6RBtJG.png)  
-
----
-
-Configure it to your liking and **never forget to summon your thrall again!** 🎩✨  
+# Examples
+### Flashing Enabled
+![Flashing Enabled](https://i.imgur.com/5Veu8cq.gif)
+### Flashing Enabled with Two Colours
+![Flashing Enabled with Two Colours](https://i.imgur.com/sNGamn0.gif)
+### Flashing Disabled
+![Flashing Disabled](https://i.imgur.com/Ima9DgP.png)
+### Short Text
+![Short Text](https://i.imgur.com/S4rSbz7.png)
+### Infobox
+![Infobox](https://i.imgur.com/U6RBtJG.png)
