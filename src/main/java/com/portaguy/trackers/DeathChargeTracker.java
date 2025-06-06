@@ -5,9 +5,9 @@ import com.portaguy.infoboxes.DeathChargeInfobox;
 import com.portaguy.overlays.DeathChargeOverlay;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.gameval.VarbitID;
+import net.runelite.client.config.Keybind;
 import net.runelite.client.config.Notification;
 import net.runelite.client.eventbus.Subscribe;
-import net.runelite.client.config.Keybind;
 
 import javax.inject.Inject;
 
