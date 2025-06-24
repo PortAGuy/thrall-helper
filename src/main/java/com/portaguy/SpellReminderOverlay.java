@@ -42,7 +42,10 @@ public abstract class SpellReminderOverlay extends OverlayPanel {
     panelComponent.getChildren().add(LineComponent.builder()
         .left(displayText)
         .build());
-    panelComponent.setPreferredSize(getTextWidth(graphics, displayText, padding));
+
+    if (getReminderStyle() != SpellReminderStyle.CUSTOM_TEXT) {
+      panelComponent.setPreferredSize(getTextWidth(graphics, displayText, padding));
+    }
 
     if (shouldFlash() && client.getGameCycle() % 40 >= 20) {
       panelComponent.setBackgroundColor(getFlashColor());
@@ -50,6 +53,9 @@ public abstract class SpellReminderOverlay extends OverlayPanel {
       panelComponent.setBackgroundColor(getColor());
     }
 
+    if (getReminderStyle() == SpellReminderStyle.CUSTOM_TEXT) {
+      return super.render(graphics);
+    }
     return panelComponent.render(graphics);
   }
 
