@@ -1451,6 +1451,6 @@ public interface SpellReminderConfig extends Config {
   default boolean thrallHelperToSpellReminderUpdate() { return false; }
   String thrallHelperToSpellReminderUpdateText = "The Thrall Helper plugin has been transformed into the Spell Reminder plugin. " +
         "This adds reminder support for many other spells. " +
-        "Please double-check your configuration options as the new spells are on by default.";
+        "Please double-check your configuration options to make use of the new settings.";
 
 }
