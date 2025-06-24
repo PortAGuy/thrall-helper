@@ -191,7 +191,7 @@ public class SpellReminderPlugin extends Plugin {
     final ChatMessageType type = event.getType();
 
     for (SpellTracker tracker : spellTrackers) {
-      if (tracker.onGameMessageOnly() && type != ChatMessageType.GAMEMESSAGE) {
+      if (tracker.onGameMessageOnly() && type != ChatMessageType.GAMEMESSAGE || !tracker.isSpellTracked()) {
         continue;
       }
 
