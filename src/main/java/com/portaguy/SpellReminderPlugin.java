@@ -141,6 +141,7 @@ public class SpellReminderPlugin extends Plugin {
     for (SpellTracker tracker : spellTrackers) {
       eventBus.unregister(tracker);
     }
+    spellTrackers.clear();
 
     for (HotkeyListener listener : hotkeyListeners) {
       keyManager.unregisterKeyListener(listener);
