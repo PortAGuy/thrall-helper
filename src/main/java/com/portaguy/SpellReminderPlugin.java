@@ -195,23 +195,27 @@ public class SpellReminderPlugin extends Plugin {
         continue;
       }
 
-      Matcher notifyMatcher = tracker.notifyMessage.matcher(message);
-      if (notifyMatcher.matches()) {
-        if (tracker.getReminderStyle() == SpellReminderStyle.INFOBOX) {
-          infoboxFactory.createInfobox(tracker);
-        } else {
-          overlayFactory.createOverlay(tracker);
-        }
+      if (!tracker.getNotifyPattern().isEmpty()) {
+        Matcher notifyMatcher = tracker.notifyMessage.matcher(message);
+        if (notifyMatcher.matches()) {
+          if (tracker.getReminderStyle() == SpellReminderStyle.INFOBOX) {
+            infoboxFactory.createInfobox(tracker);
+          } else {
+            overlayFactory.createOverlay(tracker);
+          }
 
-        if (tracker.getNotification().isEnabled()) {
-          notifier.notify(tracker.getNotification(), "Spell Reminder: " + tracker.getCustomMessage());
+          if (tracker.getNotification().isEnabled()) {
+            notifier.notify(tracker.getNotification(), "Spell Reminder: " + tracker.getCustomMessage());
+          }
         }
       }
 
-      Matcher removeMatcher = tracker.removeMessage.matcher(message);
-      if (removeMatcher.matches()) {
-        overlayFactory.removeOverlay(tracker);
-        infoboxFactory.removeInfobox(tracker);
+      if (!tracker.getRemovePattern().isEmpty()) {
+        Matcher removeMatcher = tracker.removeMessage.matcher(message);
+        if (removeMatcher.matches()) {
+          overlayFactory.removeOverlay(tracker);
+          infoboxFactory.removeInfobox(tracker);
+        }
       }
     }
   }
