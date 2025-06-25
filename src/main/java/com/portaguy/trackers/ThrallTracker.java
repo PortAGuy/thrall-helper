@@ -35,12 +35,10 @@ public class ThrallTracker extends SpellTracker {
 
     if (event.getValue() == 1) {
       // Thralls last as long as your magic level in game ticks.
-      // This timer can be extended 50% or 100% depending on CA completions.
+      // This timer can be doubled with completion of the Master tier of Combat Achievements.
       int ticks = client.getBoostedSkillLevel(Skill.MAGIC);
-      if (client.getVarbitValue(VarbitID.CA_TIER_STATUS_GRANDMASTER) == 2) {
+      if (client.getVarbitValue(VarbitID.CA_TIER_STATUS_MASTER) == 2) {
         ticks += ticks;
-      } else if (client.getVarbitValue(VarbitID.CA_TIER_STATUS_MASTER) == 2) {
-        ticks += ticks / 2;
       }
 
       // Thralls take 4 ticks from summon to become active
