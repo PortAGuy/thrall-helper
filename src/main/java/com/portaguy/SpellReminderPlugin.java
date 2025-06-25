@@ -146,8 +146,8 @@ public class SpellReminderPlugin extends Plugin {
     for (HotkeyListener listener : hotkeyListeners) {
       keyManager.unregisterKeyListener(listener);
     }
-
     hotkeyListeners.clear();
+
     overlayFactory.removeAllOverlays();
     infoboxFactory.removeAllInfoboxes();
   }
@@ -190,32 +190,38 @@ public class SpellReminderPlugin extends Plugin {
     final String message = event.getMessage();
     final ChatMessageType type = event.getType();
 
+    // Moons of Peril sends an empty chat message.
+    // Empty chat messages should not match on empty regex configs.
+    if (message.isEmpty()) {
+      return;
+    }
+
     for (SpellTracker tracker : spellTrackers) {
-      if (tracker.onGameMessageOnly() && type != ChatMessageType.GAMEMESSAGE || !tracker.isSpellTracked()) {
+      if (!tracker.isSpellTracked()) {
         continue;
       }
 
-      if (!tracker.getNotifyPattern().isEmpty()) {
-        Matcher notifyMatcher = tracker.notifyMessage.matcher(message);
-        if (notifyMatcher.matches()) {
-          if (tracker.getReminderStyle() == SpellReminderStyle.INFOBOX) {
-            infoboxFactory.createInfobox(tracker);
-          } else {
-            overlayFactory.createOverlay(tracker);
-          }
+      if (tracker.onGameMessageOnly() && type != ChatMessageType.GAMEMESSAGE) {
+        continue;
+      }
 
-          if (tracker.getNotification().isEnabled()) {
-            notifier.notify(tracker.getNotification(), "Spell Reminder: " + tracker.getCustomMessage());
-          }
+      Matcher notifyMatcher = tracker.notifyMessage.matcher(message);
+      if (notifyMatcher.matches()) {
+        if (tracker.getReminderStyle() == SpellReminderStyle.INFOBOX) {
+          infoboxFactory.createInfobox(tracker);
+        } else {
+          overlayFactory.createOverlay(tracker);
+        }
+
+        if (tracker.getNotification().isEnabled()) {
+          notifier.notify(tracker.getNotification(), "Spell Reminder: " + tracker.getCustomMessage());
         }
       }
 
-      if (!tracker.getRemovePattern().isEmpty()) {
-        Matcher removeMatcher = tracker.removeMessage.matcher(message);
-        if (removeMatcher.matches()) {
-          overlayFactory.removeOverlay(tracker);
-          infoboxFactory.removeInfobox(tracker);
-        }
+      Matcher removeMatcher = tracker.removeMessage.matcher(message);
+      if (removeMatcher.matches()) {
+        overlayFactory.removeOverlay(tracker);
+        infoboxFactory.removeInfobox(tracker);
       }
     }
   }
@@ -223,14 +229,14 @@ public class SpellReminderPlugin extends Plugin {
   @Subscribe
   protected void onGameStateChanged(GameStateChanged gameStateChanged) {
     if (gameStateChanged.getGameState() != GameState.LOGGED_IN) {
-	  return;
-	}
+      return;
+    }
 
-	if (!config.thrallHelperToSpellReminderUpdate()) {
+    if (!config.thrallHelperToSpellReminderUpdate()) {
       chatMessageManager.queue(QueuedMessage.builder()
-        .type(ChatMessageType.GAMEMESSAGE)
-        .runeLiteFormattedMessage(SpellReminderConfig.thrallHelperToSpellReminderUpdateText).build());
+          .type(ChatMessageType.GAMEMESSAGE)
+          .runeLiteFormattedMessage(SpellReminderConfig.thrallHelperToSpellReminderUpdateText).build());
       configManager.setConfiguration(SpellReminderConfig.GROUP, "thrallHelperToSpellReminderUpdate", true);
-	}
+    }
   }
 }
