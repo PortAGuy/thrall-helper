@@ -97,4 +97,9 @@ public class VengeanceTracker extends SpellTracker {
   protected SpellReminderStyle getReminderStyle() {
     return config.vengeanceReminderStyle();
   }
+
+  @Override
+  public String getReminderStyleConfigKey() {
+    return "vengeanceReminderStyle";
+  }
 }

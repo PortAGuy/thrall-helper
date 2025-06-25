@@ -115,4 +115,9 @@ public class MarkOfDarknessTracker extends SpellTracker {
   protected SpellReminderStyle getReminderStyle() {
     return config.markOfDarknessReminderStyle();
   }
+
+  @Override
+  public String getReminderStyleConfigKey() {
+    return "markOfDarknessReminderStyle";
+  }
 }

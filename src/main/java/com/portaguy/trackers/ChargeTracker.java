@@ -89,4 +89,9 @@ public class ChargeTracker extends SpellTracker {
   protected SpellReminderStyle getReminderStyle() {
     return config.chargeReminderStyle();
   }
+
+  @Override
+  public String getReminderStyleConfigKey() {
+    return "chargeReminderStyle";
+  }
 }

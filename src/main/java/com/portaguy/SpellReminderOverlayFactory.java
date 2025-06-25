@@ -48,4 +48,8 @@ public class SpellReminderOverlayFactory {
     activeOverlays.values().forEach(overlayManager::remove);
     activeOverlays.clear();
   }
+
+  public boolean isOverlayActive(SpellTracker tracker) {
+    return activeOverlays.containsKey(tracker);
+  }
 }

@@ -33,6 +33,10 @@ public class SpellReminderInfoboxFactory {
       return;
     }
 
+    if (activeInfoboxes.containsKey(tracker)) {
+      return;
+    }
+
     infobox.setStartTime(System.currentTimeMillis());
     spriteManager.getSpriteAsync(infobox.getSpriteId(), 0, infobox::setImage);
     activeInfoboxes.put(tracker, infobox);
@@ -53,5 +57,9 @@ public class SpellReminderInfoboxFactory {
   public void removeAllInfoboxes() {
     activeInfoboxes.values().forEach(infoBoxManager::removeInfoBox);
     activeInfoboxes.clear();
+  }
+
+  public boolean isInfoboxActive(SpellTracker tracker) {
+    return activeInfoboxes.containsKey(tracker);
   }
 }

@@ -105,4 +105,9 @@ public class WardOfArceuusTracker extends SpellTracker {
   protected SpellReminderStyle getReminderStyle() {
     return config.wardOfArceuusReminderStyle();
   }
+
+  @Override
+  public String getReminderStyleConfigKey() {
+    return "wardOfArceuusReminderStyle";
+  }
 }

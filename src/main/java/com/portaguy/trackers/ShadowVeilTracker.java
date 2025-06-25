@@ -89,4 +89,9 @@ public class ShadowVeilTracker extends SpellTracker {
   protected SpellReminderStyle getReminderStyle() {
     return config.shadowVeilReminderStyle();
   }
+
+  @Override
+  public String getReminderStyleConfigKey() {
+    return "shadowVeilReminderStyle";
+  }
 }

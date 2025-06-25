@@ -89,4 +89,9 @@ public class DeathChargeTracker extends SpellTracker {
   protected SpellReminderStyle getReminderStyle() {
     return config.deathChargeReminderStyle();
   }
+
+  @Override
+  public String getReminderStyleConfigKey() {
+    return "deathChargeReminderStyle";
+  }
 }

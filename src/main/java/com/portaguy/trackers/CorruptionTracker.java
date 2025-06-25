@@ -89,4 +89,9 @@ public class CorruptionTracker extends SpellTracker {
   protected SpellReminderStyle getReminderStyle() {
     return config.corruptionReminderStyle();
   }
+
+  @Override
+  public String getReminderStyleConfigKey() {
+    return "corruptionReminderStyle";
+  }
 }

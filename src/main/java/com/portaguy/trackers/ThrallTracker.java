@@ -100,4 +100,9 @@ public class ThrallTracker extends SpellTracker {
   protected SpellReminderStyle getReminderStyle() {
     return config.reminderStyle();
   }
+
+  @Override
+  public String getReminderStyleConfigKey() {
+    return "reminderStyle";
+  }
 }

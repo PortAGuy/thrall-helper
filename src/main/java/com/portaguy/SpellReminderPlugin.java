@@ -20,6 +20,7 @@ import net.runelite.client.input.KeyManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.util.HotkeyListener;
+import net.runelite.client.events.ConfigChanged;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
@@ -237,6 +238,37 @@ public class SpellReminderPlugin extends Plugin {
           .type(ChatMessageType.GAMEMESSAGE)
           .runeLiteFormattedMessage(SpellReminderConfig.thrallHelperToSpellReminderUpdateText).build());
       configManager.setConfiguration(SpellReminderConfig.GROUP, "thrallHelperToSpellReminderUpdate", true);
+    }
+  }
+
+  @Subscribe
+  protected void onConfigChanged(ConfigChanged event) {
+    if (!event.getGroup().equals(SpellReminderConfig.GROUP)) {
+      return;
+    }
+
+    for (SpellTracker tracker : spellTrackers) {
+      if (!event.getKey().equals(tracker.getReminderStyleConfigKey())) {
+        continue;
+      }
+
+      boolean overlayWasActive = overlayFactory.isOverlayActive(tracker);
+      boolean infoboxWasActive = infoboxFactory.isInfoboxActive(tracker);
+      boolean wasActive = overlayWasActive || infoboxWasActive;
+
+      overlayFactory.removeOverlay(tracker);
+      infoboxFactory.removeInfobox(tracker);
+
+      // Don't recreate an overlay or infobox if it wasn't active
+      if (!wasActive) {
+        continue;
+      }
+
+      if (tracker.getReminderStyle() == SpellReminderStyle.INFOBOX) {
+          infoboxFactory.createInfobox(tracker);
+      } else {
+          overlayFactory.createOverlay(tracker);
+      }
     }
   }
 }

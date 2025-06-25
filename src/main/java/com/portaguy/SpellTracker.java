@@ -215,4 +215,9 @@ public abstract class SpellTracker {
    * @return The style to notify the user with
    */
   protected abstract SpellReminderStyle getReminderStyle();
+
+  /**
+   * Returns the config key for the reminder style for this tracker.
+   */
+  public abstract String getReminderStyleConfigKey();
 }

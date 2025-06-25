@@ -140,4 +140,9 @@ public class VileVigourTracker extends SpellTracker {
   protected SpellReminderStyle getReminderStyle() {
     return config.vileVigourReminderStyle();
   }
+
+  @Override
+  public String getReminderStyleConfigKey() {
+    return "vileVigourReminderStyle";
+  }
 }
