@@ -37,7 +37,7 @@ public class MarkOfDarknessTracker extends SpellTracker {
   protected void onChatMessage(ChatMessage event) {
     String message = Text.standardize(event.getMessage());
     if (message.equals(MARK_PLACED_MESSAGE)) {
-      int ticks = client.getBoostedSkillLevel(Skill.MAGIC);
+      int ticks = client.getRealSkillLevel(Skill.MAGIC) * 3;
       if (isPurgingStaffEquipped()) {
         ticks *= 5;
       }
