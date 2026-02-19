@@ -161,11 +161,15 @@ public class SpellReminderPlugin extends Plugin {
       }
 
       if (tracker.isExpired()) {
+        if (tracker.onGameMessageOnly()) {
+          continue;
+        }
+
         final int spellbookVarbit = client.getVarbitValue(VarbitID.SPELLBOOK);
 
         Spellbook spellbook = Spellbook.fromVarbit(spellbookVarbit);
         if (tracker.onlyOnSpellbook() && tracker.getSpellbook() != spellbook) {
-          return;
+          continue;
         }
 
         if (tracker.getReminderStyle() == SpellReminderStyle.INFOBOX) {
