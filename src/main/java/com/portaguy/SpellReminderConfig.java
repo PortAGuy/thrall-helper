@@ -82,6 +82,18 @@ public interface SpellReminderConfig extends Config {
   )
   String VILE_VIGOUR_SECTION = "vileVigourSection";
 
+  // General config item
+  // Not a section for now as it's only one setting.
+  @ConfigItem(
+          keyName = "onePressDismissesAll",
+          name = "One Press Dismisses All",
+          description = "If enabled, pressing a hotkey that's defined for multiple spells once will dismiss them all.",
+          position = -1
+  )
+  default boolean onePressDismissesAll() {
+    return true;
+  }
+
   /*
    * Thralls
    * Note: These do not have a "thrall" keyName as they were created when the

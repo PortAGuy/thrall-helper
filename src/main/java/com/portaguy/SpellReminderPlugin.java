@@ -130,7 +130,11 @@ public class SpellReminderPlugin extends Plugin {
           boolean wasActive = overlayFactory.isOverlayActive(tracker) || infoboxFactory.isInfoboxActive(tracker);
           overlayFactory.removeOverlay(tracker);
           infoboxFactory.removeInfobox(tracker);
-          return wasActive;
+          if (config.onePressDismissesAll()) {
+            return false;
+          } else {
+            return wasActive;
+          }
         }
       };
       keyManager.registerKeyListener(listener);
