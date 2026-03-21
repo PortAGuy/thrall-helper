@@ -124,11 +124,13 @@ public class SpellReminderPlugin extends Plugin {
       tracker.initializePatterns();
       eventBus.register(tracker);
 
-      HotkeyListener listener = new HotkeyListener(tracker::getHideReminderHotkey) {
+      HotkeyListener listener = new ConditionalHotkeyListener(tracker::getHideReminderHotkey) {
         @Override
-        public void hotkeyPressed() {
+        protected boolean onHotkeyPressed() {
+          boolean wasActive = overlayFactory.isOverlayActive(tracker) || infoboxFactory.isInfoboxActive(tracker);
           overlayFactory.removeOverlay(tracker);
           infoboxFactory.removeInfobox(tracker);
+          return wasActive;
         }
       };
       keyManager.registerKeyListener(listener);
