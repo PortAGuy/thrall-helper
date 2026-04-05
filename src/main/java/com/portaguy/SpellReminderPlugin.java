@@ -19,7 +19,6 @@ import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.input.KeyManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
-import net.runelite.client.util.HotkeyListener;
 import net.runelite.client.events.ConfigChanged;
 
 import javax.inject.Inject;
@@ -46,8 +45,8 @@ import java.util.regex.Matcher;
   configName = "ThrallHelperPlugin"
 )
 public class SpellReminderPlugin extends Plugin {
+  private SharedKeyListener keyListener;
   private final List<SpellTracker> spellTrackers = new ArrayList<>();
-  private final List<HotkeyListener> hotkeyListeners = new ArrayList<>();
 
   @Inject
   protected ThrallTracker thrallTracker;
@@ -123,31 +122,21 @@ public class SpellReminderPlugin extends Plugin {
     for (SpellTracker tracker : spellTrackers) {
       tracker.initializePatterns();
       eventBus.register(tracker);
-
-      HotkeyListener listener = new HotkeyListener(tracker::getHideReminderHotkey) {
-        @Override
-        public void hotkeyPressed() {
-          overlayFactory.removeOverlay(tracker);
-          infoboxFactory.removeInfobox(tracker);
-        }
-      };
-      keyManager.registerKeyListener(listener);
-
-      hotkeyListeners.add(listener);
     }
+
+    keyListener = new SharedKeyListener(
+      spellTrackers, overlayFactory, infoboxFactory);
+    keyManager.registerKeyListener(keyListener);
   }
 
   @Override
   protected void shutDown() {
+    keyManager.unregisterKeyListener(keyListener);
+
     for (SpellTracker tracker : spellTrackers) {
       eventBus.unregister(tracker);
     }
     spellTrackers.clear();
-
-    for (HotkeyListener listener : hotkeyListeners) {
-      keyManager.unregisterKeyListener(listener);
-    }
-    hotkeyListeners.clear();
 
     overlayFactory.removeAllOverlays();
     infoboxFactory.removeAllInfoboxes();
