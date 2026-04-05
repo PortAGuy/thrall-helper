@@ -4,10 +4,7 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.Player;
-import net.runelite.api.events.ActorDeath;
-import net.runelite.api.events.ChatMessage;
-import net.runelite.api.events.GameTick;
-import net.runelite.api.events.VarbitChanged;
+import net.runelite.api.events.*;
 import net.runelite.client.config.Notification;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.ConfigChanged;
@@ -124,6 +121,10 @@ public abstract class SpellTracker {
 
   @Subscribe
   protected void onChatMessage(ChatMessage event) {
+  }
+
+  @Subscribe
+  protected void onGameStateChanged(GameStateChanged event) {
   }
 
   // Run this after the plugin's main game tick to reset a tracker

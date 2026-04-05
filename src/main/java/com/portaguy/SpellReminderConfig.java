@@ -82,6 +82,14 @@ public interface SpellReminderConfig extends Config {
   )
   String VILE_VIGOUR_SECTION = "vileVigourSection";
 
+  @ConfigSection(
+      name = "Magic Imbue",
+      description = "Magic Imbue Reminder Settings",
+      position = 10,
+      closedByDefault = true
+  )
+  String MAGIC_IMBUE_SECTION = "magicImbueSection";
+
   /*
    * Thralls
    * Note: These do not have a "thrall" keyName as they were created when the
@@ -1438,6 +1446,155 @@ public interface SpellReminderConfig extends Config {
       section = VILE_VIGOUR_SECTION
   )
   default boolean vileVigourMatchGameMessagesOnly() {
+    return false;
+  }
+
+  // Magic Imbue
+
+  @ConfigItem(
+      keyName = "magicImbueEnabled",
+      name = "Magic Imbue Enabled",
+      description = "Enables reminders for Magic Imbue." + "<br />" +
+          "Activates upon entering Air, Earth, Water, Fire and Cosmic Altars.",
+      position = 0,
+      section = MAGIC_IMBUE_SECTION
+  )
+  default boolean magicImbueEnabled() {
+    return false;
+  }
+
+  @ConfigItem(
+      keyName = "magicImbueShouldNotify",
+      name = "Notification on Reminder",
+      description = "Sends a notification once the run energy threshold has been met.",
+      position = 1,
+      section = MAGIC_IMBUE_SECTION
+  )
+  default Notification magicImbueShouldNotify() {
+    return Notification.ON;
+  }
+
+  @ConfigItem(
+      keyName = "magicImbueTimeoutSeconds",
+      name = "Reminder Box Timeout",
+      description = "The duration in seconds before the reminder box disappears.",
+      position = 2,
+      section = MAGIC_IMBUE_SECTION
+  )
+  @Units(Units.SECONDS)
+  default int magicImbueTimeoutSeconds() {
+    return 3;
+  }
+
+  @ConfigItem(
+      keyName = "magicImbueOnlyLunar",
+      name = "Only on Lunar Spellbook",
+      description = "Only display the reminder box when on the Lunar spellbook.",
+      position = 3,
+      section = MAGIC_IMBUE_SECTION
+  )
+  default boolean magicImbueOnlyLunar() {
+    return false;
+  }
+
+  @ConfigItem(
+      keyName = "magicImbueHideReminderHotkey",
+      name = "Hide Reminder Hotkey",
+      description = "Sets a hotkey to instantly hide the reminder box.",
+      position = 4,
+      section = MAGIC_IMBUE_SECTION
+  )
+  default Keybind magicImbueHideReminderHotkey() {
+    return Keybind.NOT_SET;
+  }
+
+  @ConfigItem(
+      keyName = "magicImbueReminderStyle",
+      name = "Reminder style",
+      description = "Changes the style of the reminder box",
+      position = 5,
+      section = MAGIC_IMBUE_SECTION
+  )
+  default SpellReminderStyle magicImbueReminderStyle() {
+    return SpellReminderStyle.LONG_TEXT;
+  }
+
+  @ConfigItem(
+      keyName = "magicImbueCustomText",
+      name = "Custom Text",
+      description = "Changes the text in the reminder box if the style is set to custom text",
+      position = 6,
+      section = MAGIC_IMBUE_SECTION
+  )
+  default String magicImbueCustomText() {
+    return "You need to cast Magic Imbue!";
+  }
+
+  @ConfigItem(
+      keyName = "magicImbueShouldFlash",
+      name = "Flash the Reminder Box",
+      description = "Makes the reminder box flash between the defined colors.",
+      position = 7,
+      section = MAGIC_IMBUE_SECTION
+  )
+  default boolean magicImbueShouldFlash() {
+    return false;
+  }
+
+  @Alpha
+  @ConfigItem(
+      keyName = "magicImbueColor",
+      name = "Color",
+      description = "The second color to flash between.",
+      position = 8,
+      section = MAGIC_IMBUE_SECTION
+  )
+  default Color magicImbueColor() {
+    return new Color(29, 151, 205, 255);
+  }
+
+  @Alpha
+  @ConfigItem(
+      keyName = "magicImbueFlashColor",
+      name = "Flash Color",
+      description = "The first color to flash between, also controls the non-flashing color.",
+      position = 9,
+      section = MAGIC_IMBUE_SECTION
+  )
+  default Color magicImbueFlashColor() {
+    return new Color(70,  70, 70, 150);
+  }
+
+  @ConfigItem(
+      keyName = "magicImbueNotifyRegex",
+      name = "Remind on Regex",
+      description = "Displays the reminder box upon a chat message matching the regex.",
+      position = 10,
+      section = MAGIC_IMBUE_SECTION
+  )
+  default String magicImbueNotifyRegex() {
+    return "";
+  }
+
+  @ConfigItem(
+      keyName = "magicImbueRemoveRegex",
+      name = "Hide on Regex",
+      description = "Hides the reminder (if active) upon a chat message matching the regex.",
+      position = 11,
+      section = MAGIC_IMBUE_SECTION
+  )
+  default String magicImbueRemoveRegex() {
+    return "";
+  }
+
+  @ConfigItem(
+      keyName = "magicImbueMatchGameMessagesOnly",
+      name = "Only Match Game Messages",
+      description = "Only attempt to match game messages with the regex.",
+      position = 12,
+      section = MAGIC_IMBUE_SECTION
+  )
+  default boolean magicImbueMatchGameMessagesOnly() {
     return false;
   }
 

@@ -76,6 +76,9 @@ public class SpellReminderPlugin extends Plugin {
   protected VileVigourTracker vileVigourTracker;
 
   @Inject
+  protected MagicImbueTracker magicImbueTracker;
+
+  @Inject
   protected Client client;
 
   @Inject
@@ -118,6 +121,7 @@ public class SpellReminderPlugin extends Plugin {
     spellTrackers.add(chargeTracker);
     spellTrackers.add(vengeanceTracker);
     spellTrackers.add(vileVigourTracker);
+    spellTrackers.add(magicImbueTracker);
 
     for (SpellTracker tracker : spellTrackers) {
       tracker.initializePatterns();
