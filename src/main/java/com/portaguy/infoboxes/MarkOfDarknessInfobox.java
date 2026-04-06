@@ -4,7 +4,7 @@ import com.portaguy.SpellReminderConfig;
 import com.portaguy.SpellReminderInfobox;
 import com.portaguy.SpellReminderPlugin;
 import com.portaguy.trackers.MarkOfDarknessTracker;
-import net.runelite.api.SpriteID;
+import net.runelite.api.gameval.SpriteID;
 
 import javax.inject.Inject;
 
@@ -18,7 +18,7 @@ public class MarkOfDarknessInfobox extends SpellReminderInfobox {
 
   @Override
   protected int getSpriteId() {
-    return SpriteID.SPELL_MARK_OF_DARKNESS;
+    return SpriteID.MagicNecroOn.MARK_OF_DARKNESS;
   }
 
   @Override

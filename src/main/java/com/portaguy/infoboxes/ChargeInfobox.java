@@ -4,7 +4,7 @@ import com.portaguy.SpellReminderConfig;
 import com.portaguy.SpellReminderInfobox;
 import com.portaguy.SpellReminderPlugin;
 import com.portaguy.trackers.ChargeTracker;
-import net.runelite.api.SpriteID;
+import net.runelite.api.gameval.SpriteID;
 
 import javax.inject.Inject;
 
@@ -18,7 +18,7 @@ public class ChargeInfobox extends SpellReminderInfobox {
 
   @Override
   protected int getSpriteId() {
-    return SpriteID.SPELL_CHARGE;
+    return SpriteID.Magicon2.CHARGE;
   }
 
   @Override
