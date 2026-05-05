@@ -11,6 +11,8 @@ import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.config.Keybind;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
@@ -74,19 +76,34 @@ public abstract class SpellTracker {
   }
 
   public void initializePatterns() {
-    final String notify = getNotifyPattern();
-    try {
-      notifyMessage = Pattern.compile(notify);
-    } catch (PatternSyntaxException exception) {
-      notifyMessage = Pattern.compile("");
+    notifyMessage = buildPattern(getNotifyPattern());
+    removeMessage = buildPattern(getRemovePattern());
+  }
+
+  private Pattern buildPattern(String input) {
+    if (input == null || input.trim().isEmpty()) {
+      return Pattern.compile("");
     }
 
-    final String remove = getRemovePattern();
-    try {
-      removeMessage = Pattern.compile(remove);
-    } catch (PatternSyntaxException exception) {
-      removeMessage = Pattern.compile("");
+    List<String> valid = new ArrayList<>();
+    for (String line : input.split("\n")) {
+      String trimmed = line.trim();
+      if (trimmed.isEmpty()) {
+        continue;
+      }
+      try {
+        Pattern.compile(trimmed);
+        valid.add(trimmed);
+      } catch (PatternSyntaxException e) {
+        log.debug("Invalid regex pattern ignored: {}", trimmed);
+      }
     }
+
+    if (valid.isEmpty()) {
+      return Pattern.compile("");
+    }
+
+    return Pattern.compile(String.join("|", valid));
   }
 
   @Subscribe
