@@ -46,6 +46,7 @@ public abstract class SpellTracker {
   }
 
   public void start() {
+    plugin.removeReminder(this);
     active = true;
     expired = false;
     startTick = client.getTickCount();
@@ -53,6 +54,7 @@ public abstract class SpellTracker {
   }
 
   public void start(int maxDuration) {
+    plugin.removeReminder(this);
     active = true;
     expired = false;
     startTick = client.getTickCount();
