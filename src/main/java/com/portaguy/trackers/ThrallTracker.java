@@ -3,7 +3,9 @@ package com.portaguy.trackers;
 import com.portaguy.*;
 import com.portaguy.infoboxes.ThrallInfobox;
 import com.portaguy.overlays.ThrallOverlay;
+import lombok.Getter;
 import net.runelite.api.Skill;
+import net.runelite.api.WorldView;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.gameval.VarbitID;
 import net.runelite.client.config.Keybind;
@@ -18,6 +20,10 @@ public class ThrallTracker extends SpellTracker {
 
   @Inject
   protected ThrallInfobox infobox;
+
+  @Getter
+  private int[] summonRegions;
+  private int savedFinalTick = -1;
 
   @Inject
   public ThrallTracker() {
@@ -43,6 +49,24 @@ public class ThrallTracker extends SpellTracker {
 
       // Thralls take 4 ticks from summon to become active
       start(ticks + 4);
+
+      savedFinalTick = -1;
+      WorldView wv = client.getTopLevelWorldView();
+      summonRegions = wv != null ? wv.getMapRegions().clone() : null;
+    }
+  }
+
+  public boolean hasResumeData() { return savedFinalTick != -1; }
+
+  public void saveForResume(int absoluteFinalTick) { savedFinalTick = absoluteFinalTick; }
+
+  public void resumeCountdown()
+  {
+    int remaining = savedFinalTick - client.getTickCount();
+    savedFinalTick = -1;
+    if (remaining > 0)
+    {
+      start(remaining);
     }
   }
 

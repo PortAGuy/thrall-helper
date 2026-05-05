@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
+import net.runelite.api.WorldView;
 import net.runelite.api.events.ChatMessage;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
@@ -23,6 +24,7 @@ import net.runelite.client.events.ConfigChanged;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 
@@ -45,8 +47,13 @@ import java.util.regex.Matcher;
   configName = "ThrallHelperPlugin"
 )
 public class SpellReminderPlugin extends Plugin {
+  // ignore regions where summoning a thrall early is not useful (whisperer & sotetseg maze)
+  private static final int[] INSTANCE_RESET_IGNORED_REGIONS = { 10595, 13379 };
+
   private SharedKeyListener keyListener;
   private final List<SpellTracker> spellTrackers = new ArrayList<>();
+  private int[] previousRegions = null;
+  private boolean wasInInstance = false;
 
   @Inject
   protected ThrallTracker thrallTracker;
@@ -232,6 +239,81 @@ public class SpellReminderPlugin extends Plugin {
           .runeLiteFormattedMessage(SpellReminderConfig.thrallHelperToSpellReminderUpdateText).build());
       configManager.setConfiguration(SpellReminderConfig.GROUP, "thrallHelperToSpellReminderUpdate", true);
     }
+
+    resetThrallTimerIfEnteringANewInstance();
+  }
+
+  private void resetThrallTimerIfEnteringANewInstance() {
+    WorldView wv = client.getTopLevelWorldView();
+    if (wv == null)
+    {
+      return;
+    }
+
+    boolean inInstance = wv.isInstance();
+    int[] regions = wv.getMapRegions();
+
+    boolean isActive = thrallTracker.isActive();
+    boolean hasSavedTimer = thrallTracker.hasResumeData();
+
+    if (isActive || hasSavedTimer)
+    {
+      boolean enteredFromNonInstance = !wasInInstance;
+      boolean changedInstance = wasInInstance && !regionsMatch(previousRegions, regions);
+
+      if (enteredFromNonInstance || changedInstance)
+      {
+        if (regionsMatch(regions, thrallTracker.getSummonRegions()))
+        {
+          if (hasSavedTimer)
+          {
+            thrallTracker.resumeCountdown();
+          }
+        }
+        else if (inInstance && !isInstanceResetIgnored(regions))
+        {
+          if (isActive)
+          {
+            thrallTracker.saveForResume(thrallTracker.getFinalTick());
+            if (config.thrallNotifyOnInstanceEnter())
+            {
+              thrallTracker.stop();
+            }
+          }
+        }
+      }
+    }
+
+    wasInInstance = inInstance;
+    previousRegions = inInstance ? regions.clone() : null;
+  }
+
+  private boolean regionsMatch(int[] a, int[] b)
+  {
+    if (a == null || b == null)
+    {
+      return false;
+    }
+    int[] sortedA = a.clone();
+    int[] sortedB = b.clone();
+    Arrays.sort(sortedA);
+    Arrays.sort(sortedB);
+    return Arrays.equals(sortedA, sortedB);
+  }
+
+  private boolean isInstanceResetIgnored(int[] regions)
+  {
+    for (int region : regions)
+    {
+      for (int ignored : INSTANCE_RESET_IGNORED_REGIONS)
+      {
+        if (region == ignored)
+        {
+          return true;
+        }
+      }
+    }
+    return false;
   }
 
   @Subscribe

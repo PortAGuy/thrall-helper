@@ -143,10 +143,21 @@ public interface SpellReminderConfig extends Config {
   }
 
   @ConfigItem(
+      keyName = "thrallNotifyOnInstanceEnter",
+      name = "Notify Immediately on Entering New Instance",
+      description = "Show the thrall reminder immediately when entering a new instance, hides again if reentering area thrall was summoned in.",
+      position = 4,
+      section = THRALL_SECTION
+  )
+  default boolean thrallNotifyOnInstanceEnter() {
+    return false;
+  }
+
+  @ConfigItem(
       keyName = "hideReminderHotkey",
       name = "Hide Reminder Hotkey",
       description = "Sets a hotkey to instantly hide the reminder box.",
-      position = 4,
+      position = 5,
       section = THRALL_SECTION
   )
   default Keybind hideReminderHotkey() {
@@ -157,7 +168,7 @@ public interface SpellReminderConfig extends Config {
       keyName = "reminderStyle",
       name = "Reminder style",
       description = "Changes the style of the reminder box",
-      position = 5,
+      position = 6,
       section = THRALL_SECTION
   )
   default SpellReminderStyle reminderStyle() {
@@ -168,7 +179,7 @@ public interface SpellReminderConfig extends Config {
       keyName = "customText",
       name = "Custom Text",
       description = "Changes the text in the reminder box if the style is set to custom text",
-      position = 6,
+      position = 7,
       section = THRALL_SECTION
   )
   default String customText() {
@@ -179,7 +190,7 @@ public interface SpellReminderConfig extends Config {
       keyName = "shouldFlash",
       name = "Flash the Reminder Box",
       description = "Makes the reminder box flash between the defined colors.",
-      position = 7,
+      position = 8,
       section = THRALL_SECTION
   )
   default boolean shouldFlash() {
@@ -191,7 +202,7 @@ public interface SpellReminderConfig extends Config {
       keyName = "flashColor2",
       name = "Color",
       description = "The second color to flash between.",
-      position = 8,
+      position = 9,
       section = THRALL_SECTION
   )
   default Color color() {
@@ -203,7 +214,7 @@ public interface SpellReminderConfig extends Config {
       keyName = "flashColor1",
       name = "Flash Color",
       description = "The first color to flash between, also controls the non-flashing color.",
-      position = 9,
+      position = 10,
       section = THRALL_SECTION
   )
   default Color flashColor() {
@@ -214,7 +225,7 @@ public interface SpellReminderConfig extends Config {
       keyName = "reminderRegex",
       name = "Remind on Regex",
       description = "Displays the reminder box upon a chat message matching the regex.",
-      position = 10,
+      position = 11,
       section = THRALL_SECTION
   )
   default String notifyRegex() {
@@ -225,7 +236,7 @@ public interface SpellReminderConfig extends Config {
       keyName = "hiderRegex",
       name = "Hide on Regex",
       description = "Hides the reminder (if active) upon a chat message matching the regex.",
-      position = 11,
+      position = 12,
       section = THRALL_SECTION
   )
   default String removeRegex() {
@@ -236,7 +247,7 @@ public interface SpellReminderConfig extends Config {
       keyName = "matchGameMessagesOnly",
       name = "Only Match Game Messages",
       description = "Only attempt to match game messages with the regex.",
-      position = 12,
+      position = 13,
       section = THRALL_SECTION
   )
   default boolean matchGameMessagesOnly() {

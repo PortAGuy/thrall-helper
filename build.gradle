@@ -34,6 +34,14 @@ tasks.withType(JavaCompile).configureEach {
     options.release.set(11)
 }
 
+tasks.register('run', JavaExec) {
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.portaguy.SpellReminderPluginTest'
+
+    jvmArgs "-ea"
+    args "--developer-mode", "--debug"
+}
+
 tasks.register('shadowJar', Jar) {
     dependsOn configurations.testRuntimeClasspath
     manifest {
