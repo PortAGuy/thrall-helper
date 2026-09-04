@@ -5,7 +5,10 @@ import com.portaguy.infoboxes.MagicImbueInfobox;
 import com.portaguy.overlays.MagicImbueOverlay;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.GameState;
+import net.runelite.api.Player;
 import net.runelite.api.WorldView;
+import net.runelite.api.coords.LocalPoint;
+import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.api.gameval.VarbitID;
@@ -71,18 +74,46 @@ public class MagicImbueTracker extends SpellTracker {
   }
 
   private boolean isInAltarRegion() {
+    return ALTAR_REGIONS.contains(region());
+  }
+
+  /***
+   * Returns the unmapped/over-world region id that the player resides in.
+   * <p>
+   * This function returns the correct region id regardless of if the player
+   * is inside an instance. For example, if a player is inside a Tithe Farm
+   * instance, this function will return 7222.
+   *
+   * @return region id
+   */
+  public int region() {
+    final WorldPoint wp;
+
     WorldView wv = client.getTopLevelWorldView();
     if (wv == null) {
-      return false;
+      return -1;
     }
 
-    for (int region : wv.getMapRegions()) {
-      if (ALTAR_REGIONS.contains(region)) {
-        return true;
+    Player player = client.getLocalPlayer();
+    if (player == null) {
+      return -1;
+    }
+
+    if (wv.isInstance()) {
+      LocalPoint lp = player.getLocalLocation();
+      if (lp == null) {
+        return -1;
       }
+      wp = WorldPoint.fromLocalInstance(client, lp);
+    } else {
+      wp = player.getWorldLocation();
     }
 
-    return false;
+    if (wp == null) {
+      return -1;
+    }
+
+    return wp.getRegionID();
   }
 
   @Override
