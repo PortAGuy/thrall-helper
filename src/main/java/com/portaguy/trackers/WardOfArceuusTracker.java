@@ -46,7 +46,7 @@ public class WardOfArceuusTracker extends SpellTracker {
       return;
     }
 
-    if (message.equals(WARD_EXPIRED_MESSAGE)) {
+    if (message.endsWith(WARD_EXPIRED_MESSAGE)) {
       stop();
     }
   }
