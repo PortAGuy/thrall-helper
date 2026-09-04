@@ -146,6 +146,11 @@ public class SpellReminderPlugin extends Plugin {
     infoboxFactory.removeAllInfoboxes();
   }
 
+  void removeReminder(SpellTracker tracker) {
+    overlayFactory.removeOverlay(tracker);
+    infoboxFactory.removeInfobox(tracker);
+  }
+
   @Subscribe
   protected void onGameTick(GameTick ignored) {
     for (SpellTracker tracker : spellTrackers) {
@@ -172,10 +177,6 @@ public class SpellReminderPlugin extends Plugin {
         }
       }
 
-      if (tracker.isActive()) {
-        overlayFactory.removeOverlay(tracker);
-        infoboxFactory.removeInfobox(tracker);
-      }
     }
   }
 

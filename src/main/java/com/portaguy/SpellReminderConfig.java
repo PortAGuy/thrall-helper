@@ -213,7 +213,7 @@ public interface SpellReminderConfig extends Config {
   @ConfigItem(
       keyName = "reminderRegex",
       name = "Remind on Regex",
-      description = "Displays the reminder box upon a chat message matching the regex.",
+      description = "Displays the reminder box upon a chat message matching the regex. One pattern per line.",
       position = 10,
       section = THRALL_SECTION
   )
@@ -224,7 +224,7 @@ public interface SpellReminderConfig extends Config {
   @ConfigItem(
       keyName = "hiderRegex",
       name = "Hide on Regex",
-      description = "Hides the reminder (if active) upon a chat message matching the regex.",
+      description = "Hides the reminder (if active) upon a chat message matching the regex. One pattern per line.",
       position = 11,
       section = THRALL_SECTION
   )
@@ -361,7 +361,7 @@ public interface SpellReminderConfig extends Config {
   @ConfigItem(
       keyName = "deathChargeNotifyRegex",
       name = "Remind on Regex",
-      description = "Displays the reminder box upon a chat message matching the regex.",
+      description = "Displays the reminder box upon a chat message matching the regex. One pattern per line.",
       position = 10,
       section = DEATH_CHARGE_SECTION
   )
@@ -372,7 +372,7 @@ public interface SpellReminderConfig extends Config {
   @ConfigItem(
       keyName = "deathChargeRemoveRegex",
       name = "Hide on Regex",
-      description = "Hides the reminder (if active) upon a chat message matching the regex.",
+      description = "Hides the reminder (if active) upon a chat message matching the regex. One pattern per line.",
       position = 11,
       section = DEATH_CHARGE_SECTION
   )
@@ -509,7 +509,7 @@ public interface SpellReminderConfig extends Config {
   @ConfigItem(
       keyName = "markOfDarknessNotifyRegex",
       name = "Remind on Regex",
-      description = "Displays the reminder box upon a chat message matching the regex.",
+      description = "Displays the reminder box upon a chat message matching the regex. One pattern per line.",
       position = 10,
       section = MARK_OF_DARKNESS_SECTION
   )
@@ -520,7 +520,7 @@ public interface SpellReminderConfig extends Config {
   @ConfigItem(
       keyName = "markOfDarknessRemoveRegex",
       name = "Hide on Regex",
-      description = "Hides the reminder (if active) upon a chat message matching the regex.",
+      description = "Hides the reminder (if active) upon a chat message matching the regex. One pattern per line.",
       position = 11,
       section = MARK_OF_DARKNESS_SECTION
   )
@@ -657,7 +657,7 @@ public interface SpellReminderConfig extends Config {
   @ConfigItem(
       keyName = "wardOfArceuusNotifyRegex",
       name = "Remind on Regex",
-      description = "Displays the reminder box upon a chat message matching the regex.",
+      description = "Displays the reminder box upon a chat message matching the regex. One pattern per line.",
       position = 10,
       section = WARD_OF_ARCEUUS_SECTION
   )
@@ -668,7 +668,7 @@ public interface SpellReminderConfig extends Config {
   @ConfigItem(
       keyName = "wardOfArceuusRemoveRegex",
       name = "Hide on Regex",
-      description = "Hides the reminder (if active) upon a chat message matching the regex.",
+      description = "Hides the reminder (if active) upon a chat message matching the regex. One pattern per line.",
       position = 11,
       section = WARD_OF_ARCEUUS_SECTION
   )
@@ -805,7 +805,7 @@ public interface SpellReminderConfig extends Config {
   @ConfigItem(
       keyName = "shadowVeilNotifyRegex",
       name = "Remind on Regex",
-      description = "Displays the reminder box upon a chat message matching the regex.",
+      description = "Displays the reminder box upon a chat message matching the regex. One pattern per line.",
       position = 10,
       section = SHADOW_VEIL_SECTION
   )
@@ -816,7 +816,7 @@ public interface SpellReminderConfig extends Config {
   @ConfigItem(
       keyName = "shadowVeilRemoveRegex",
       name = "Hide on Regex",
-      description = "Hides the reminder (if active) upon a chat message matching the regex.",
+      description = "Hides the reminder (if active) upon a chat message matching the regex. One pattern per line.",
       position = 11,
       section = SHADOW_VEIL_SECTION
   )
@@ -953,7 +953,7 @@ public interface SpellReminderConfig extends Config {
   @ConfigItem(
       keyName = "corruptionNotifyRegex",
       name = "Remind on Regex",
-      description = "Displays the reminder box upon a chat message matching the regex.",
+      description = "Displays the reminder box upon a chat message matching the regex. One pattern per line.",
       position = 10,
       section = CORRUPTION_SECTION
   )
@@ -964,7 +964,7 @@ public interface SpellReminderConfig extends Config {
   @ConfigItem(
       keyName = "corruptionRemoveRegex",
       name = "Hide on Regex",
-      description = "Hides the reminder (if active) upon a chat message matching the regex.",
+      description = "Hides the reminder (if active) upon a chat message matching the regex. One pattern per line.",
       position = 11,
       section = CORRUPTION_SECTION
   )
@@ -1101,7 +1101,7 @@ public interface SpellReminderConfig extends Config {
   @ConfigItem(
       keyName = "chargeNotifyRegex",
       name = "Remind on Regex",
-      description = "Displays the reminder box upon a chat message matching the regex.",
+      description = "Displays the reminder box upon a chat message matching the regex. One pattern per line.",
       position = 10,
       section = CHARGE_SECTION
   )
@@ -1112,7 +1112,7 @@ public interface SpellReminderConfig extends Config {
   @ConfigItem(
       keyName = "chargeRemoveRegex",
       name = "Hide on Regex",
-      description = "Hides the reminder (if active) upon a chat message matching the regex.",
+      description = "Hides the reminder (if active) upon a chat message matching the regex. One pattern per line.",
       position = 11,
       section = CHARGE_SECTION
   )
@@ -1249,7 +1249,7 @@ public interface SpellReminderConfig extends Config {
   @ConfigItem(
       keyName = "vengeanceNotifyRegex",
       name = "Remind on Regex",
-      description = "Displays the reminder box upon a chat message matching the regex.",
+      description = "Displays the reminder box upon a chat message matching the regex. One pattern per line.",
       position = 10,
       section = VENGEANCE_SECTION
   )
@@ -1260,7 +1260,7 @@ public interface SpellReminderConfig extends Config {
   @ConfigItem(
       keyName = "vengeanceRemoveRegex",
       name = "Hide on Regex",
-      description = "Hides the reminder (if active) upon a chat message matching the regex.",
+      description = "Hides the reminder (if active) upon a chat message matching the regex. One pattern per line.",
       position = 11,
       section = VENGEANCE_SECTION
   )
@@ -1419,7 +1419,7 @@ public interface SpellReminderConfig extends Config {
   @ConfigItem(
       keyName = "vileVigourNotifyRegex",
       name = "Remind on Regex",
-      description = "Displays the reminder box upon a chat message matching the regex.",
+      description = "Displays the reminder box upon a chat message matching the regex. One pattern per line.",
       position = 12,
       section = VILE_VIGOUR_SECTION
   )
@@ -1430,7 +1430,7 @@ public interface SpellReminderConfig extends Config {
   @ConfigItem(
       keyName = "vileVigourRemoveRegex",
       name = "Hide on Regex",
-      description = "Hides the reminder (if active) upon a chat message matching the regex.",
+      description = "Hides the reminder (if active) upon a chat message matching the regex. One pattern per line.",
       position = 13,
       section = VILE_VIGOUR_SECTION
   )
@@ -1568,7 +1568,7 @@ public interface SpellReminderConfig extends Config {
   @ConfigItem(
       keyName = "magicImbueNotifyRegex",
       name = "Remind on Regex",
-      description = "Displays the reminder box upon a chat message matching the regex.",
+      description = "Displays the reminder box upon a chat message matching the regex. One pattern per line.",
       position = 10,
       section = MAGIC_IMBUE_SECTION
   )
@@ -1579,7 +1579,7 @@ public interface SpellReminderConfig extends Config {
   @ConfigItem(
       keyName = "magicImbueRemoveRegex",
       name = "Hide on Regex",
-      description = "Hides the reminder (if active) upon a chat message matching the regex.",
+      description = "Hides the reminder (if active) upon a chat message matching the regex. One pattern per line.",
       position = 11,
       section = MAGIC_IMBUE_SECTION
   )
