@@ -391,6 +391,17 @@ public interface SpellReminderConfig extends Config {
     return false;
   }
 
+  @ConfigItem(
+      keyName = "deathChargeHideAtFullSpec",
+      name = "Wait Until Spec Is Used",
+      description = "Hold the reminder while your special attack energy is at 100%, since Death Charge restores nothing then. It shows once your spec drops below 100%.",
+      position = 13,
+      section = DEATH_CHARGE_SECTION
+  )
+  default boolean deathChargeHideAtFullSpec() {
+    return false;
+  }
+
   // Mark of Darkness
 
   @ConfigItem(

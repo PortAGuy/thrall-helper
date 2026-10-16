@@ -4,6 +4,7 @@ import com.portaguy.*;
 import com.portaguy.infoboxes.DeathChargeInfobox;
 import com.portaguy.overlays.DeathChargeOverlay;
 import net.runelite.api.events.VarbitChanged;
+import net.runelite.api.gameval.VarPlayerID;
 import net.runelite.api.gameval.VarbitID;
 import net.runelite.client.config.Keybind;
 import net.runelite.client.config.Notification;
@@ -23,13 +24,30 @@ public class DeathChargeTracker extends SpellTracker {
     super(Spellbook.ARCEUUS, false);
   }
 
+  // Special attack energy is stored as 0-1000.
+  private static final int FULL_SPEC = 1000;
+
+  // Death Charge came off cooldown while spec was full, so the reminder is held back until
+  // spec drops: a charge used at full spec restores nothing.
+  private boolean waitingForSpec;
+
   @Subscribe
   @Override
   protected void onVarbitChanged(VarbitChanged event) {
     if (event.getVarbitId() == VarbitID.ARCEUUS_DEATH_CHARGE_COOLDOWN) {
       if (event.getValue() == 1 && !active) {
+        waitingForSpec = false;
         start();
       } else if (event.getValue() == 0 && active) {
+        if (config.deathChargeHideAtFullSpec() && client.getVarpValue(VarPlayerID.SA_ENERGY) >= FULL_SPEC) {
+          waitingForSpec = true;
+        } else {
+          stop();
+        }
+      }
+    } else if (event.getVarpId() == VarPlayerID.SA_ENERGY && waitingForSpec) {
+      if (event.getValue() < FULL_SPEC || !config.deathChargeHideAtFullSpec()) {
+        waitingForSpec = false;
         stop();
       }
     }

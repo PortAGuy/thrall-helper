@@ -45,6 +45,8 @@ Each spell has a separate set of configuration options, allowing for different c
   - Allows for the reminder to occur if the provided regex matches a chat message
 - Only Match Game Messages
   - Only allows the regex to match with game messages instead of all forms
+- Wait Until Spec Is Used (Death Charge only)
+  - Holds the reminder while special attack energy is at 100%, and shows it once spec drops below 100%
 
 # Examples
 ### Flashing Enabled
