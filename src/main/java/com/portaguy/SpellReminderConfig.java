@@ -243,6 +243,17 @@ public interface SpellReminderConfig extends Config {
     return false;
   }
 
+  @ConfigItem(
+      keyName = "thrallSpellbookTimers",
+      name = "Show Timers on Spellbook",
+      description = "Shows the time left on your thrall (top) and the time until you can cast another (bottom) on the resurrect spell icons.",
+      position = 13,
+      section = THRALL_SECTION
+  )
+  default boolean thrallSpellbookTimers() {
+    return false;
+  }
+
   // Death Charge
 
   @ConfigItem(
@@ -388,6 +399,17 @@ public interface SpellReminderConfig extends Config {
       section = DEATH_CHARGE_SECTION
   )
   default boolean deathChargeMatchGameMessagesOnly() {
+    return false;
+  }
+
+  @ConfigItem(
+      keyName = "deathChargeSpellbookTimers",
+      name = "Show Timers on Spellbook",
+      description = "Shows the time left on Death Charge (top) and the time until you can cast it again (bottom) on the spell icon.",
+      position = 13,
+      section = DEATH_CHARGE_SECTION
+  )
+  default boolean deathChargeSpellbookTimers() {
     return false;
   }
 
