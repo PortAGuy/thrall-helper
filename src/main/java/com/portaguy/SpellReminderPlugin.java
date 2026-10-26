@@ -20,6 +20,7 @@ import net.runelite.client.input.KeyManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.events.ConfigChanged;
+import net.runelite.client.ui.overlay.OverlayManager;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
@@ -105,6 +106,15 @@ public class SpellReminderPlugin extends Plugin {
   @Inject
   protected SpellReminderInfoboxFactory infoboxFactory;
 
+  @Inject
+  protected OverlayManager overlayManager;
+
+  @Inject
+  protected SpellbookTimers spellbookTimers;
+
+  @Inject
+  protected SpellbookTimerOverlay spellbookTimerOverlay;
+
   @Provides
   SpellReminderConfig provideConfig(ConfigManager configManager) {
     return configManager.getConfig(SpellReminderConfig.class);
@@ -131,11 +141,19 @@ public class SpellReminderPlugin extends Plugin {
     keyListener = new SharedKeyListener(
       spellTrackers, overlayFactory, infoboxFactory);
     keyManager.registerKeyListener(keyListener);
+
+    spellbookTimers.setThrallTracker(thrallTracker);
+    eventBus.register(spellbookTimers);
+    overlayManager.add(spellbookTimerOverlay);
   }
 
   @Override
   protected void shutDown() {
     keyManager.unregisterKeyListener(keyListener);
+
+    overlayManager.remove(spellbookTimerOverlay);
+    eventBus.unregister(spellbookTimers);
+    spellbookTimers.reset();
 
     for (SpellTracker tracker : spellTrackers) {
       eventBus.unregister(tracker);
